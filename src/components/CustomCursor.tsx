@@ -1,75 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Clean 8-bit Pixel Cursor Grid.
- * Standard Windows/Mac classic 16x16 pixel pointer grid.
- * 0 = transparent
- * 1 = outer pixel border (#4A0E18 deep maroon)
- * 2 = inner pixel fill (#FCECEF light warm cream/blush)
- * 3 = pixel highlight (#FFFFFF pure crisp white)
- */
-// Classic pixel pointer arrow (12 x 19 grid)
-// Each row represents pixels from x=0 to x=11
-const ARROW_GRID: number[][] = [
-  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 3, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-  [1, 3, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0],
-  [1, 3, 2, 2, 2, 2, 1, 0, 0, 0, 0, 0],
-  [1, 3, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0],
-  [1, 3, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0],
-  [1, 3, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0],
-  [1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-  [1, 3, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1],
-  [1, 3, 2, 1, 2, 2, 1, 0, 0, 0, 0, 0],
-  [1, 2, 1, 0, 1, 2, 2, 1, 0, 0, 0, 0],
-  [1, 1, 0, 0, 1, 2, 2, 1, 0, 0, 0, 0],
-  [1, 0, 0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 1, 2, 2, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
-];
-
-// Classic pixel pointer hand (15 x 18 grid)
-const HAND_GRID: number[][] = [
-  [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 1, 3, 2, 1, 0, 1, 1, 0, 0, 0, 0, 0],
-  [0, 1, 1, 1, 3, 2, 1, 1, 2, 2, 1, 0, 1, 1, 0],
-  [1, 2, 2, 1, 3, 2, 1, 2, 2, 2, 1, 1, 2, 2, 1],
-  [1, 3, 2, 1, 3, 2, 1, 2, 2, 2, 1, 2, 2, 2, 1],
-  [1, 3, 2, 2, 3, 2, 2, 2, 2, 2, 1, 2, 2, 2, 1],
-  [0, 1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1],
-  [0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0],
-  [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0],
-  [0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0],
-  [0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0],
-  [0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0],
-  [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-];
-
-const PIXEL_SCALE = 2; // 2px per pixel unit = perfectly sharp, natural 24x36px size
-
-function renderPixelGrid(grid: number[][], palette: Record<number, string>) {
-  return grid.flatMap((row, y) =>
-    row.map((val, x) => {
-      if (!val || !palette[val]) return null;
-      return (
-        <rect
-          key={`${x}-${y}`}
-          x={x * PIXEL_SCALE}
-          y={y * PIXEL_SCALE}
-          width={PIXEL_SCALE}
-          height={PIXEL_SCALE}
-          fill={palette[val]}
-        />
-      );
-    })
-  );
+interface TrailPoint {
+  x: number;
+  y: number;
+  id: number;
+  opacity: number;
+  size: number;
 }
 
 export function CustomCursor() {
@@ -77,9 +13,12 @@ export function CustomCursor() {
   const [isHoveringClickable, setIsHoveringClickable] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [cursorVisible, setCursorVisible] = useState(false);
+  const [trail, setTrail] = useState<TrailPoint[]>([]);
 
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const mousePos = useRef({ x: -100, y: -100 });
+  const trailIdRef = useRef(0);
+  const lastTrailPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
     // Only disable if device does not support hover (mobile phone/tablet)
@@ -91,11 +30,30 @@ export function CustomCursor() {
     setIsEnabled(true);
 
     const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
+      const currentX = e.clientX;
+      const currentY = e.clientY;
+      mousePos.current = { x: currentX, y: currentY };
       if (!cursorVisible) setCursorVisible(true);
 
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        cursorRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0)`;
+      }
+
+      // Add gentle trail points when moving
+      const dist = Math.hypot(currentX - lastTrailPos.current.x, currentY - lastTrailPos.current.y);
+      if (dist > 5) {
+        lastTrailPos.current = { x: currentX, y: currentY };
+        trailIdRef.current += 1;
+        setTrail((prev) => [
+          ...prev.slice(-15), // Extended trail: 16 points for longer elegant flow
+          {
+            x: currentX,
+            y: currentY,
+            id: trailIdRef.current,
+            opacity: 0.5,
+            size: 4.5,
+          },
+        ]);
       }
 
       const target = e.target as HTMLElement | null;
@@ -107,9 +65,25 @@ export function CustomCursor() {
       }
     };
 
+    // Fade trail points smoothly for a long, lightweight whisper trail
+    const trailInterval = setInterval(() => {
+      setTrail((prev) =>
+        prev
+          .map((pt) => ({
+            ...pt,
+            opacity: pt.opacity * 0.84, // Slower gentle fade creates longer trail
+            size: Math.max(1, pt.size * 0.92),
+          }))
+          .filter((pt) => pt.opacity > 0.04)
+      );
+    }, 28);
+
     const handleMouseDown = () => setIsMouseDown(true);
     const handleMouseUp = () => setIsMouseDown(false);
-    const handleMouseLeave = () => setCursorVisible(false);
+    const handleMouseLeave = () => {
+      setCursorVisible(false);
+      setTrail([]);
+    };
     const handleMouseEnter = () => setCursorVisible(true);
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -119,6 +93,7 @@ export function CustomCursor() {
     document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
+      clearInterval(trailInterval);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mousedown", handleMouseDown);
       window.removeEventListener("mouseup", handleMouseUp);
@@ -128,16 +103,6 @@ export function CustomCursor() {
   }, [cursorVisible]);
 
   if (!isEnabled) return null;
-
-  // Exact theme palette:
-  // 1: Crisp Dark Maroon Pixel Border (#4A0E18)
-  // 2: Clean Rose/Blush body fill (#F9CCD3)
-  // 3: Crisp highlight border inner edge (#FFFFFF)
-  const palette: Record<number, string> = {
-    1: "#4A0E18", // Dark pixel border
-    2: "#F6C1C8", // Warm blush/rose body fill matching reference image
-    3: "#FFF5F6", // Clean inner edge highlight
-  };
 
   return (
     <>
@@ -150,7 +115,25 @@ export function CustomCursor() {
         }
       `}</style>
 
-      {/* Crisp 8-Bit Pixel Pointer */}
+      {/* Floating Lightweight Trail Particles */}
+      {cursorVisible &&
+        trail.map((pt) => (
+          <div
+            key={pt.id}
+            className="fixed top-0 left-0 pointer-events-none z-[99998] rounded-full will-change-transform"
+            style={{
+              transform: `translate3d(${pt.x}px, ${pt.y}px, 0) translate(-50%, -50%)`,
+              width: `${pt.size}px`,
+              height: `${pt.size}px`,
+              backgroundColor: "#6B1724",
+              opacity: pt.opacity,
+              boxShadow: "0 0 5px rgba(107, 23, 36, 0.35)",
+              transition: "opacity 0.08s ease-out, transform 0.08s ease-out",
+            }}
+          />
+        ))}
+
+      {/* Sleek Stick-less Maroon Pointer Arrow */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 pointer-events-none z-[99999] will-change-transform"
@@ -160,35 +143,60 @@ export function CustomCursor() {
         }}
       >
         <div
-          className={`transition-transform duration-75 ${
-            isMouseDown ? "scale-90" : "scale-100"
+          className={`transition-transform duration-100 ease-out ${
+            isMouseDown ? "scale-90" : isHoveringClickable ? "scale-110" : "scale-100"
           }`}
           style={{
-            // Hotspot alignment: top-left tip is directly on mouse point
-            transform: isHoveringClickable ? "translate(-8px, -2px)" : "translate(0px, 0px)",
+            // Hotspot tip aligns with top-left origin
+            transformOrigin: "0 0",
           }}
         >
           {isHoveringClickable ? (
-            /* Pixel Pointer Hand */
+            /* Hover state: Elegant small open pointer chevron with diamond accent */
             <svg
-              width={15 * PIXEL_SCALE}
-              height={17 * PIXEL_SCALE}
-              viewBox={`0 0 ${15 * PIXEL_SCALE} ${17 * PIXEL_SCALE}`}
-              shapeRendering="crispEdges"
-              className="filter drop-shadow-[0_2px_4px_rgba(74,14,24,0.15)]"
+              width="23"
+              height="23"
+              viewBox="0 0 23 23"
+              fill="none"
+              className="drop-shadow-[0_2px_5px_rgba(107,23,36,0.35)]"
             >
-              {renderPixelGrid(HAND_GRID, palette)}
+              {/* Outer soft glow border */}
+              <polygon
+                points="1,1 21.5,9 11.5,11.5 9,21.5"
+                fill="#6B1724"
+                stroke="#FAF8F5"
+                strokeWidth="1.2"
+                strokeLinejoin="round"
+              />
+              <polygon
+                points="3.2,3.2 17,9 11,11 9,17"
+                fill="#8C2535"
+              />
+              {/* Tiny jewel center dot */}
+              <circle cx="9.2" cy="9.2" r="1.3" fill="#FAF8F5" />
             </svg>
           ) : (
-            /* Pixel Pointer Arrow */
+            /* Default stick-less chevron arrowhead - scaled up very slightly for ideal visibility */
             <svg
-              width={12 * PIXEL_SCALE}
-              height={18 * PIXEL_SCALE}
-              viewBox={`0 0 ${12 * PIXEL_SCALE} ${18 * PIXEL_SCALE}`}
-              shapeRendering="crispEdges"
-              className="filter drop-shadow-[0_2px_4px_rgba(74,14,24,0.15)]"
+              width="21"
+              height="21"
+              viewBox="0 0 21 21"
+              fill="none"
+              className="drop-shadow-[0_2px_4px_rgba(107,23,36,0.3)]"
             >
-              {renderPixelGrid(ARROW_GRID, palette)}
+              {/* Sleek stick-less triangular arrowhead */}
+              <polygon
+                points="1,1 20,8 11,11 8,20"
+                fill="#6B1724"
+                stroke="#FAF8F5"
+                strokeWidth="1.2"
+                strokeLinejoin="round"
+              />
+              {/* Inner chic gradient fill */}
+              <polygon
+                points="2.8,2.8 15.8,7.8 10,10 7.8,15.8"
+                fill="#801C2B"
+              />
             </svg>
           )}
         </div>

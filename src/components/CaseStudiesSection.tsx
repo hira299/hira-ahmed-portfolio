@@ -42,8 +42,8 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
           )}
         </div>
 
-        {/* 1 Row, 3 Columns Grid (3 Cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        {/* 1 Row, 3 Columns Grid (3 Cards): Compact & Balanced */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
           {topThree.map((study, index) => {
             const num = String(index + 1).padStart(2, "0");
             const kindLabel =
@@ -57,68 +57,65 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
               <div
                 key={study.slug}
                 onClick={() => onSelectCaseStudy(study.slug)}
-                className="group flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-6 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+                className="group flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-3.5 sm:p-4 rounded-lg transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md hover:-translate-y-0.5"
               >
                 <div>
                   {/* Top Bar: Number & Kind Tag */}
-                  <div className="flex items-center justify-between pb-2.5 sm:pb-4 mb-2.5 sm:mb-4 border-b border-[#F0EBE1]">
-                    <span className="font-serif text-xl sm:text-2xl font-light text-[#D8CEC1] group-hover:text-[#6B1724] transition-colors">
+                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#F0EBE1]">
+                    <span className="font-serif text-lg sm:text-xl font-light text-[#D8CEC1] group-hover:text-[#6B1724] transition-colors">
                       {num}
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
                       {kindLabel}
                     </span>
                   </div>
 
                   {/* Client & Title */}
-                  <div className="text-[10px] sm:text-[11px] font-mono text-[#827577] uppercase tracking-wider mb-1">
+                  <div className="text-[10px] font-mono text-[#827577] uppercase tracking-wider mb-0.5">
                     {study.client}
                   </div>
-                  <h3 className="font-serif text-lg sm:text-xl text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-2 sm:mb-3 leading-snug font-normal">
+                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug font-normal line-clamp-1">
                     {study.title}
                   </h3>
 
-                  {/* Summary */}
-                  <p className="text-xs text-[#5C5254] leading-relaxed mb-3 sm:mb-5 line-clamp-2 sm:line-clamp-3">
+                  {/* Summary: Neat 2-line clamp */}
+                  <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2">
                     {study.description}
                   </p>
                 </div>
 
                 <div>
-                  {/* Verified Metric Badge */}
-                  <div className="p-2.5 sm:p-3 rounded-lg bg-[#FAF8F5] border border-[#E8E1D7] mb-3 sm:mb-4">
-                    <div className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-[#827577]">
-                      Verified Metric
+                  {/* Compact Verified Metric Inline Strip */}
+                  <div className="py-1.5 px-2.5 rounded bg-[#FAF8F5] border border-[#E8E1D7] mb-2.5 flex items-center justify-between gap-2">
+                    <div className="text-[10px] font-mono text-[#5C5254] truncate">
+                      {study.metrics[0]?.label ?? "Verified Invariant"}
                     </div>
-                    <div className="font-serif text-lg sm:text-xl text-[#1C1416] group-hover:text-[#6B1724] transition-colors mt-0.5">
+                    <div className="font-serif text-sm sm:text-base font-medium text-[#6B1724] shrink-0">
                       {study.metrics[0]?.value ?? "Verified"}
-                    </div>
-                    <div className="text-[10px] sm:text-[11px] text-[#5C5254]">
-                      {study.metrics[0]?.label ?? "Production Invariant"}
                     </div>
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div className="flex flex-wrap gap-1 mb-3 sm:mb-4">
+                  <div className="flex flex-wrap gap-1 mb-2.5">
                     {study.stack.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-white text-[#5C5254] border border-[#E8E1D7] rounded"
+                        className="px-1.5 py-0.5 text-[9px] font-mono bg-white text-[#5C5254] border border-[#E8E1D7] rounded"
                       >
                         {tech}
                       </span>
                     ))}
                     {study.stack.length > 3 && (
-                      <span className="px-1.5 py-0.5 text-[10px] font-mono text-[#827577]">
+                      <span className="px-1 py-0.5 text-[9px] font-mono text-[#827577]">
                         +{study.stack.length - 3}
                       </span>
                     )}
                   </div>
 
                   {/* Bottom Action */}
-                  <div className="pt-2.5 sm:pt-3 border-t border-[#F0EBE1] flex items-center justify-between text-xs font-mono text-[#6B1724] font-medium group-hover:translate-x-0.5 transition-transform">
+                  <div className="pt-2 border-t border-[#F0EBE1] flex items-center justify-between text-[11px] font-mono text-[#6B1724] font-medium group-hover:translate-x-0.5 transition-transform">
                     <span>Read Deep Dive</span>
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
