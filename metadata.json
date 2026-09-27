@@ -1,0 +1,6 @@
+{
+  "name": "Repo Frontend Studio",
+  "description": "Import and customize the frontend of your Git repositories with modern UI and responsive design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

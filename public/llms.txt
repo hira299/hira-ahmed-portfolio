@@ -1,0 +1,54 @@
+# Hira Ahmed
+
+- Identity: Hira Ahmed
+- Roles: AI Engineer; AI Automation & QA Engineer
+- Location: Karachi, Pakistan; remote
+- Portfolio: https://hira299.github.io/
+
+Hira Ahmed builds production LLM pipelines, AI agents, and n8n automations, and provides B2B SaaS QA, API testing, and multi-tenant testing. Research work includes Sentinel-Mesh, a preprint on formally verified cloud-misconfiguration remediation.
+
+## Services
+
+- [AI Automation](https://hira299.github.io/ai-automation/)
+- [n8n Automation](https://hira299.github.io/n8n-automation/)
+- [AI Agent Development](https://hira299.github.io/ai-agents/)
+- [B2B SaaS QA](https://hira299.github.io/qa-testing/)
+- [API Testing](https://hira299.github.io/api-testing/)
+- [Multi-Tenant Testing](https://hira299.github.io/multitenant-qa/)
+
+## Case studies
+
+- [28K+ Production AI Enrichment & Content Pipeline](https://hira299.github.io/case-studies/28k-record-pipeline/)
+- [AWS Infrastructure & Cost Optimization](https://hira299.github.io/case-studies/aws-cost-optimization/)
+- [Multi-Tenant B2B SaaS QA](https://hira299.github.io/case-studies/multitenant-saas-qa/)
+- [Autonomous AI Email Agent](https://hira299.github.io/case-studies/n8n-email-agent/)
+- [Autonomous Cloud Compliance & AI Auditing Engine](https://hira299.github.io/case-studies/cloud-compliance/)
+- [Sentinel-Mesh research case study](https://hira299.github.io/case-studies/sentinel-mesh/)
+
+## Research
+
+- [Research](https://hira299.github.io/research/)
+- [Sentinel-Mesh preprint](https://doi.org/10.21203/rs.3.rs-10674271/v1)
+- [CloudFix-Bench dataset](https://doi.org/10.5281/zenodo.20975067)
+
+## Technical resources
+
+- [n8n production resilience patterns](https://github.com/hira299/n8n-production-resilience-patterns)
+- [Enterprise multi-tenant QA matrix](https://github.com/hira299/enterprise-multitenant-qa-matrix)
+
+## Other pages
+
+- [About](https://hira299.github.io/about/)
+- [Projects](https://hira299.github.io/projects/)
+- [FAQ](https://hira299.github.io/faq/)
+- [Contact / Hire](https://hira299.github.io/contact/)
+
+## Profiles
+
+- [GitHub](https://github.com/hira299)
+- [LinkedIn](https://www.linkedin.com/in/hira-ahmed-4068402a7)
+- [Fiverr](https://www.fiverr.com/hira299)
+- [Upwork](https://www.upwork.com/freelancers/~0178616a4e00b82166)
+- [ORCID](https://orcid.org/0009-0005-3219-7252)
+- [ResearchGate](https://www.researchgate.net/profile/Hira-Ahmed-28)
+- [Web of Science](https://www.webofscience.com/wos/author/record/QIV-1552-2026)
