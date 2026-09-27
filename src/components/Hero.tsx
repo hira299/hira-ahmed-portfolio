@@ -63,7 +63,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
   ];
 
   return (
-    <section className="pt-28 pb-6 sm:pt-32 sm:pb-8 bg-[#FAF8F5]">
+    <section className="pt-36 pb-6 sm:pt-44 sm:pb-8 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Hero: Left Bio + Right Production Invariants & Impact */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
