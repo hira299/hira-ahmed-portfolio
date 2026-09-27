@@ -42,52 +42,52 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
         </div>
 
         {/* Research Artifacts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-8 mb-6 sm:mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-5 mb-5 sm:mb-8">
           {research.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-8 rounded flex flex-col justify-between transition-all group hover:shadow-sm"
+              className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg flex flex-col justify-between transition-all group hover:shadow-sm"
             >
               <div>
-                <div className="flex items-center justify-between pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-[#E8E1D7] font-mono text-xs">
+                <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7] font-mono text-[11px]">
                   <span className="text-[#827577]">ARTIFACT / {String(idx + 1).padStart(2, "0")}</span>
-                  <span className="px-2 py-0.5 rounded text-[10px] bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
+                  <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
                     {item.title.includes("Sentinel") ? "Preprint Paper" : "Zenodo Benchmark Dataset"}
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-2xl font-serif text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-2 sm:mb-3">
+                <h3 className="text-base sm:text-xl font-serif text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5">
                   {item.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-3 sm:mb-6 font-normal">
+                <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2 font-normal">
                   {item.summary}
                 </p>
 
                 {/* Key Metrics / Highlights */}
                 {item.highlights && (
-                  <div className="space-y-1.5 sm:space-y-2 mb-3 sm:mb-6 pt-3 sm:pt-4 border-t border-[#E8E1D7]">
-                    {item.highlights.map((h, hidx) => (
-                      <div key={hidx} className="flex items-start gap-2 text-xs font-mono text-[#5C5254]">
+                  <div className="space-y-1 mb-2.5 pt-2 border-t border-[#E8E1D7]">
+                    {item.highlights.slice(0, 2).map((h, hidx) => (
+                      <div key={hidx} className="flex items-start gap-1.5 text-[11px] font-mono text-[#5C5254]">
                         <span className="text-[#6B1724] font-bold">›</span>
-                        <span>{h}</span>
+                        <span className="line-clamp-1">{h}</span>
                       </div>
                     ))}
                   </div>
                 )}
               </div>
 
-              <div className="pt-4 sm:pt-6 border-t border-[#E8E1D7] flex flex-wrap items-center gap-2.5 sm:gap-3">
+              <div className="pt-3 border-t border-[#E8E1D7] flex flex-wrap items-center gap-2">
                 {item.links.map((link, lidx) => (
                   <a
                     key={lidx}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono text-[#1C1416] bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono text-[#1C1416] bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] transition-colors"
                   >
                     <span>{link.label}</span>
-                    <svg className="w-3 h-3 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                   </a>
@@ -96,7 +96,7 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
                 {item.title.includes("Sentinel") && (
                   <button
                     onClick={() => onSelectCaseStudy("sentinel-mesh")}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono text-[#FAF8F5] bg-[#6B1724] hover:bg-[#54111B] transition-colors font-medium ml-auto cursor-pointer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono text-[#FAF8F5] bg-[#6B1724] hover:bg-[#54111B] transition-colors font-medium ml-auto cursor-pointer"
                   >
                     <span>Read Architecture</span>
                     <span>→</span>
@@ -108,74 +108,79 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
         </div>
 
         {/* BibTeX Citation Box */}
-        <div className="bg-white border border-[#E8E1D7] rounded p-4 sm:p-6">
-          <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#E8E1D7]">
-            <div className="text-xs font-mono text-[#827577] uppercase tracking-wider">
+        <div className="bg-white border border-[#E8E1D7] rounded-lg p-3 sm:p-4 mb-6">
+          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7]">
+            <div className="text-[11px] font-mono text-[#827577] uppercase tracking-wider">
               BibTeX Citation · Sentinel-Mesh Preprint
             </div>
             <button
               onClick={handleCopyBibtex}
-              className="text-xs font-mono text-[#6B1724] hover:text-[#54111B] flex items-center gap-1.5 font-medium cursor-pointer"
+              className="text-[11px] font-mono text-[#6B1724] hover:text-[#54111B] flex items-center gap-1.5 font-medium cursor-pointer"
             >
               <span>{copiedBibtex ? "Copied to Clipboard!" : "Copy BibTeX"}</span>
             </button>
           </div>
-          <pre className="text-xs font-mono text-[#5C5254] overflow-x-auto bg-[#FAF8F5] p-3 sm:p-4 rounded border border-[#E8E1D7]">
+          <pre className="text-[11px] font-mono text-[#5C5254] overflow-x-auto bg-[#FAF8F5] p-2.5 sm:p-3 rounded border border-[#E8E1D7]">
             {bibtex}
           </pre>
         </div>
 
         {/* Technical Resources Cards */}
-        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-[#E8E1D7]">
-          <div className="mb-4 sm:mb-6">
+        <div className="pt-4 sm:pt-6 border-t border-[#E8E1D7]">
+          <div className="mb-3 sm:mb-4">
             <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1 font-medium">
               Open Technical Resources & Repositories
             </div>
-            <h3 className="font-serif text-xl sm:text-2xl text-[#1C1416]">
+            <h3 className="font-serif text-lg sm:text-xl text-[#1C1416]">
               Production Engineering & QA Architecture Frameworks
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-4">
             {technicalResources.map((res, idx) => (
               <div
                 key={res.slug}
-                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-8 rounded flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg flex flex-col justify-between transition-all group hover:shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between pb-3 sm:pb-4 mb-3 sm:mb-4 border-b border-[#E8E1D7] font-mono text-xs">
+                  <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7] font-mono text-[11px]">
                     <span className="text-[#827577]">RESOURCE / {String(idx + 1).padStart(2, "0")}</span>
-                    <span className="px-2 py-0.5 rounded text-[10px] bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
+                    <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
                       Open Technical Resource
                     </span>
                   </div>
 
-                  <h4 className="text-lg sm:text-xl font-serif text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-2 sm:mb-3">
+                  <h4 className="text-base sm:text-lg font-serif text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5">
                     {res.title}
                   </h4>
 
-                  <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-3 sm:mb-6 font-normal">
+                  <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2 font-normal">
                     {res.projectSummary}
                   </p>
 
-                  <div className="flex flex-wrap gap-1.5 mb-3 sm:mb-6 pt-3 sm:pt-4 border-t border-[#E8E1D7]">
-                    {res.tags.map((tag) => (
+                  <div className="flex flex-wrap gap-1 mb-2.5 pt-2 border-t border-[#E8E1D7]">
+                    {res.tags.slice(0, 4).map((tag) => (
                       <span
                         key={tag}
-                        className="px-2 py-0.5 rounded text-xs font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7]"
+                        className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7]"
                       >
                         {tag}
                       </span>
                     ))}
+                    {res.tags.length > 4 && (
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono text-[#827577]">
+                        +{res.tags.length - 4}
+                      </span>
+                    )}
                   </div>
                 </div>
 
-                <div className="pt-4 sm:pt-6 border-t border-[#E8E1D7] flex items-center justify-between">
+                <div className="pt-2.5 border-t border-[#E8E1D7] flex items-center justify-between">
                   <a
                     href={res.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono text-[#FAF8F5] bg-[#6B1724] hover:bg-[#54111B] transition-colors font-medium cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-mono text-[#FAF8F5] bg-[#6B1724] hover:bg-[#54111B] transition-colors font-medium cursor-pointer"
                   >
                     <span>View Repository on GitHub</span>
                     <svg className="w-3 h-3 text-[#FAF8F5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">

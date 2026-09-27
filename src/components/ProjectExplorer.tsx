@@ -195,47 +195,52 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
 
         {/* Content Grid */}
         {viewMode === "projects" ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
             {filteredProjects.map((project: Project) => (
               <div
                 key={project.title}
-                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded p-4 sm:p-6 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className="flex items-center justify-between mb-2">
                     <span className="font-mono text-[11px] text-[#6B1724] font-medium">
                       {project.categories[0] ?? "Open Source"}
                     </span>
                     {project.caseStudy && (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8]">
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8]">
                         Case Study
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 sm:mb-2">
+                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug">
                     {project.title}
                   </h3>
 
-                  <p className="text-xs text-[#5C5254] leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
+                  <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2">
                     {project.summary}
                   </p>
 
                   {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1 mb-3 sm:mb-5">
-                    {project.stack.map((tech) => (
+                  <div className="flex flex-wrap gap-1 mb-2.5">
+                    {project.stack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
+                        className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
                       >
                         {tech}
                       </span>
                     ))}
+                    {project.stack.length > 4 && (
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono text-[#827577]">
+                        +{project.stack.length - 4}
+                      </span>
+                    )}
                   </div>
                 </div>
 
                 {/* Actions */}
-                <div className="pt-3 sm:pt-4 border-t border-[#E8E1D7] flex items-center justify-between gap-3 text-xs font-mono">
+                <div className="pt-2.5 border-t border-[#E8E1D7] flex items-center justify-between gap-2 text-xs font-mono">
                   {project.caseStudy ? (
                     <button
                       onClick={() => {
@@ -251,7 +256,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
                     <span className="text-[#827577] text-[11px]">System Spec</span>
                   )}
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2.5">
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}
@@ -260,7 +265,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
                         className="text-[#5C5254] hover:text-[#6B1724] inline-flex items-center gap-1"
                       >
                         <span>Demo</span>
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
@@ -274,7 +279,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
                         className="text-[#5C5254] hover:text-[#6B1724] inline-flex items-center gap-1"
                       >
                         <span>GitHub</span>
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                       </a>
@@ -285,55 +290,55 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
             {filteredCaseStudies.map((study: CaseStudy) => (
               <div
                 key={study.slug}
-                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded p-4 sm:p-6 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className="flex items-center justify-between mb-2">
                     <span className="font-mono text-[11px] text-[#6B1724] font-medium uppercase tracking-wider">
                       {study.client}
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8]">
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8]">
                       Case Study
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 sm:mb-2 leading-snug">
+                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug">
                     {study.title}
                   </h3>
 
-                  <p className="text-xs text-[#5C5254] leading-relaxed mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
+                  <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2">
                     {study.summary || study.description}
                   </p>
 
                   {/* Top Key Metric */}
                   {study.metrics && study.metrics.length > 0 && (
-                    <div className="mb-3 sm:mb-4 p-2 sm:p-2.5 bg-[#FAF8F5] border border-[#E8E1D7] rounded text-xs font-mono">
-                      <span className="text-[#6B1724] font-semibold text-xs sm:text-sm">
+                    <div className="mb-2.5 py-1.5 px-2 bg-[#FAF8F5] border border-[#E8E1D7] rounded text-xs font-mono">
+                      <span className="text-[#6B1724] font-semibold text-xs">
                         {study.metrics[0].value}
                       </span>{" "}
-                      <span className="text-[#827577] text-[10px] sm:text-[11px]">
+                      <span className="text-[#827577] text-[10px]">
                         {study.metrics[0].label}
                       </span>
                     </div>
                   )}
 
                   {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1 mb-3 sm:mb-5">
-                    {study.stack.slice(0, 5).map((tech) => (
+                  <div className="flex flex-wrap gap-1 mb-2.5">
+                    {study.stack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
+                        className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
                       >
                         {tech}
                       </span>
                     ))}
-                    {study.stack.length > 5 && (
-                      <span className="px-1.5 py-0.5 text-[10px] font-mono text-[#827577]">
-                        +{study.stack.length - 5}
+                    {study.stack.length > 4 && (
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono text-[#827577]">
+                        +{study.stack.length - 4}
                       </span>
                     )}
                   </div>

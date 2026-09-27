@@ -23,69 +23,63 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
           </p>
         </div>
 
-        {/* 6 Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-6">
+        {/* Services Grid: Compact, clean cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
           {services.map((svc: Service, index: number) => {
             const num = String(index + 1).padStart(2, "0");
             return (
               <div
                 key={svc.slug}
-                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded p-4 sm:p-7 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-2 sm:mb-4">
-                    <span className="font-mono text-xs text-[#827577]">{num}</span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-[11px] text-[#827577]">{num}</span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
                       Practice
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-lg sm:text-xl text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-2 sm:mb-3">
+                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5">
                     {svc.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-3 sm:mb-6">
+                  <p className="text-xs text-[#5C5254] leading-relaxed line-clamp-2 mb-3">
                     {svc.description}
                   </p>
 
-                  {/* Problems and Proof */}
-                  <div className="space-y-2 sm:space-y-3 mb-3 sm:mb-6 pt-3 sm:pt-4 border-t border-[#E8E1D7]">
-                    <div className="text-xs">
-                      <span className="font-mono text-[10px] uppercase text-[#827577] block mb-0.5 sm:mb-1">
-                        Addressed Bottleneck
-                      </span>
-                      <p className="text-[#827577] italic font-serif text-[12px] sm:text-[13px] pl-2 border-l-2 border-[#E8E1D7]">
-                        "{svc.problems[0] || svc.summary}"
-                      </p>
-                    </div>
-
-                    <div className="text-xs">
-                      <span className="font-mono text-[10px] uppercase text-[#6B1724] block mb-0.5 sm:mb-1 font-semibold">
-                        System Proof / Guarantee
-                      </span>
-                      <p className="text-[#1C1416] font-medium text-[12px] sm:text-[13px] pl-2 border-l-2 border-[#6B1724]">
-                        {svc.proof[0] || "Deterministic execution with automated error recovery"}
-                      </p>
-                    </div>
+                  {/* Highlighted Guarantee */}
+                  <div className="text-xs py-2 px-2.5 bg-[#FAF8F5] border-l-2 border-[#6B1724] rounded-r mb-3">
+                    <span className="font-mono text-[9px] uppercase tracking-wider text-[#6B1724] block font-semibold mb-0.5">
+                      System Guarantee
+                    </span>
+                    <p className="text-[#1C1416] text-[11px] font-medium leading-snug line-clamp-2">
+                      {svc.proof[0] || "Deterministic execution with automated error recovery"}
+                    </p>
                   </div>
                 </div>
 
                 <div>
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1.5 pt-3 sm:pt-4 border-t border-[#E8E1D7] mb-3 sm:mb-5">
-                    {svc.technologies.slice(0, 4).map((tech) => (
+                  {/* Technologies: Compact badges */}
+                  <div className="flex flex-wrap gap-1 pt-2.5 border-t border-[#E8E1D7] mb-3">
+                    {svc.technologies.slice(0, 3).map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-0.5 text-[10px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
+                        className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
                       >
                         {tech}
                       </span>
                     ))}
+                    {svc.technologies.length > 3 && (
+                      <span className="px-1.5 py-0.5 text-[9px] font-mono text-[#827577]">
+                        +{svc.technologies.length - 3}
+                      </span>
+                    )}
                   </div>
 
                   <button
                     onClick={() => onOpenHireModal(svc.title)}
-                    className="w-full py-1.5 sm:py-2 text-xs font-mono text-[#6B1724] group-hover:text-white bg-[#FAF0F0] group-hover:bg-[#6B1724] border border-[#F0D5D8] group-hover:border-[#6B1724] rounded text-center transition-all font-medium cursor-pointer"
+                    className="w-full py-1.5 text-xs font-mono text-[#6B1724] group-hover:text-white bg-[#FAF0F0] group-hover:bg-[#6B1724] border border-[#F0D5D8] group-hover:border-[#6B1724] rounded text-center transition-all font-medium cursor-pointer"
                   >
                     Inquire for {svc.title.split(" ")[0]} →
                   </button>
