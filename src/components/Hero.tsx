@@ -63,12 +63,12 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
   ];
 
   return (
-    <section className="pt-28 pb-6 sm:pt-36 sm:pb-8 bg-[#FAF8F5]">
+    <section className="pt-24 pb-6 sm:pt-28 sm:pb-8 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Hero: Left Bio + Right Production Invariants & Impact */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           {/* Left Column: Heading, Bio, Actions */}
-          <div className="lg:col-span-8 space-y-5 pt-3 sm:pt-5">
+          <div className="lg:col-span-8 space-y-4 pt-1 sm:pt-2">
             {/* Eyebrow Tag: 0ms fade */}
             <div
               style={{ transitionDelay: "0ms" }}
@@ -101,8 +101,8 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
               Specialized in fault-tolerant AI data enrichment (Python, n8n, pgvector) alongside rigorous end-to-end enterprise software verification (Postman, RBAC isolation, API defect reproduction).
             </p>
 
-            {/* Action Buttons & Links: Natural tight spacing */}
-            <div className="pt-3 sm:pt-4 space-y-3.5">
+            {/* Action Buttons & Links: Tightened spacing */}
+            <div className="pt-1.5 sm:pt-2 space-y-2.5">
               <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {/* Refined Start an Engagement button with hand-drawn pen/crayon loop on desktop hover */}
                 <div className="relative inline-flex items-center group/engage">
