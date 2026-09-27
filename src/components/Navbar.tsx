@@ -22,7 +22,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
 
   return (
     <div className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
-      <header className="pointer-events-auto flex items-center justify-between w-full max-w-3xl px-4 py-2 rounded-full bg-[#FAF8F5]/50 backdrop-blur-md border border-[#E8E1D7]/70 shadow-[0_4px_24px_rgba(28,20,22,0.05)] transition-all hover:bg-[#FAF8F5]/70">
+      <header className="pointer-events-auto flex items-center justify-between w-full max-w-3xl px-5 py-3 rounded-full bg-[#FAF8F5]/50 backdrop-blur-md border border-[#E8E1D7]/70 shadow-[0_4px_24px_rgba(28,20,22,0.05)] transition-all hover:bg-[#FAF8F5]/70">
         {/* Brand identity */}
         <a href="#" className="flex items-center gap-2 pl-1 group">
           <span className="w-5 h-5 rounded-full bg-[#6B1724] text-[#FAF8F5] flex items-center justify-center font-serif text-[11px] font-semibold">
