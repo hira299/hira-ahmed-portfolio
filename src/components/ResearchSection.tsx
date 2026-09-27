@@ -46,8 +46,12 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
           {research.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg flex flex-col justify-between transition-all group hover:shadow-sm"
+              className="relative bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg flex flex-col justify-between transition-all group hover:shadow-sm"
             >
+              {/* Smaller Ticket Notches */}
+              <div className="ticket-notch-sm-left" aria-hidden="true" />
+              <div className="ticket-notch-sm-right" aria-hidden="true" />
+
               <div>
                 <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7] font-mono text-[11px]">
                   <span className="text-[#827577]">ARTIFACT / {String(idx + 1).padStart(2, "0")}</span>

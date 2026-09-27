@@ -57,8 +57,12 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
               <div
                 key={study.slug}
                 onClick={() => onSelectCaseStudy(study.slug)}
-                className="group flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-3.5 sm:p-4 rounded-lg transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md hover:-translate-y-0.5"
+                className="group relative flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md hover:-translate-y-0.5"
               >
+                {/* Ticket Notch Semicircles (Left & Right) */}
+                <span className="ticket-notch-left" aria-hidden="true" />
+                <span className="ticket-notch-right" aria-hidden="true" />
+
                 <div>
                   {/* Top Bar: Number & Kind Tag */}
                   <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#F0EBE1]">
