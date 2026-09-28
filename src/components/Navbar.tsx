@@ -35,14 +35,14 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
   };
 
   return (
-    <div className="fixed top-6 sm:top-8 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
-      <header className="pointer-events-auto flex items-center justify-between w-full max-w-3xl px-5 py-3 rounded-full bg-[#FAF8F5]/50 backdrop-blur-md border border-[#E8E1D7]/70 shadow-[0_4px_24px_rgba(28,20,22,0.05)] transition-all hover:bg-[#FAF8F5]/70">
+    <div className="fixed top-0 sm:top-8 inset-x-0 z-50 flex justify-center px-0 sm:px-4 pointer-events-none">
+      <header className="pointer-events-auto flex items-center justify-between w-full sm:max-w-3xl px-6 py-3.5 sm:px-5 sm:py-3 rounded-none sm:rounded-full bg-[#FAF8F5]/90 sm:bg-[#FAF8F5]/50 backdrop-blur-md border-b sm:border border-[#E8E1D7]/70 shadow-none sm:shadow-[0_4px_24px_rgba(28,20,22,0.05)] transition-all sm:hover:bg-[#FAF8F5]/70">
         {/* Brand identity */}
-        <a href="#" className="flex items-center gap-2 pl-1 group">
-          <span className="w-5 h-5 rounded-full bg-[#6B1724] text-[#FAF8F5] flex items-center justify-center font-serif text-[11px] font-semibold">
+        <a href="#" className="flex items-center gap-2 group">
+          <span className="hidden sm:flex w-5 h-5 rounded-full bg-[#6B1724] text-[#FAF8F5] items-center justify-center font-serif text-[11px] font-semibold">
             H
           </span>
-          <span className="font-serif text-sm font-medium text-[#1C1416] tracking-tight group-hover:text-[#6B1724] transition-colors">
+          <span className="font-serif text-base sm:text-sm font-medium text-[#1C1416] tracking-tight group-hover:text-[#6B1724] transition-colors">
             {profile.name}
           </span>
         </a>
@@ -113,7 +113,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           </div>
           <button
             onClick={onOpenHireModal}
-            className="px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
+            className="hidden md:inline-flex px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
           >
             Inquire
           </button>
@@ -121,10 +121,10 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(true)}
-            className="md:hidden p-1.5 text-[#1C1416] hover:text-[#6B1724] rounded-full hover:bg-black/5 cursor-pointer"
+            className="md:hidden p-1 text-[#1C1416] hover:bg-black/5 rounded transition-colors cursor-pointer"
             aria-label="Open navigation menu"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-5 h-5 text-[#1C1416]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>

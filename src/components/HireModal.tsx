@@ -62,8 +62,6 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
             <span className="font-mono text-[11px] sm:text-xs text-[#6B1724] font-semibold uppercase">
               Start an Engagement
             </span>
-            <span className="text-[#D8CEC1]">·</span>
-            <span className="text-[10px] sm:text-xs font-mono text-[#827577]">Direct &amp; Escrow</span>
           </div>
 
           <button
