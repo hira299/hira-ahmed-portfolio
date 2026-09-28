@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { research } from "@/data/research";
 import { technicalResources } from "@/data/technical-resources";
 
@@ -7,21 +6,6 @@ interface ResearchSectionProps {
 }
 
 export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
-  const [copiedBibtex, setCopiedBibtex] = useState(false);
-
-  const bibtex = `@article{ahmed2024sentinelmesh,
-  title={Sentinel-Mesh: Formally Verified Remediation of Cloud Misconfigurations Using SMT Constraint Solving},
-  author={Ahmed, Hira},
-  journal={Research Square Preprint},
-  year={2024},
-  doi={10.21203/rs.3.rs-10674271/v1}
-}`;
-
-  const handleCopyBibtex = () => {
-    navigator.clipboard.writeText(bibtex);
-    setCopiedBibtex(true);
-    setTimeout(() => setCopiedBibtex(false), 2000);
-  };
 
   return (
     <section id="research" className="pt-2 pb-12 border-b border-[#E8E1D7] bg-[#FAF8F5]">
@@ -167,23 +151,6 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
           ))}
         </div>
 
-        {/* BibTeX Citation Box */}
-        <div className="bg-white border border-[#E8E1D7] rounded-lg p-3 sm:p-4 mb-6">
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7]">
-            <div className="text-[11px] font-mono text-[#827577] uppercase tracking-wider">
-              BibTeX Citation · Sentinel-Mesh Preprint
-            </div>
-            <button
-              onClick={handleCopyBibtex}
-              className="text-[11px] font-mono text-[#6B1724] hover:text-[#54111B] flex items-center gap-1.5 font-medium cursor-pointer"
-            >
-              <span>{copiedBibtex ? "Copied to Clipboard!" : "Copy BibTeX"}</span>
-            </button>
-          </div>
-          <pre className="text-[11px] font-mono text-[#5C5254] overflow-x-auto bg-[#FAF8F5] p-2.5 sm:p-3 rounded border border-[#E8E1D7]">
-            {bibtex}
-          </pre>
-        </div>
 
         {/* Technical Resources Cards */}
         <div className="pt-4 sm:pt-6 border-t border-[#E8E1D7]">

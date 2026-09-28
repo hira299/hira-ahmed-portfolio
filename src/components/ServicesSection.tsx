@@ -11,7 +11,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
   const selectedMobileIndex = services.findIndex((s) => s.slug === (selectedMobileService?.slug || ""));
 
   return (
-    <section id="services" className="pt-0 sm:pt-2 pb-1 sm:pb-12 border-b-0 sm:border-b border-[#E8E1D7] bg-[#FAF8F5]">
+    <section id="services" className="pt-3 sm:pt-2 pb-1 sm:pb-12 border-b-0 sm:border-b border-[#E8E1D7] bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-3.5 sm:px-6">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-12 pb-3 sm:pb-6 border-b border-[#E8E1D7] gap-2 sm:gap-6">
