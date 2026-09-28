@@ -10,30 +10,30 @@ export function Footer({ onOpenHireModal }: FooterProps) {
     <footer className="pt-10 pb-20 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Top Engagement Banner */}
-        <div className="bg-white border border-[#E8E1D7] rounded p-8 sm:p-12 mb-16 shadow-xs">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="bg-white border border-[#E8E1D7] rounded-xl sm:rounded p-5 sm:p-12 mb-10 sm:mb-16 shadow-xs">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
             <div className="lg:col-span-8">
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] font-semibold">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] font-semibold">
                 Available for Q2/Q3 Engagements
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1416] mt-2 mb-3">
+              <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] mt-1.5 sm:mt-2 mb-2 sm:mb-3 leading-snug">
                 Need resilient AI pipelines or high-assurance SaaS QA?
               </h2>
-              <p className="text-sm sm:text-base text-[#5C5254] max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-base text-[#5C5254] max-w-xl leading-relaxed">
                 Whether you're scaling an automated n8n workflow, deploying multi-step LLM extraction, or requiring comprehensive multi-tenant QA for your B2B SaaS.
               </p>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+            <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 sm:gap-3">
               <button
                 onClick={onOpenHireModal}
-                className="w-full py-3 px-5 text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
               >
                 Start an Engagement
               </button>
               <a
                 href={`mailto:${email}`}
-                className="w-full py-3 px-5 text-sm font-mono text-center text-[#1C1416] bg-[#FAF8F5] hover:bg-white border border-[#E8E1D7] hover:border-[#6B1724]/70 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 shadow-2xs hover:shadow-xs cursor-pointer"
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-mono text-center text-[#1C1416] bg-[#FAF8F5] hover:bg-white border border-[#E8E1D7] hover:border-[#6B1724]/70 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 shadow-2xs hover:shadow-xs cursor-pointer"
               >
                 {email}
               </a>
