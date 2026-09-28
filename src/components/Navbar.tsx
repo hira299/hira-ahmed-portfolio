@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { profile } from "@/data/profile";
 
 interface NavbarProps {
@@ -8,6 +8,20 @@ interface NavbarProps {
 
 export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileMenuOpen]);
 
   const handleExperienceClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -106,67 +120,127 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
 
           {/* Mobile Menu Toggle Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-1.5 text-[#1C1416] hover:text-[#6B1724] rounded-full hover:bg-black/5"
-            aria-label="Toggle navigation"
+            onClick={() => setMobileMenuOpen(true)}
+            className="md:hidden p-1.5 text-[#1C1416] hover:text-[#6B1724] rounded-full hover:bg-black/5 cursor-pointer"
+            aria-label="Open navigation menu"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {mobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
-              )}
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer Dropdown */}
-      {mobileMenuOpen && (
-        <div className="pointer-events-auto absolute top-14 inset-x-4 max-w-sm mx-auto p-4 rounded-2xl bg-[#FAF8F5]/95 backdrop-blur-xl border border-[#E8E1D7] shadow-xl space-y-2 font-mono text-xs">
+      {/* Mobile Side Slide-Over Navigation Drawer */}
+      {/* Backdrop */}
+      <div
+        className={`fixed inset-0 bg-[#1C1416]/40 backdrop-blur-xs z-50 transition-opacity duration-300 md:hidden pointer-events-auto ${
+          mobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Slide-out Drawer Panel */}
+      <div
+        className={`fixed inset-y-0 right-0 w-[290px] max-w-[85vw] bg-[#FAF8F5] border-l border-[#E8E1D7] shadow-2xl z-50 flex flex-col p-6 pointer-events-auto transform transition-transform duration-300 ease-in-out md:hidden ${
+          mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation Menu"
+      >
+        {/* Drawer Header */}
+        <div className="flex items-center justify-between pb-4 border-b border-[#E8E1D7]">
+          <div className="flex items-center gap-2">
+            <span className="w-6 h-6 rounded-full bg-[#6B1724] text-[#FAF8F5] flex items-center justify-center font-serif text-xs font-semibold">
+              H
+            </span>
+            <span className="font-serif text-sm font-medium text-[#1C1416]">
+              {profile.name}
+            </span>
+          </div>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-1.5 rounded-full text-[#5C5254] hover:text-[#6B1724] hover:bg-[#FAF0F0] transition-colors cursor-pointer"
+            aria-label="Close menu"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Drawer Navigation Links */}
+        <nav className="flex-1 py-6 space-y-1 font-mono text-xs">
           <a
             href="#work"
             onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724]"
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors"
           >
-            Selected Work (3)
+            <span>Selected Work</span>
+            <span className="text-[10px] text-[#827577]">01</span>
           </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenSectionModal?.("services");
             }}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724]"
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
           >
-            Services & Practice Areas
+            <span>Services &amp; Practice Areas</span>
+            <span className="text-[10px] text-[#827577]">02</span>
           </button>
           <a
             href="#experience"
             onClick={handleExperienceClick}
-            className="block px-3 py-2 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] cursor-pointer"
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors cursor-pointer"
           >
-            Experience Timeline
+            <span>Experience Timeline</span>
+            <span className="text-[10px] text-[#827577]">03</span>
           </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenSectionModal?.("research");
             }}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724]"
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
           >
-            Research & Formal Verification
+            <span>Research &amp; Verification</span>
+            <span className="text-[10px] text-[#827577]">04</span>
           </button>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               onOpenSectionModal?.("archive");
             }}
-            className="w-full text-left px-3 py-2 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724]"
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
           >
-            Full Project Archive (10+)
+            <span>Full Project Archive</span>
+            <span className="text-[10px] text-[#827577]">10+</span>
+          </button>
+        </nav>
+
+        {/* Drawer Footer */}
+        <div className="pt-4 border-t border-[#E8E1D7] space-y-3">
+          <div className="flex items-center justify-between px-1">
+            <span className="text-[11px] font-mono text-[#827577]">Status</span>
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FAF0F0] border border-[#F0D5D8] text-[10px] font-mono text-[#6B1724]">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#6B1724] animate-pulse" />
+              <span>Available for Hire</span>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onOpenHireModal();
+            }}
+            className="w-full py-2.5 px-4 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-98 text-center"
+          >
+            Inquire / Start Engagement
           </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }
