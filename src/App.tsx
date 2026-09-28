@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { CaseStudiesSection } from "./components/CaseStudiesSection";
@@ -10,10 +10,28 @@ import { SectionModal } from "./components/SectionModal";
 import { CustomCursor } from "./components/CustomCursor";
 
 export default function App() {
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeCaseStudySlug, setActiveCaseStudySlug] = useState<string | null>(null);
   const [isHireModalOpen, setIsHireModalOpen] = useState(false);
   const [selectedServiceForHire, setSelectedServiceForHire] = useState<string | undefined>(undefined);
   const [activeSectionModal, setActiveSectionModal] = useState<"services" | "research" | "archive" | null>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalScroll <= 0) {
+        setScrollProgress(0);
+        return;
+      }
+      const progress = (window.scrollY / totalScroll) * 100;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleOpenHireModal = (serviceTitle?: string) => {
     setSelectedServiceForHire(serviceTitle);
@@ -22,6 +40,16 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-[#1C1416] antialiased selection:bg-[#6B1724] selection:text-[#FAF8F5]">
+      {/* Top Window Scroll Progress Bar */}
+      <div
+        className="fixed top-0 left-0 right-0 h-[2.5px] z-[55] pointer-events-none bg-transparent"
+        aria-hidden="true"
+      >
+        <div
+          className="h-full bg-[#6B1724] transition-[width] duration-75 ease-out"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
       {/* Precision Hollow Ring Pointer & Fading Dotted Trail (Desktop Only) */}
       <CustomCursor />
 

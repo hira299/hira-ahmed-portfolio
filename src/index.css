@@ -237,20 +237,16 @@ figcaption strong {
   fill: #6B1724;
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+/* Hide browser scrollbars so only top progress bar displays */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
-::-webkit-scrollbar-track {
-  background: #FAF8F5;
-}
-::-webkit-scrollbar-thumb {
-  background: #D8CEC1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #6B1724;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* Ticket notch styling */
