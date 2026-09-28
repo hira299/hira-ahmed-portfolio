@@ -88,20 +88,54 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
 
                 {/* Links as Tags */}
                 <div className="flex flex-wrap gap-1 mb-2.5">
-                  {item.links.map((link, lidx) => (
-                    <a
-                      key={lidx}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] hover:text-[#6B1724] border border-[#E8E1D7] hover:border-[#6B1724] rounded flex items-center gap-1 transition-colors"
-                    >
-                      <span>{link.label}</span>
-                      <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                      </svg>
-                    </a>
-                  ))}
+                  {item.title.includes("Sentinel") ? (
+                    <>
+                      <div className="w-full flex">
+                        <a
+                          href={item.links[0].href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] hover:text-[#6B1724] border border-[#E8E1D7] hover:border-[#6B1724] rounded flex items-center gap-1 transition-colors"
+                        >
+                          <span>{item.links[0].label}</span>
+                          <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </a>
+                      </div>
+                      <div className="w-full flex flex-wrap gap-1">
+                        {item.links.slice(1).map((link, lidx) => (
+                          <a
+                            key={lidx}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] hover:text-[#6B1724] border border-[#E8E1D7] hover:border-[#6B1724] rounded flex items-center gap-1 transition-colors"
+                          >
+                            <span>{link.label}</span>
+                            <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    item.links.map((link, lidx) => (
+                      <a
+                        key={lidx}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] hover:text-[#6B1724] border border-[#E8E1D7] hover:border-[#6B1724] rounded flex items-center gap-1 transition-colors"
+                      >
+                        <span>{link.label}</span>
+                        <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    ))
+                  )}
                 </div>
               </div>
 
