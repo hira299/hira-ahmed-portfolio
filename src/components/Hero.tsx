@@ -68,11 +68,11 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
         {/* Main Hero: Left Bio + Right Production Invariants & Impact */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Left Column: Heading, Bio, Actions */}
-          <div className="lg:col-span-8 space-y-3 sm:space-y-4 pt-0 sm:pt-2">
+          <div className="lg:col-span-8 space-y-4 sm:space-y-4 pt-0 sm:pt-2">
             {/* Eyebrow Tag: 0ms fade */}
             <div
               style={{ transitionDelay: "0ms" }}
-              className={`font-mono text-[11px] sm:text-sm text-[#6B1724] uppercase tracking-wider sm:tracking-widest font-medium transition-all duration-500 ease-out ${
+              className={`font-mono text-xs sm:text-sm text-[#6B1724] uppercase tracking-wider sm:tracking-widest font-medium transition-all duration-500 ease-out ${
                 mounted ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -82,7 +82,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
             {/* Main Title <h1>: 100ms delay, 4px gentle drift up & fade */}
             <h1
               style={{ transitionDelay: "100ms" }}
-              className={`font-serif text-xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-snug sm:leading-tight max-w-3xl transition-all duration-500 ease-out ${
+              className={`font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-[1.25] sm:leading-tight max-w-3xl transition-all duration-500 ease-out ${
                 mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
               }`}
             >
@@ -93,7 +93,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
             {/* Bio Description: 220ms delay, 4px gentle drift up & fade */}
             <p
               style={{ transitionDelay: "220ms" }}
-              className={`text-xs sm:text-base text-[#5C5254] leading-relaxed max-w-xl font-sans transition-all duration-500 ease-out ${
+              className={`text-sm sm:text-base text-[#5C5254] leading-relaxed max-w-xl font-sans transition-all duration-500 ease-out ${
                 mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
               }`}
             >
@@ -101,13 +101,13 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
             </p>
 
             {/* Action Buttons & Links */}
-            <div className="pt-1.5 sm:pt-2 space-y-2.5">
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <div className="pt-2 sm:pt-2 space-y-3 sm:space-y-2.5">
+              <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
                 {/* Refined Start an Engagement button with hand-drawn pen/crayon loop on desktop hover */}
                 <div className="relative inline-flex items-center group/engage">
                   <button
                     onClick={onOpenHireModal}
-                    className="group relative z-10 px-3.5 sm:px-4 py-2 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center gap-1.5 cursor-pointer"
+                    className="group relative z-10 px-4 sm:px-4 py-2.5 sm:py-2 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center gap-1.5 cursor-pointer"
                   >
                     <span>Start an Engagement</span>
                     <svg className="w-3 h-3 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -151,7 +151,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                 <a
                   href={socialLinks.resume}
                   download
-                  className="group px-3 sm:px-3.5 py-1.5 sm:py-2 text-xs font-mono border border-[#E8E1D7] hover:border-[#6B1724]/70 bg-white hover:bg-[#FAF8F5] text-[#5C5254] hover:text-[#1C1416] rounded-full transition-all duration-200 flex items-center gap-1.5 shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                  className="group px-3.5 py-2 sm:px-3.5 sm:py-2 text-xs font-mono border border-[#E8E1D7] hover:border-[#6B1724]/70 bg-white hover:bg-[#FAF8F5] text-[#5C5254] hover:text-[#1C1416] rounded-full transition-all duration-200 flex items-center gap-1.5 shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-3 h-3 text-[#827577] group-hover:text-[#6B1724] transition-all duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -161,7 +161,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
               </div>
 
               {/* Seamless light text links with 45-degree arrow */}
-              <div className="flex items-center gap-4 sm:gap-5 pl-0.5 text-xs font-mono text-[#5C5254] pt-0.5 sm:pt-1">
+              <div className="flex items-center gap-5 pl-0.5 text-xs font-mono text-[#5C5254] pt-1">
                 <a
                   href={socialLinks.github}
                   target="_blank"
