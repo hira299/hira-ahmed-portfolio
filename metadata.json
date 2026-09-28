@@ -1,6 +1,6 @@
 {
-  "name": "Repo Frontend Studio",
-  "description": "Import and customize the frontend of your Git repositories with modern UI and responsive design.",
+  "name": "Hira Ahmed - AI Engineer Portfolio",
+  "description": "Hira Ahmed is an AI Engineer building production LLM pipelines, AI agents, and n8n automations, and providing B2B SaaS QA and API testing.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
