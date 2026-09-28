@@ -58,7 +58,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇲🇾",
       flagTitle: "Malaysia",
       description:
-        "Lead QA on PharmaConnect SaaS (80+ defects, 20 E2E flows, 11 critical P1s), ToolPotion directory, and AI Academy Cloud.",
+        "Lead QA across PharmaConnect SaaS, ToolPotion directory, and AI Academy Cloud.",
       caseStudySlug: "multitenant-saas-qa",
     },
     {
@@ -69,7 +69,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇲🇾",
       flagTitle: "Malaysia",
       description:
-        "Architected 28K+ record AI pipeline, 50-worker parallel ETL (5.6x speedup), and reduced monthly AWS cloud costs by 34%.",
+        "Autonomous 28K+ record AI pipelines, distributed ETL automation, and AWS cloud optimization.",
       caseStudySlug: "28k-record-pipeline",
     },
     {
@@ -80,7 +80,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇵🇰",
       flagTitle: "Pakistan",
       description:
-        "Automated and manual testing across web and mobile platforms; documented 150+ defects and built Flutter test suites.",
+        "Automated and manual testing across web and mobile Flutter applications.",
       caseStudySlug: undefined,
     },
   ];
