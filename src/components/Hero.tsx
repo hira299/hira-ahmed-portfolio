@@ -32,8 +32,8 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
       badge: "28K+",
       value: "28,000+",
       label: "AI Records Enriched",
-      system: "ToolPotion (TechPotion.ai)",
-      context: "Status-gated LLM pipeline across 28K+ URLs with structured output validation.",
+      system: "TechPotion.ai",
+      context: "4 status-gated stages across 28K+ live records with 0 schema drift.",
       slug: "28k-record-pipeline",
     },
     {
@@ -41,34 +41,34 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
       value: "20 / 80+",
       label: "Journeys & Defects",
       system: "PharmaConnect",
-      context: "Lead QA across 6 RBAC roles on multi-tenant SaaS; 11 critical P1 findings resolved.",
+      context: "Lead QA on multi-tenant SaaS across 20 user flows and 11 critical P1 findings.",
       slug: "multitenant-saas-qa",
     },
     {
       badge: "34%",
       value: "34%",
       label: "Monthly AWS Cost Cut",
-      system: "TechPotion.ai / ToolPotion",
-      context: "Cloud infrastructure optimization across AWS Lambda, RDS PostgreSQL, and API Gateway.",
+      system: "AWS Infrastructure",
+      context: "Architected Lambda, RDS PostgreSQL, and API Gateway rightsizing.",
       slug: "aws-cost-optimization",
     },
     {
       badge: "84%",
       value: "83.81%",
       label: "SMT Verified Repair",
-      system: "Sentinel-Mesh (Research)",
-      context: "Neuro-symbolic formal verification of AWS Terraform misconfigurations with Z3 SMT.",
+      system: "Formal Verification",
+      context: "Automated repair of AWS Terraform misconfigurations with Z3 SMT.",
       slug: "sentinel-mesh",
     },
   ];
 
   return (
-    <section className="pt-36 pb-6 sm:pt-44 sm:pb-8 bg-[#FAF8F5]">
+    <section className="pt-28 pb-6 sm:pt-40 sm:pb-8 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Main Hero: Left Bio + Right Production Invariants & Impact */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
           {/* Left Column: Heading, Bio, Actions */}
-          <div className="lg:col-span-8 space-y-4 pt-1 sm:pt-2">
+          <div className="lg:col-span-8 space-y-3.5 pt-1 sm:pt-2">
             {/* Eyebrow Tag: 0ms fade */}
             <div
               style={{ transitionDelay: "0ms" }}
@@ -82,13 +82,12 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
             {/* Main Title <h1>: 100ms delay, 4px gentle drift up & fade */}
             <h1
               style={{ transitionDelay: "100ms" }}
-              className={`font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-tight max-w-3xl transition-all duration-500 ease-out ${
+              className={`font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-snug sm:leading-tight max-w-3xl transition-all duration-500 ease-out ${
                 mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
               }`}
             >
-              Engineering autonomous LLM pipelines and{" "}
-              <span className="italic text-[#6B1724]">high-assurance multi-tenant QA architectures</span>{" "}
-              for mission-critical software.
+              Autonomous LLM pipelines and{" "}
+              <span className="italic text-[#6B1724]">mission-critical software verification</span>.
             </h1>
 
             {/* Bio Description: 220ms delay, 4px gentle drift up & fade */}
@@ -98,7 +97,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                 mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
               }`}
             >
-              Specialized in fault-tolerant AI data enrichment (Python, n8n, pgvector) alongside rigorous end-to-end enterprise software verification (Postman, RBAC isolation, API defect reproduction).
+              Designing status-gated data workflows and lead QA architectures that don't break in production.
             </p>
 
             {/* Action Buttons & Links: Tightened spacing */}
@@ -219,7 +218,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                   style={{
                     transitionDelay: hasEntered ? "0ms" : `${index * 120 + 90}ms`,
                   }}
-                  className={`group flex items-start gap-3.5 p-2 -mx-2 rounded-lg hover:bg-white/80 transition-all ${
+                  className={`group flex items-start gap-3 sm:gap-3.5 p-2.5 sm:p-2 -mx-1.5 sm:-mx-2 rounded-lg hover:bg-white/80 transition-all ${
                     hasEntered ? "duration-200" : "duration-500 ease-out"
                   } cursor-pointer hover:translate-x-1 ${
                     mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
@@ -235,18 +234,18 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                   {/* Text details */}
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <span className="font-serif text-[15px] font-medium text-[#1C1416] group-hover:text-[#6B1724] transition-colors">
+                      <span className="font-serif text-[14px] sm:text-[15px] font-medium text-[#1C1416] group-hover:text-[#6B1724] transition-colors">
                         {item.value} {item.label}
                       </span>
                       <span className="text-[10px] font-mono text-[#827577] group-hover:text-[#6B1724] transition-colors">
                         ↗
                       </span>
                     </div>
-                    <div className="text-xs text-[#6B1724] font-mono mt-0.5">
+                    <div className="text-[11px] sm:text-xs text-[#6B1724] font-mono mt-0.5">
                       {item.system}
                     </div>
-                    <div className="text-xs text-[#5C5254] mt-0.5 leading-snug">
-                      {item.context}
+                    <div className="hidden sm:block max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 overflow-hidden transition-all duration-300 ease-out text-xs text-[#5C5254] leading-relaxed">
+                      <p className="pt-1">{item.context}</p>
                     </div>
                   </div>
                 </div>

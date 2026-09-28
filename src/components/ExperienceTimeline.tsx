@@ -52,7 +52,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇲🇾",
       flagTitle: "Malaysia",
       description:
-        "Lead QA across 3 production products: PharmaConnect (80+ defects, 20 user journeys, 11 critical P1s), ToolPotion directory, and AI Academy Cloud.",
+        "Lead QA on PharmaConnect SaaS (80+ defects, 20 E2E flows, 11 critical P1s), ToolPotion directory, and AI Academy Cloud.",
       caseStudySlug: "multitenant-saas-qa",
     },
     {
@@ -63,7 +63,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇲🇾",
       flagTitle: "Malaysia",
       description:
-        "Status-gated 28K+ record AI enrichment pipeline, 50-worker parallel ETL (5.6x speedup), and 34% monthly AWS infrastructure cost reduction.",
+        "Architected 28K+ record AI pipeline, 50-worker parallel ETL (5.6x speedup), and reduced monthly AWS cloud costs by 34%.",
       caseStudySlug: "28k-record-pipeline",
     },
     {
@@ -74,17 +74,17 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇵🇰",
       flagTitle: "Pakistan",
       description:
-        "Manual and automated testing across web and mobile platforms; logged 150+ bugs and built Flutter test automation suites.",
+        "Automated and manual testing across web and mobile platforms; documented 150+ defects and built Flutter test suites.",
       caseStudySlug: undefined,
     },
   ];
 
   return (
-    <section id="experience" className="scroll-mt-24 pt-12 pb-16 sm:pt-16 sm:pb-20 bg-[#FAF8F5]">
+    <section id="experience" className="scroll-mt-24 pt-10 pb-14 sm:pt-16 sm:pb-20 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Minimal Shahmeer Irfan Header: Title + Quiet Resume Link */}
-        <div className="flex items-center justify-between pb-6 border-b border-[#E8E1D7]">
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1416] font-normal tracking-tight">
+        <div className="flex items-center justify-between pb-5 sm:pb-6 border-b border-[#E8E1D7]">
+          <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal tracking-tight">
             Where I’ve worked
           </h2>
           <a
@@ -117,29 +117,29 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
               style={{
                 transitionDelay: `${index * 130}ms`,
               }}
-              className={`py-7 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start group hover:bg-white/40 -mx-3 px-3 rounded-lg transition-all duration-500 ease-out ${
+              className={`py-5 sm:py-7 grid grid-cols-1 md:grid-cols-12 gap-3.5 md:gap-8 items-start group hover:bg-white/40 -mx-2.5 sm:-mx-3 px-2.5 sm:px-3 rounded-lg transition-all duration-500 ease-out ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
               }`}
             >
               {/* Col 1: Company Logo Mark + Name + Role */}
-              <div className="md:col-span-4 flex items-start gap-3.5">
-                <div className="w-10 h-10 rounded-lg bg-[#FAF0F0] border border-[#F0D5D8] group-hover:border-[#6B1724] flex items-center justify-center shrink-0 shadow-2xs transition-colors">
+              <div className="md:col-span-4 flex items-start gap-3 sm:gap-3.5">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-[#FAF0F0] border border-[#F0D5D8] group-hover:border-[#6B1724] flex items-center justify-center shrink-0 shadow-2xs transition-colors">
                   <span className="font-mono text-xs font-semibold text-[#6B1724]">
                     {exp.initials}
                   </span>
                 </div>
                 <div>
-                  <h3 className="font-serif text-[17px] font-medium text-[#1C1416] leading-tight group-hover:text-[#6B1724] transition-colors">
+                  <h3 className="font-serif text-[16px] sm:text-[17px] font-medium text-[#1C1416] leading-tight group-hover:text-[#6B1724] transition-colors">
                     {exp.company}
                   </h3>
-                  <div className="text-xs font-mono text-[#6B1724] mt-1 font-medium">
+                  <div className="text-[11px] sm:text-xs font-mono text-[#6B1724] mt-0.5 sm:mt-1 font-medium">
                     {exp.role}
                   </div>
                 </div>
               </div>
 
               {/* Col 2: One-sentence clean description */}
-              <div className="md:col-span-5 text-sm text-[#5C5254] leading-relaxed font-sans">
+              <div className="md:col-span-5 text-[13px] sm:text-sm text-[#5C5254] leading-relaxed font-sans">
                 <p>{exp.description}</p>
                 {exp.caseStudySlug && onSelectCaseStudy && (
                   <button
@@ -155,10 +155,10 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
               </div>
 
               {/* Col 3: Period + Flag (Aligned to the right on desktop) */}
-              <div className="md:col-span-3 flex items-center justify-start md:justify-end gap-2 text-xs font-mono text-[#827577]">
+              <div className="md:col-span-3 flex items-center justify-start md:justify-end gap-2 text-[11px] sm:text-xs font-mono text-[#827577]">
                 <span>{exp.period}</span>
                 <span
-                  className="text-base cursor-default select-none"
+                  className="text-sm sm:text-base cursor-default select-none"
                   title={exp.flagTitle}
                   aria-label={exp.flagTitle}
                 >
