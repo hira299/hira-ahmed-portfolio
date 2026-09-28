@@ -63,7 +63,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
   ];
 
   return (
-    <section className="pt-20 sm:pt-40 pb-6 sm:pb-8 bg-[#FAF8F5]">
+    <section className="pt-32 sm:pt-40 pb-20 sm:pb-8 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         {/* Main Hero: Left Bio + Right Production Invariants & Impact */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start">
@@ -210,7 +210,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
               Production Invariants &amp; Impact
             </div>
 
-            <div className="flex sm:flex-col gap-2.5 sm:gap-0 sm:space-y-3 overflow-x-auto sm:overflow-visible pb-1 sm:pb-0 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden snap-x -mx-1 px-1">
+            <div className="space-y-2.5 sm:space-y-3">
               {productionInvariants.map((item, index) => (
                 <div
                   key={item.label}
@@ -218,9 +218,9 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                   style={{
                     transitionDelay: hasEntered ? "0ms" : `${index * 120 + 90}ms`,
                   }}
-                  className={`group shrink-0 w-[230px] sm:w-auto snap-start flex items-start gap-2.5 sm:gap-3.5 p-2.5 sm:p-2 bg-white/90 sm:bg-transparent border border-[#E8E1D7] sm:border-0 rounded-lg hover:bg-white/80 transition-all ${
+                  className={`group flex items-start gap-2.5 sm:gap-3.5 p-2 sm:p-2 -mx-1 sm:-mx-2 rounded-lg hover:bg-white/80 transition-all ${
                     hasEntered ? "duration-200" : "duration-500 ease-out"
-                  } cursor-pointer sm:hover:translate-x-1 ${
+                  } cursor-pointer hover:translate-x-1 ${
                     mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
                   }`}
                 >
