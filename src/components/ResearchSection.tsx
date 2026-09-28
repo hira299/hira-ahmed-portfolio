@@ -41,71 +41,93 @@ export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
           </p>
         </div>
 
-        {/* Research Artifacts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 sm:gap-5 mb-5 sm:mb-8">
+        {/* Research Artifacts Grid - 3-column layout matching repo cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 mb-5 sm:mb-8">
           {research.map((item, idx) => (
             <div
               key={idx}
-              className="relative bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-4 sm:p-5 rounded-lg flex flex-col justify-between transition-all group hover:shadow-sm"
+              className="relative bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
             >
               {/* Smaller Ticket Notches */}
               <div className="ticket-notch-sm-left" aria-hidden="true" />
               <div className="ticket-notch-sm-right" aria-hidden="true" />
 
               <div>
-                <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#E8E1D7] font-mono text-[11px]">
-                  <span className="text-[#827577]">ARTIFACT / {String(idx + 1).padStart(2, "0")}</span>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
-                    {item.title.includes("Sentinel") ? "Preprint Paper" : "Zenodo Benchmark Dataset"}
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-mono text-[11px] text-[#6B1724] font-medium">
+                    ARTIFACT / {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
+                    {item.title.includes("Sentinel")
+                      ? "Preprint Paper"
+                      : item.title.includes("CloudFix")
+                      ? "Zenodo Benchmark"
+                      : "Peer Review"}
                   </span>
                 </div>
 
-                <h3 className="text-base sm:text-xl font-serif text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5">
+                <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug line-clamp-2">
                   {item.title}
                 </h3>
 
-                <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2 font-normal">
+                <p className="text-xs text-[#5C5254] leading-relaxed mb-2.5 line-clamp-2">
                   {item.summary}
                 </p>
 
-                {/* Key Metrics / Highlights */}
+                {/* Key Highlights */}
                 {item.highlights && (
                   <div className="space-y-1 mb-2.5 pt-2 border-t border-[#E8E1D7]">
                     {item.highlights.slice(0, 2).map((h, hidx) => (
-                      <div key={hidx} className="flex items-start gap-1.5 text-[11px] font-mono text-[#5C5254]">
+                      <div key={hidx} className="flex items-start gap-1.5 text-[10px] font-mono text-[#5C5254]">
                         <span className="text-[#6B1724] font-bold">›</span>
                         <span className="line-clamp-1">{h}</span>
                       </div>
                     ))}
                   </div>
                 )}
+
+                {/* Links as Tags */}
+                <div className="flex flex-wrap gap-1 mb-2.5">
+                  {item.links.map((link, lidx) => (
+                    <a
+                      key={lidx}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] hover:text-[#6B1724] border border-[#E8E1D7] hover:border-[#6B1724] rounded flex items-center gap-1 transition-colors"
+                    >
+                      <span>{link.label}</span>
+                      <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              <div className="pt-3 border-t border-[#E8E1D7] flex flex-wrap items-center gap-2">
-                {item.links.map((link, lidx) => (
-                  <a
-                    key={lidx}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono text-[#1C1416] bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] transition-colors"
-                  >
-                    <span>{link.label}</span>
-                    <svg className="w-2.5 h-2.5 text-[#827577]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                ))}
-
-                {item.title.includes("Sentinel") && (
+              {/* Actions Footer */}
+              <div className="pt-2.5 border-t border-[#E8E1D7] flex items-center justify-between gap-2 text-xs font-mono">
+                {item.title.includes("Sentinel") ? (
                   <button
                     onClick={() => onSelectCaseStudy("sentinel-mesh")}
-                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono text-[#FAF8F5] bg-[#6B1724] hover:bg-[#54111B] transition-colors font-medium ml-auto cursor-pointer"
+                    className="text-[#6B1724] hover:underline flex items-center gap-1 font-medium cursor-pointer"
                   >
                     <span>Read Architecture</span>
                     <span>→</span>
                   </button>
+                ) : (
+                  <span className="text-[#827577] text-[11px]">
+                    {item.title.includes("CloudFix") ? "Open Benchmark" : "Verified Review"}
+                  </span>
                 )}
+
+                <span className="text-[#827577] text-[10px]">
+                  {item.title.includes("Sentinel")
+                    ? "Research Square"
+                    : item.title.includes("CloudFix")
+                    ? "Zenodo Archive"
+                    : "Web of Science"}
+                </span>
               </div>
             </div>
           ))}
