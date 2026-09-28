@@ -55,60 +55,60 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-[#1C1416]/40 backdrop-blur-sm animate-fade-in">
       <div className="fixed inset-0" onClick={onClose} />
 
-      <div className="relative w-full max-w-xl bg-white border border-[#E8E1D7] rounded shadow-xl overflow-hidden my-auto z-10 max-h-[92vh] flex flex-col">
+      <div className="relative w-full max-w-xl bg-white border border-[#E8E1D7] rounded shadow-xl overflow-hidden my-auto z-10 max-h-[96vh] flex flex-col">
         {/* Header */}
-        <div className="bg-[#FAF8F5] border-b border-[#E8E1D7] px-6 py-4 flex items-center justify-between">
+        <div className="bg-[#FAF8F5] border-b border-[#E8E1D7] px-3.5 py-2 sm:px-6 sm:py-3.5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs text-[#6B1724] font-semibold uppercase">
+            <span className="font-mono text-[11px] sm:text-xs text-[#6B1724] font-semibold uppercase">
               Start an Engagement
             </span>
             <span className="text-[#D8CEC1]">·</span>
-            <span className="text-xs font-mono text-[#827577]">Direct &amp; Escrow</span>
+            <span className="text-[10px] sm:text-xs font-mono text-[#827577]">Direct &amp; Escrow</span>
           </div>
 
           <button
             onClick={onClose}
-            className="px-2.5 py-1 text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors"
+            className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[10px] sm:text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors"
           >
             ESC / Close
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6">
-          <div>
-            <h2 className="font-serif text-2xl text-[#1C1416] mb-2 font-normal">
+        {/* Content with generous breathing room and zero visible scrollbar */}
+        <div className="p-5 sm:p-7 overflow-y-auto space-y-4 sm:space-y-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="space-y-1.5">
+            <h2 className="font-serif text-lg sm:text-2xl text-[#1C1416] font-normal">
               Work directly with {profile.name}
             </h2>
-            <p className="text-xs text-[#5C5254] leading-relaxed">
+            <p className="text-xs sm:text-xs text-[#5C5254] leading-relaxed">
               Available for contract roles, workflow automation architecture, and enterprise QA engagements.
             </p>
           </div>
 
           {/* Quick Direct Copy Bar */}
-          <div className="flex items-center justify-between p-3.5 bg-[#FAF8F5] border border-[#E8E1D7] rounded">
-            <div className="flex flex-col">
-              <span className="text-[10px] font-mono text-[#827577] uppercase">Direct Email</span>
-              <span className="font-mono text-xs text-[#1C1416] font-medium">{email}</span>
+          <div className="flex items-center justify-between px-3.5 py-2.5 sm:p-3.5 bg-[#FAF8F5] border border-[#E8E1D7] rounded">
+            <div className="flex flex-col gap-0.5">
+              <span className="text-[10px] font-mono text-[#827577] uppercase tracking-wider">Direct Email</span>
+              <span className="font-mono text-xs sm:text-sm text-[#1C1416] font-medium">{email}</span>
             </div>
             <button
               onClick={handleCopyEmail}
-              className="px-3 py-1.5 text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] text-[#6B1724] rounded transition-colors"
+              className="px-3 py-1 text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] text-[#6B1724] rounded transition-colors"
             >
               {copied ? "Copied!" : "Copy"}
             </button>
           </div>
 
-          {/* Form */}
+          {/* Form with generous box spacing */}
           <form onSubmit={handleSendEmail} className="space-y-4">
             <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
+              <label className="block text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
                 Area of Interest
               </label>
               <select
                 value={selectedService}
                 onChange={(e) => setSelectedService(e.target.value)}
-                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded px-3 py-2 text-xs text-[#1C1416] outline-none"
+                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded px-3 py-2 text-xs sm:text-sm text-[#1C1416] outline-none transition-colors"
               >
                 <option>AI Tool Pipelines &amp; Automation</option>
                 <option>n8n Complex Workflow Engineering</option>
@@ -120,13 +120,13 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
             </div>
 
             <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
+              <label className="block text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
                 Desired Timeline
               </label>
               <select
                 value={timeline}
                 onChange={(e) => setTimeline(e.target.value)}
-                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded px-3 py-2 text-xs text-[#1C1416] outline-none"
+                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded px-3 py-2 text-xs sm:text-sm text-[#1C1416] outline-none transition-colors"
               >
                 <option>Immediate (&lt; 2 weeks)</option>
                 <option>Within 1 Month</option>
@@ -136,7 +136,7 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
             </div>
 
             <div>
-              <label className="block text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
+              <label className="block text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#827577] mb-1.5">
                 Brief Scope / Objective
               </label>
               <textarea
@@ -144,33 +144,33 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
                 value={projectBrief}
                 onChange={(e) => setProjectBrief(e.target.value)}
                 placeholder="Describe your current system bottleneck or testing goals..."
-                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded p-3 text-xs text-[#1C1416] placeholder-[#827577] outline-none"
+                className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded p-3 text-xs sm:text-sm text-[#1C1416] placeholder-[#827577] outline-none resize-none transition-colors"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded transition-all text-center"
+              className="w-full py-2.5 sm:py-3 text-xs sm:text-sm font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded transition-all text-center mt-1"
             >
               Compose Formatted Email →
             </button>
           </form>
 
           {/* Escrow & Platform Badges */}
-          <div className="pt-4 border-t border-[#E8E1D7]">
-            <div className="text-[10px] font-mono uppercase tracking-wider text-[#827577] mb-3 text-center">
+          <div className="pt-3 border-t border-[#E8E1D7] space-y-1.5">
+            <div className="text-[8.5px] sm:text-[10px] font-mono uppercase tracking-tight sm:tracking-wider text-[#827577] text-center whitespace-nowrap overflow-hidden text-ellipsis">
               Or hire via protected escrow &amp; booking platforms:
             </div>
-            <div className="grid grid-cols-2 gap-2 text-center text-xs font-mono">
+            <div className="grid grid-cols-3 gap-2 text-center text-xs font-mono">
               {socialLinks
-                .filter((s) => ["Upwork", "Fiverr", "Topmate (1:1 Call)", "LinkedIn"].includes(s.label))
+                .filter((s) => ["Upwork", "Fiverr", "LinkedIn"].includes(s.label))
                 .map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors"
+                    className="py-1.5 px-2 bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors"
                   >
                     {link.label} ↗
                   </a>
