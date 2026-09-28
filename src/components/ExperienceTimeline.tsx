@@ -89,14 +89,14 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
     <section id="experience" className="scroll-mt-24 pt-10 pb-14 sm:pt-16 sm:pb-20 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Minimal Shahmeer Irfan Header: Title + Quiet Resume Link */}
-        <div className="flex items-center justify-between pb-5 sm:pb-6 border-b border-[#E8E1D7]">
-          <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal tracking-tight">
+        <div className="flex items-center justify-between pb-5 sm:pb-6 border-b border-[#E8E1D7] gap-3">
+          <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] font-normal tracking-tight whitespace-nowrap">
             Where I’ve worked
           </h2>
           <a
             href={socialLinks.resume}
             download
-            className="inline-flex items-center gap-2 text-xs font-mono text-[#5C5254] hover:text-[#6B1724] transition-colors py-1 group"
+            className="inline-flex items-center gap-1.5 sm:gap-2 text-xs font-mono text-[#5C5254] hover:text-[#6B1724] transition-colors py-1 group shrink-0"
           >
             <svg
               className="w-4 h-4 text-[#827577] group-hover:text-[#6B1724] transition-colors"

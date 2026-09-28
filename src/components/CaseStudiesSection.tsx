@@ -46,7 +46,7 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
             <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-2 font-medium">
               01 / SELECTED WORK
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#1C1416] font-normal">
+            <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal tracking-tight">
               Flagship Projects
             </h2>
           </div>
