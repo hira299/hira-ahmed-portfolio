@@ -32,7 +32,7 @@ export function SectionModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-5xl max-h-[92vh] sm:max-h-[90vh] bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl shadow-2xl overflow-y-auto flex flex-col"
+        className="relative w-full max-w-5xl max-h-[92vh] sm:max-h-[90vh] bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl shadow-2xl overflow-y-auto flex flex-col [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         role="dialog"
         aria-modal="true"
       >
