@@ -11,15 +11,15 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
   const selectedMobileIndex = services.findIndex((s) => s.slug === (selectedMobileService?.slug || ""));
 
   return (
-    <section id="services" className="pt-2 pb-12 border-b border-[#E8E1D7] bg-[#FAF8F5]">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6">
+    <section id="services" className="pt-0 sm:pt-2 pb-1 sm:pb-12 border-b-0 sm:border-b border-[#E8E1D7] bg-[#FAF8F5]">
+      <div className="max-w-6xl mx-auto px-3.5 sm:px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 pb-4 sm:pb-6 border-b border-[#E8E1D7] gap-4 sm:gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-4 sm:mb-12 pb-3 sm:pb-6 border-b border-[#E8E1D7] gap-2 sm:gap-6">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1.5 sm:mb-2 font-medium">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1 sm:mb-2 font-medium">
               03 / Engineering Capabilities
             </div>
-            <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal">
+            <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] font-normal">
               Services &amp; Practice Areas
             </h2>
           </div>
@@ -29,7 +29,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
         </div>
 
         {/* Mobile View: Dropdown Selector + Single Focused Card */}
-        <div className="md:hidden space-y-3.5 mb-6">
+        <div className="md:hidden space-y-3.5 mb-3">
           <div>
             <label
               htmlFor="mobile-practice-select"
@@ -42,7 +42,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                 id="mobile-practice-select"
                 value={selectedServiceSlug}
                 onChange={(e) => setSelectedServiceSlug(e.target.value)}
-                className="w-full appearance-none bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded-lg px-3.5 py-2.5 text-xs font-mono font-medium text-[#1C1416] pr-9 outline-none shadow-xs"
+                className="w-full appearance-none bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded-lg px-3.5 py-2.5 text-xs font-mono font-medium text-[#1C1416] pr-8 outline-none shadow-xs"
               >
                 {services.map((svc: Service, idx: number) => (
                   <option key={svc.slug} value={svc.slug}>
@@ -60,7 +60,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
           {/* Selected Single Card */}
           {selectedMobileService && (
-            <div className="relative bg-white border border-[#E8E1D7] rounded-lg p-4.5 flex flex-col justify-between shadow-xs">
+            <div className="relative bg-white border border-[#E8E1D7] rounded-lg p-4 sm:p-5 flex flex-col justify-between shadow-xs">
               <div className="ticket-notch-sm-left" aria-hidden="true" />
               <div className="ticket-notch-sm-right" aria-hidden="true" />
 
@@ -69,7 +69,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                   <span className="font-mono text-[11px] text-[#827577]">
                     {String(selectedMobileIndex + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
                   </span>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
+                  <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
                     Practice
                   </span>
                 </div>
@@ -95,17 +95,17 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
               <div>
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-1 pt-2.5 border-t border-[#E8E1D7] mb-3">
+                <div className="flex flex-wrap gap-1.5 pt-2.5 border-t border-[#E8E1D7] mb-3">
                   {selectedMobileService.technologies.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
-                      className="px-1.5 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
+                      className="px-2 py-0.5 text-[9px] font-mono bg-[#FAF8F5] text-[#5C5254] border border-[#E8E1D7] rounded"
                     >
                       {tech}
                     </span>
                   ))}
                   {selectedMobileService.technologies.length > 4 && (
-                    <span className="px-1.5 py-0.5 text-[9px] font-mono text-[#827577]">
+                    <span className="px-2 py-0.5 text-[9px] font-mono text-[#827577]">
                       +{selectedMobileService.technologies.length - 4}
                     </span>
                   )}
@@ -113,7 +113,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
                 <button
                   onClick={() => onOpenHireModal(selectedMobileService.title)}
-                  className="w-full py-2 text-xs font-mono text-[#6B1724] bg-[#FAF0F0] hover:bg-[#6B1724] hover:text-white border border-[#F0D5D8] hover:border-[#6B1724] rounded text-center transition-all font-medium cursor-pointer"
+                  className="w-full py-2.5 px-3 bg-[#FAF0F0] hover:bg-[#6B1724] text-[#6B1724] hover:text-[#FAF8F5] border border-[#F0D5D8] hover:border-[#6B1724] rounded font-mono text-xs font-medium tracking-wide transition-all text-center block shadow-xs"
                 >
                   Inquire for {selectedMobileService.title.split(" ")[0]} →
                 </button>
@@ -121,6 +121,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
             </div>
           )}
         </div>
+
 
         {/* Desktop Services Grid (Unchanged) */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
