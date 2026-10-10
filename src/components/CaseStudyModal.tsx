@@ -7,6 +7,9 @@ import {
   EmailAgentDiagram,
   MatrixDiagram,
   ComplianceDiagram,
+  TekruiterDiagram,
+  ToolPotionQaDiagram,
+  AiCloudAcademyDiagram,
 } from "./diagrams";
 
 function renderInline(text: string): ReactNode {
@@ -188,7 +191,14 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
       case "sentinel-mesh":
         return <SentinelDiagram />;
       case "multitenant-saas-qa":
+      case "pharmaconnect-qa":
         return <MatrixDiagram />;
+      case "tekruiter-qa":
+        return <TekruiterDiagram />;
+      case "toolpotion-qa":
+        return <ToolPotionQaDiagram />;
+      case "ai-cloud-academy-qa":
+        return <AiCloudAcademyDiagram />;
       case "n8n-email-agent":
         return <EmailAgentDiagram />;
       case "cloud-compliance":

@@ -4,6 +4,9 @@ export type CaseStudySlug =
   | "n8n-email-agent"
   | "28k-record-pipeline"
   | "multitenant-saas-qa"
+  | "tekruiter-qa"
+  | "toolpotion-qa"
+  | "ai-cloud-academy-qa"
   | "aws-cost-optimization"
   | "cloud-compliance"
   | "sentinel-mesh";
@@ -77,20 +80,22 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "multitenant-saas-qa",
     kind: "professional",
-    title: "Multi-Tenant B2B SaaS QA",
+    title: "PharmaConnect: Multi-Tenant B2B SaaS QA",
     href: "/case-studies/multitenant-saas-qa/",
     description:
-      "Lead QA on PharmaConnect, a multi-tenant B2B pharma platform: 20 end-to-end journeys, 80+ defects across 15 modules, and 11 critical P1 findings.",
+      "Lead QA on PharmaConnect, a multi-tenant B2B pharma platform: 20 end-to-end journeys across 6 user roles, 110+ defects documented, and 15 critical findings.",
     summary:
-      "Lead QA on a multi-tenant B2B pharmaceutical distribution platform: order-to-cash journeys, business-logic validation, API evidence, authorization, audit-log security, and reconciliation.",
+      "Lead QA on a multi-tenant pharmaceutical distribution platform: 20 journeys, 110+ defects across 15 modules, 15 critical findings, and 75 closed fixes.",
     client: "PharmaConnect",
     role: "Lead QA",
-    stack: ["Exploratory testing", "API testing", "Browser network inspection", "curl", "RBAC matrix"],
+    stack: ["Exploratory testing", "API testing", "Browser network inspection", "curl", "RBAC permission matrix"],
     metrics: [
-      { value: "20", label: "End-to-end journeys" },
+      { value: "20", label: "End-to-end journeys (17 passed, 3 failed)" },
       { value: "6", label: "User roles tested" },
-      { value: "80+", label: "Defects documented" },
-      { value: "11", label: "Critical P1 findings" },
+      { value: "110+", label: "Defects documented (108 in sheet)" },
+      { value: "15", label: "Critical P1 findings" },
+      { value: "15", label: "Modules tested" },
+      { value: "75", label: "Verified & closed fixes" },
     ],
     services: ["qa-testing", "multitenant-qa", "api-testing", "business-logic-testing"],
     projects: [],
@@ -100,6 +105,78 @@ export const caseStudies: CaseStudy[] = [
         href: "https://github.com/hira299/enterprise-multitenant-qa-matrix",
       },
     ],
+  },
+  {
+    slug: "tekruiter-qa",
+    kind: "professional",
+    title: "Tekruiter: Multi-Tenant Recruitment Platform QA",
+    href: "/case-studies/tekruiter-qa/",
+    description:
+      "Lead QA on Tekruiter, a multi-tenant recruitment SaaS: 60+ defects surfaced across 20+ modules and 6 personas, stopping confidential leaks and catching a $7.95M billing calculation bug.",
+    summary:
+      "Lead QA across 20+ modules of a multi-tenant recruitment platform: privacy boundary audits, financial billing arithmetic checks, and invoice database integrity testing.",
+    client: "Tekruiter",
+    role: "Lead QA",
+    stack: ["Multi-tenant testing", "RBAC privacy checks", "API inspection", "Financial calculation audits", "Database integrity"],
+    metrics: [
+      { value: "60+", label: "Defects documented" },
+      { value: "20+", label: "Modules tested" },
+      { value: "6", label: "Personas tested" },
+      { value: "Led with 2nd tester", label: "Testing team structure" },
+      { value: "57", label: "Defects in sheet (47 + 10 second tester)" },
+      { value: "1", label: "Critical P1 finding" },
+    ],
+    services: ["qa-testing", "multitenant-qa", "api-testing", "business-logic-testing"],
+    projects: [],
+    links: [],
+  },
+  {
+    slug: "toolpotion-qa",
+    kind: "professional",
+    title: "ToolPotion: 28K+ AI Directory Data & Listing QA",
+    href: "/case-studies/toolpotion-qa/",
+    description:
+      "QA governance for a 28,000+ listing AI directory: 1,300+ defects across 10 QA rounds, flagging phishing and malware listings, and verifying 300+ fixes.",
+    summary:
+      "Directory quality assurance across 10 QA rounds: 1,300+ defects documented, data integrity enforcement, malicious listing isolation, and 300+ verified fixes.",
+    client: "ToolPotion.ai",
+    role: "Quality Assurance Lead",
+    stack: ["Data integrity audits", "URL verification", "Security threat flagging", "Exploratory testing", "Regression sweeps"],
+    metrics: [
+      { value: "1,300+", label: "Defects (1,398 logged entries)" },
+      { value: "10", label: "QA rounds" },
+      { value: "170+", label: "Critical defects (172)" },
+      { value: "300+", label: "Fixes verified (316 closed)" },
+      { value: "190+", label: "Dead or fake tools identified" },
+      { value: "3", label: "Malicious listings flagged" },
+    ],
+    services: ["qa-testing", "api-testing"],
+    projects: [],
+    links: [],
+  },
+  {
+    slug: "ai-cloud-academy-qa",
+    kind: "professional",
+    title: "AI Cloud Academy: E-Learning Platform & Progress QA",
+    href: "/case-studies/ai-cloud-academy-qa/",
+    description:
+      "Platform and curriculum QA across 5 rounds and 37 courses: 80+ defects logged, resolving mobile progression blockers, eliminating a gamification XP exploit, and verifying 40+ fixes.",
+    summary:
+      "E-learning QA across 37 courses: 80+ defects, mobile navigation and progression fixes, gamification XP exploit remediation, and 68 video recommendations.",
+    client: "AI Cloud Academy",
+    role: "Quality Assurance Lead",
+    stack: ["E-Learning QA", "Progress tracking validation", "Gamification testing", "Cross-device testing", "Curriculum review"],
+    metrics: [
+      { value: "80+", label: "Defects logged (85 entries, 69 unique)" },
+      { value: "5", label: "QA rounds" },
+      { value: "37", label: "Courses audited" },
+      { value: "40+", label: "Fixes verified (41 closed after retest)" },
+      { value: "68", label: "Video-content recommendations" },
+      { value: "12", label: "Critical defects" },
+    ],
+    services: ["qa-testing", "api-testing"],
+    projects: [],
+    links: [],
   },
   {
     slug: "n8n-email-agent",

@@ -7,6 +7,7 @@ export type SocialLink = {
 export const email = "hira229922@gmail.com";
 
 const rawSocialLinks: SocialLink[] = [
+  { label: "Résumé (PDF)", href: "/Hira_Ahmed_Resume.pdf", kind: "professional" },
   { label: "Fiverr", href: "https://www.fiverr.com/hira299", kind: "hire" },
   {
     label: "Upwork",
@@ -47,7 +48,7 @@ export type SocialLinksList = SocialLink[] & {
 export const socialLinks: SocialLinksList = Object.assign(rawSocialLinks, {
   github: "https://github.com/hira299",
   linkedin: "https://www.linkedin.com/in/hira-ahmed-4068402a7",
-  resume: "/Hira_Ahmed_AI_Engineer_Resume.pdf",
+  resume: "/Hira_Ahmed_Resume.pdf",
 });
 
 export function getLink(label: string) {

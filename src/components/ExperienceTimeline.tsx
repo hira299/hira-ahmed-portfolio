@@ -58,7 +58,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
       flag: "🇲🇾",
       flagTitle: "Malaysia",
       description:
-        "Lead QA across PharmaConnect SaaS, ToolPotion directory, and AI Academy Cloud.",
+        "QA Lead across four concurrent client contracts (PharmaConnect, Tekruiter, ToolPotion, and AI Cloud Academy), documenting 1,500+ defects in total.",
       caseStudySlug: "multitenant-saas-qa",
     },
     {
@@ -95,7 +95,28 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
           </h2>
           <a
             href={socialLinks.resume}
-            download
+            download="Hira_Ahmed_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              fetch(socialLinks.resume)
+                .then((res) => (res.ok ? res.blob() : null))
+                .then((blob) => {
+                  if (!blob) return;
+                  const url = window.URL.createObjectURL(blob);
+                  const link = document.createElement("a");
+                  link.style.display = "none";
+                  link.href = url;
+                  link.download = "Hira_Ahmed_Resume.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  setTimeout(() => {
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                  }, 150);
+                })
+                .catch(() => {});
+            }}
             className="inline-flex items-center gap-1.5 sm:gap-2 text-xs font-mono text-[#5C5254] hover:text-[#6B1724] transition-colors py-1 group shrink-0"
           >
             <svg

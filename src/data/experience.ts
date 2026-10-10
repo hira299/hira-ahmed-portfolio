@@ -21,22 +21,23 @@ export const experience: ExperienceItem[] = [
     country: "Malaysia",
     flag: "🇲🇾",
     description:
-      "Directing end-to-end quality assurance across 3 production products: PharmaConnect (enterprise healthcare procurement), ToolPotion AI directory, and AI Academy Cloud certification systems.",
+      "QA Lead across four concurrent client contracts: PharmaConnect (enterprise healthcare procurement), Tekruiter (multi-tenant recruitment SaaS), ToolPotion (28K+ AI directory), and AI Cloud Academy (certification systems).",
     summary:
-      "Spearheaded multi-tenant security, RBAC privilege isolation, API integration validation, and production defect triage.",
+      "Spearheaded multi-tenant security, RBAC privilege isolation, API integration validation, and production defect triage across four client products.",
     deliverables: [
-      "Orchestrated 80+ defect triage passes with curl payloads across 20 user journeys on PharmaConnect.",
-      "Identified and mitigated 11 critical P1 defects, including tenant session leaks and order authorization flaws.",
-      "Conducted load testing, content workflow tests, and progress-tracking exploit analysis on AI Academy Cloud.",
-      "Governed listing integrity and QA validation cycles for ToolPotion's 28,000+ record directory.",
+      "Documented 1,500+ defects in total across four client contracts with API-level reproduction evidence and systematic retesting.",
+      "Uncovered 110+ defects and 15 critical findings on PharmaConnect across 20 user journeys and 15 modules, verifying and closing 75 fixes.",
+      "Surfaced 60+ defects on Tekruiter across 20+ modules and 6 personas, isolating privacy leaks and a $7.95M billing calculation error.",
+      "Governed listing integrity for ToolPotion (1,300+ defects across 10 QA rounds, 170+ critical, 300+ fixes verified, and malicious listings flagged).",
+      "Audited 37 courses on AI Cloud Academy (80+ defects logged across 5 QA rounds, 41 closed fixes, and gamification exploit eliminated).",
     ],
     metrics: [
-      { label: "Defects Triaged & Remediated", value: "80+" },
-      { label: "Critical P1s Resolved", value: "11" },
-      { label: "Products Governed", value: "3" },
+      { label: "Total Defects Documented", value: "1,500+" },
+      { label: "Client Contracts Governed", value: "4" },
+      { label: "PharmaConnect Defects", value: "110+" },
     ],
     verifiedEvidence:
-      "Lead QA on PharmaConnect B2B multi-tenant healthcare SaaS and ToolPotion systems at TechPotion.ai.",
+      "QA Lead across PharmaConnect, Tekruiter, ToolPotion, and AI Cloud Academy.",
   },
   {
     company: "TechPotion.ai",

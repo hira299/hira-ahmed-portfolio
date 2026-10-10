@@ -219,6 +219,35 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             <span>Full Project Archive</span>
             <span className="text-[10px] text-[#827577]">10+</span>
           </button>
+          <a
+            href="/Hira_Ahmed_Resume.pdf"
+            download="Hira_Ahmed_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => {
+              fetch("/Hira_Ahmed_Resume.pdf")
+                .then((res) => (res.ok ? res.blob() : null))
+                .then((blob) => {
+                  if (!blob) return;
+                  const url = window.URL.createObjectURL(blob);
+                  const link = document.createElement("a");
+                  link.style.display = "none";
+                  link.href = url;
+                  link.download = "Hira_Ahmed_Resume.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  setTimeout(() => {
+                    document.body.removeChild(link);
+                    window.URL.revokeObjectURL(url);
+                  }, 150);
+                })
+                .catch(() => {});
+            }}
+            className="flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors cursor-pointer"
+          >
+            <span>Résumé (PDF)</span>
+            <span className="text-[10px] text-[#6B1724] font-medium">↓ Download</span>
+          </a>
         </nav>
 
         {/* Drawer Footer */}

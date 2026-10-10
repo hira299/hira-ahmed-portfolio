@@ -32,7 +32,7 @@ const flagshipProjects = [
     image: "/images/PharmaConnect.png",
     title: "Multi-Tenant B2B SaaS QA",
     description:
-      "Lead QA on multi-tenant pharmaceutical B2B SaaS covering 20 E2E user journeys, 80+ defects, and 11 critical P1 findings.",
+      "Lead QA on multi-tenant pharma platform: 20 E2E journeys across 15 modules, 110+ defects documented, and 75 closed fixes.",
   },
 ];
 

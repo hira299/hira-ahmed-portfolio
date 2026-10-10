@@ -12,15 +12,15 @@ const personas: { name: string; counts: number[] }[] = [
 const totals = [6, 4, 4, 6];
 
 const severity = [
-  { label: "P1", value: 11 },
-  { label: "P2", value: 19 },
-  { label: "P3", value: 43 },
-  { label: "P4", value: 7 },
+  { label: "P1", value: 15 },
+  { label: "P2", value: 26 },
+  { label: "P3", value: 58 },
+  { label: "P4", value: 9 },
 ];
 const layers = [
-  { label: "Frontend only", value: 58 },
-  { label: "Backend only", value: 10 },
-  { label: "Both layers", value: 12 },
+  { label: "Frontend only", value: 72 },
+  { label: "Backend only", value: 13 },
+  { label: "Both layers", value: 23 },
 ];
 
 const cellW = 104;
@@ -163,11 +163,11 @@ export function QaCoverageDiagram() {
       width={960}
       height={330}
       title="QA coverage: journeys by persona, defects by severity and layer"
-      description="Twenty journeys across four groups: order to delivery 6, payments and finance 4, returns 4, security and boundaries 6, each run as the persona that performs it. Defects by severity: 11 P1, 19 P2, 43 P3, 7 P4. By layer: 58 frontend only, 10 backend only, 12 in both."
+      description="Twenty journeys across four groups: order to delivery 6, payments 4, returns 4, security 6, each run as the persona that performs it. Defects by severity: 15 P1, 26 P2, 58 P3, 9 P4. By layer: 72 frontend only, 13 backend only, 23 in both. 75 defects verified and closed after retesting."
       caption={
         <>
           <strong>Journeys were run as the real persona.</strong> Boundary sweeps covered all roles at once. Recording
-          the affected layer separated UI fixes from API-level fixes.
+          the affected layer separated UI fixes from API-level fixes. 75 defects verified and closed after retesting.
         </>
       }
     >
@@ -275,8 +275,8 @@ export function QaCoverageDiagram() {
       <line x1={616} y1={28} x2={616} y2={280} stroke="#E8E1D7" strokeWidth={1} strokeDasharray="3 3" />
 
       {/* Analytics Bars on Right */}
-      <Bars x={645} y={32} title="Defects by severity" items={severity} max={43} />
-      <Bars x={645} y={185} title="Defects by layer" items={layers} max={58} />
+      <Bars x={645} y={32} title="Defects by severity" items={severity} max={58} />
+      <Bars x={645} y={185} title="Defects by layer" items={layers} max={72} />
     </DiagramFrame>
   );
 }

@@ -147,9 +147,10 @@ export const services: Service[] = [
     ],
     technologies: ["Browser DevTools", "Network/API inspection", "curl", "Flutter testing", "Defect matrices"],
     proof: [
-      "20 end-to-end journeys completed on PharmaConnect",
-      "678+ defects identified and documented across QA engagements",
-      "80+ defects documented with API-level reproduction on one enterprise B2B platform",
+      "20 end-to-end journeys completed on PharmaConnect (17 passed, 3 failed)",
+      "1,500+ defects identified and documented across four client contracts",
+      "110+ defects documented with API-level reproduction on PharmaConnect (15 critical findings)",
+      "60+ defects documented on Tekruiter, 1,300+ on ToolPotion, and 80+ on AI Cloud Academy",
     ],
     caseStudies: ["multitenant-saas-qa"],
   },

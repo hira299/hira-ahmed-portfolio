@@ -10,15 +10,15 @@ export const profile = {
   careerRole: "AI Engineer",
   positioning: "n8n | AI Agents | LLM Systems | API Testing | B2B SaaS QA",
   statement:
-    "I build production AI systems and automations, then verify that the systems behind them behave reliably.",
+    "QA Lead across four concurrent client contracts with 1,500+ defects documented, building production AI systems and verifying mission-critical architectures.",
   identity:
-    "An AI Engineer and AI Automation Engineer who builds LLM pipelines, AI agents, and automations, and also provides specialized n8n automation and B2B SaaS QA services.",
+    "An AI Engineer and Quality Assurance Lead who builds LLM pipelines, AI agents, and automations, while directing multi-tenant B2B SaaS QA across four client contracts.",
   shortBio:
-    "AI Engineer building production LLM pipelines, AI agents, and n8n automations, with hands-on QA and API testing for B2B SaaS platforms.",
+    "QA Lead across four concurrent client contracts with 1,500+ documented defects, specializing in multi-tenant B2B SaaS, API verification, and autonomous LLM pipelines.",
   longBio: [
-    "I'm an AI Engineer. I build production AI systems: multi-stage LLM enrichment pipelines, retrieval-augmented agents, and automations that connect models to real data, APIs, and databases.",
+    "I'm an AI Engineer and Quality Assurance Lead. I lead QA across four concurrent client contracts of multi-tenant B2B software, having documented 1,500+ defects while testing and verifying end-to-end business workflows, APIs, authorization boundaries, data integrity, and security-sensitive edge cases.",
     "My engineering work spans Python, LangGraph, CRAG, pgvector, FastAPI, PostgreSQL, AWS, n8n, and Make.com. I built and maintained a production AI pipeline behind a 28,000+ record directory, with status-gated LLM stages, structured outputs, multilingual enrichment, and fault-tolerant parallel processing.",
-    "I also test the systems I and others build. My QA work covers end-to-end journeys, API-level reproduction, authentication and authorization, multi-tenant isolation, business logic, financial reconciliation, and release verification, with 678+ defects identified and documented across QA engagements.",
+    "Across my QA contracts, I have led testing on PharmaConnect (110+ defects across 20 journeys and 15 modules), Tekruiter (60+ defects across 20+ modules), ToolPotion (1,300+ defects across 10 QA rounds), and AI Cloud Academy (80+ defects across 37 courses), verifying and closing hundreds of production fixes through rigorous retesting.",
   ],
   workflow: ["Build", "Integrate", "Test", "Verify", "Deploy"],
   location: "Karachi, Sindh, Pakistan",
@@ -31,19 +31,24 @@ export const profile = {
   },
   career: {
     target: "AI Engineer",
-    related: ["AI Automation Engineer", "LLM Engineer", "Backend / AI Engineer", "Generative AI Engineer"],
+    related: ["QA Lead", "AI Automation Engineer", "Backend / AI Engineer", "LLM Engineer"],
   },
   freelance: {
     services: [
+      "B2B SaaS QA",
+      "Multi-Tenant QA",
+      "API Testing",
       "n8n Automation",
       "AI Automation",
       "AI Agent Development",
-      "B2B SaaS QA",
-      "API Testing",
-      "Multi-Tenant QA",
     ],
   },
   metrics: [
+    {
+      value: "1,500+",
+      label: "QA defects documented",
+      context: "Documented across four concurrent client contracts and production testing",
+    },
     {
       value: "28,000+",
       label: "Production records",
@@ -60,14 +65,9 @@ export const profile = {
       context: "Monthly infrastructure cost, via query and execution-flow optimization",
     },
     {
-      value: "678+",
-      label: "QA defects documented",
-      context: "Identified and documented across QA engagements and production testing",
-    },
-    {
-      value: "20",
-      label: "End-to-end QA journeys",
-      context: "On PharmaConnect, a multi-tenant B2B platform",
+      value: "110+",
+      label: "PharmaConnect defects",
+      context: "Across 20 end-to-end journeys and 15 modules on a multi-tenant B2B platform",
     },
     {
       value: "105",

@@ -1,7 +1,7 @@
 export function BusinessesRibbon() {
   const businesses = [
     { name: "TechPotion.ai", role: "QA Lead & AI Pipelines", highlight: "28K+ Records Enriched" },
-    { name: "PharmaConnect", role: "B2B SaaS Lead QA", highlight: "80+ Defects Prevented" },
+    { name: "PharmaConnect", role: "B2B SaaS Lead QA", highlight: "110+ Defects Documented" },
     { name: "ToolPotion", role: "Directory Invariants", highlight: "Multi-stage ETL & 50 Concurrency" },
     { name: "CloudFix-Bench", role: "Formal SMT Verification", highlight: "105 AWS Benchmark Invariants" },
   ];
