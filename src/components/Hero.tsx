@@ -153,25 +153,6 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                   download="Hira_Ahmed_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={(e) => {
-                    fetch(socialLinks.resume)
-                      .then((res) => (res.ok ? res.blob() : null))
-                      .then((blob) => {
-                        if (!blob) return;
-                        const url = window.URL.createObjectURL(blob);
-                        const link = document.createElement("a");
-                        link.style.display = "none";
-                        link.href = url;
-                        link.download = "Hira_Ahmed_Resume.pdf";
-                        document.body.appendChild(link);
-                        link.click();
-                        setTimeout(() => {
-                          document.body.removeChild(link);
-                          window.URL.revokeObjectURL(url);
-                        }, 150);
-                      })
-                      .catch(() => {});
-                  }}
                   className="group px-3.5 py-2 sm:px-3.5 sm:py-2 text-xs font-mono border border-[#E8E1D7] hover:border-[#6B1724]/70 bg-white hover:bg-[#FAF8F5] text-[#5C5254] hover:text-[#1C1416] rounded-full transition-all duration-200 flex items-center gap-1.5 shadow-2xs hover:shadow-xs hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
                 >
                   <svg className="w-3 h-3 text-[#827577] group-hover:text-[#6B1724] transition-all duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
