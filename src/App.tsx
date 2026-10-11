@@ -30,8 +30,64 @@ export default function App() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Browser Back/Forward navigation support
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === "/" || path === "") {
+        setActiveCaseStudySlug(null);
+        setActiveSectionModal(null);
+      } else if (path.startsWith("/case-studies/")) {
+        const slug = path.replace("/case-studies/", "").replace(/\/$/, "");
+        if (slug) {
+          setActiveCaseStudySlug(slug);
+          setActiveSectionModal(null);
+        } else {
+          setActiveCaseStudySlug(null);
+        }
+      } else if (path === "/services/" || path.startsWith("/services")) {
+        setActiveSectionModal("services");
+        setActiveCaseStudySlug(null);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("popstate", handlePopState);
+    };
   }, []);
+
+  const handleSelectCaseStudy = (slug: string) => {
+    setActiveCaseStudySlug(slug);
+    if (typeof window !== "undefined" && window.location.pathname !== `/case-studies/${slug}/`) {
+      window.history.pushState({ slug }, "", `/case-studies/${slug}/`);
+    }
+  };
+
+  const handleCloseCaseStudy = () => {
+    setActiveCaseStudySlug(null);
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      window.history.pushState(null, "", "/");
+    }
+  };
+
+  const handleOpenSection = (section: "services" | "research" | "archive") => {
+    setActiveSectionModal(section);
+    if (typeof window !== "undefined") {
+      const targetUrl = section === "services" ? "/services/" : "/";
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState({ section }, "", targetUrl);
+      }
+    }
+  };
+
+  const handleCloseSection = () => {
+    setActiveSectionModal(null);
+    if (typeof window !== "undefined" && window.location.pathname !== "/") {
+      window.history.pushState(null, "", "/");
+    }
+  };
 
   const handleOpenHireModal = (serviceTitle?: string) => {
     setSelectedServiceForHire(serviceTitle);
@@ -56,25 +112,25 @@ export default function App() {
       {/* Translucent Floating Pill Navigation Header */}
       <Navbar
         onOpenHireModal={() => handleOpenHireModal()}
-        onOpenSectionModal={(section) => setActiveSectionModal(section)}
+        onOpenSectionModal={(section) => handleOpenSection(section)}
       />
 
       <main id="main">
         {/* Minimal Hero: Editorial Name, Bio, Start Engagement, Airy Businesses List & Hoverable Numbers */}
         <Hero
           onOpenHireModal={() => handleOpenHireModal()}
-          onSelectCaseStudy={(slug) => setActiveCaseStudySlug(slug)}
+          onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
         />
 
         {/* Selected Works: 1 Row, 3 Columns (3 Cards) */}
         <CaseStudiesSection
-          onSelectCaseStudy={(slug) => setActiveCaseStudySlug(slug)}
-          onOpenArchive={() => setActiveSectionModal("archive")}
+          onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
+          onOpenArchive={() => handleOpenSection("archive")}
         />
 
         {/* Compact Production Experience Timeline */}
         <ExperienceTimeline
-          onSelectCaseStudy={(slug) => setActiveCaseStudySlug(slug)}
+          onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
         />
       </main>
 
@@ -84,7 +140,7 @@ export default function App() {
       {/* Locked Interactive Case Study Reader Modal */}
       <CaseStudyModal
         slug={activeCaseStudySlug}
-        onClose={() => setActiveCaseStudySlug(null)}
+        onClose={handleCloseCaseStudy}
         onOpenContact={() => handleOpenHireModal()}
       />
 
@@ -98,9 +154,9 @@ export default function App() {
       {/* Dedicated Section Reader Modal (Services, Research, Archive) */}
       <SectionModal
         section={activeSectionModal}
-        onClose={() => setActiveSectionModal(null)}
+        onClose={handleCloseSection}
         onOpenHireModal={(service) => handleOpenHireModal(service)}
-        onSelectCaseStudy={(slug) => setActiveCaseStudySlug(slug)}
+        onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
       />
     </div>
   );

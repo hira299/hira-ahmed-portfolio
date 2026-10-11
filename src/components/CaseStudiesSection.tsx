@@ -73,10 +73,14 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
         {/* 1 Row, 3 Columns Grid: Compact Design with Screenshot Previews */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {flagshipProjects.map((project) => (
-            <div
+            <a
               key={project.slug}
-              onClick={() => onSelectCaseStudy(project.slug)}
-              className="group relative flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-3.5 sm:p-4 rounded-xl transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-0.5"
+              href={`/case-studies/${project.slug}/`}
+              onClick={(e) => {
+                e.preventDefault();
+                onSelectCaseStudy(project.slug);
+              }}
+              className="group relative flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-3.5 sm:p-4 rounded-xl transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-0.5 no-underline text-inherit block"
             >
               {/* Ticket Notch Semicircles (Left & Right) */}
               <span className="ticket-notch-left" aria-hidden="true" />
@@ -121,7 +125,7 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                 <span>View Technical Specs</span>
                 <span aria-hidden="true">&gt;</span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

@@ -185,11 +185,15 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
                     {exp.period}
                   </div>
                   <p>{exp.description}</p>
-                  {exp.caseStudySlug && onSelectCaseStudy && (
-                    <button
+                  {exp.caseStudySlug && (
+                    <a
+                      href={`/case-studies/${exp.caseStudySlug}/`}
                       onClick={(e) => {
-                        e.stopPropagation();
-                        onSelectCaseStudy(exp.caseStudySlug!);
+                        if (onSelectCaseStudy) {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          onSelectCaseStudy(exp.caseStudySlug!);
+                        }
                       }}
                       className="inline-flex items-center gap-1 text-[11px] font-mono text-[#6B1724] hover:underline mt-2 font-medium cursor-pointer"
                     >
@@ -197,7 +201,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
                       <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </button>
+                    </a>
                   )}
                 </div>
 

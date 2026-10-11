@@ -55,12 +55,18 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           >
             Work
           </a>
-          <button
-            onClick={() => onOpenSectionModal?.("services")}
+          <a
+            href="/services/"
+            onClick={(e) => {
+              if (onOpenSectionModal) {
+                e.preventDefault();
+                onOpenSectionModal("services");
+              }
+            }}
             className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
           >
             Services
-          </button>
+          </a>
           <a
             href="#experience"
             onClick={handleExperienceClick}
@@ -181,8 +187,10 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             <span>Selected Work</span>
             <span className="text-[10px] text-[#827577]">01</span>
           </a>
-          <button
-            onClick={() => {
+          <a
+            href="/services/"
+            onClick={(e) => {
+              e.preventDefault();
               setMobileMenuOpen(false);
               onOpenSectionModal?.("services");
             }}
@@ -190,7 +198,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           >
             <span>Services &amp; Practice Areas</span>
             <span className="text-[10px] text-[#827577]">02</span>
-          </button>
+          </a>
           <a
             href="#experience"
             onClick={handleExperienceClick}
