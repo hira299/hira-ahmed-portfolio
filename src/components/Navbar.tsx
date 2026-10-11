@@ -23,7 +23,16 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
     };
   }, [mobileMenuOpen]);
 
+  const isSubPage = typeof window !== "undefined" && window.location.pathname !== "/";
+  const workHref = isSubPage ? "/#work" : "#work";
+  const expHref = isSubPage ? "/#experience" : "#experience";
+
   const handleExperienceClick = (e: React.MouseEvent) => {
+    if (isSubPage) {
+      // Allow default navigation to /#experience on subpages
+      setMobileMenuOpen(false);
+      return;
+    }
     e.preventDefault();
     setMobileMenuOpen(false);
     const elem = document.getElementById("experience");
@@ -38,7 +47,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
     <div className="fixed top-0 sm:top-8 inset-x-0 z-50 flex justify-center px-0 sm:px-4 pointer-events-none">
       <header className="pointer-events-auto flex items-center justify-between w-full sm:max-w-3xl px-6 py-3.5 sm:px-5 sm:py-3 rounded-none sm:rounded-full bg-[#FAF8F5]/90 sm:bg-[#FAF8F5]/50 backdrop-blur-md border-b sm:border border-[#E8E1D7]/70 shadow-none sm:shadow-[0_4px_24px_rgba(28,20,22,0.05)] transition-all sm:hover:bg-[#FAF8F5]/70">
         {/* Brand identity */}
-        <a href="#" className="flex items-center gap-2 group">
+        <a href="/" className="flex items-center gap-2 group">
           <span className="hidden sm:flex w-5 h-5 rounded-full bg-[#6B1724] text-[#FAF8F5] items-center justify-center font-serif text-[11px] font-semibold">
             H
           </span>
@@ -50,7 +59,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
         {/* Centered Desktop Nav Pill Links */}
         <nav className="hidden md:flex items-center gap-5 text-xs font-mono text-[#5C5254]">
           <a
-            href="#work"
+            href={workHref}
             className="hover:text-[#6B1724] transition-colors py-1"
           >
             Work
@@ -71,7 +80,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             Services
           </a>
           <a
-            href="#experience"
+            href={expHref}
             onClick={handleExperienceClick}
             className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
           >
@@ -183,7 +192,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
         {/* Drawer Navigation Links */}
         <nav className="flex-1 py-6 space-y-1 font-mono text-xs">
           <a
-            href="#work"
+            href={workHref}
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors"
           >
@@ -206,7 +215,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             <span className="text-[10px] text-[#827577]">02</span>
           </a>
           <a
-            href="#experience"
+            href={expHref}
             onClick={handleExperienceClick}
             className="flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors cursor-pointer"
           >

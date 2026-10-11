@@ -10,6 +10,8 @@ import { ServicesHubPage } from "../src/pages/ServicesHubPage";
 import { CaseStudyPage } from "../src/pages/CaseStudyPage";
 import { CaseStudiesHubPage } from "../src/pages/CaseStudiesHubPage";
 
+export const SITE_URL = "https://hiraahmed.me";
+
 function applyMetadata(
   template: string,
   meta: { title: string; description: string; canonical: string }
@@ -38,14 +40,30 @@ function applyMetadata(
     );
   }
 
-  // Replace og:title & og:description
+  // Replace og:title & twitter:title
   html = html.replace(
     /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i,
     `<meta property="og:title" content="${meta.title}" />`
   );
   html = html.replace(
+    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="twitter:title" content="${meta.title}" />`
+  );
+
+  // Replace og:description & twitter:description
+  html = html.replace(
     /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i,
     `<meta property="og:description" content="${meta.description}" />`
+  );
+  html = html.replace(
+    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="twitter:description" content="${meta.description}" />`
+  );
+
+  // Replace og:url
+  html = html.replace(
+    /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/i,
+    `<meta property="og:url" content="${meta.canonical}" />`
   );
 
   return html;
@@ -70,9 +88,9 @@ async function prerenderAll() {
     `<div id="root">${homeHtml}</div>`
   );
   homeFull = applyMetadata(homeFull, {
-    title: "Hamza | Senior Full-Stack Engineer & QA Lead",
-    description: "Senior full-stack engineer and QA lead specializing in autonomous AI pipelines, n8n workflows, API integrations, and multi-tenant SaaS quality assurance.",
-    canonical: "https://hamzakt.com/"
+    title: "Hira Ahmed | AI Engineer & Systems QA Lead",
+    description: "QA Lead across four concurrent client contracts with 1,500+ defects documented. Autonomous LLM pipelines and mission-critical software verification.",
+    canonical: `${SITE_URL}/`
   });
   fs.writeFileSync(templatePath, homeFull, "utf8");
   const homeWords = homeHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
@@ -86,9 +104,9 @@ async function prerenderAll() {
     `<div id="root">${hubHtml}</div>`
   );
   hubFull = applyMetadata(hubFull, {
-    title: "Services & Practice Areas | Hamza",
-    description: "Senior full-stack engineer and QA lead specializing in autonomous AI pipelines, n8n workflows, API integrations, and multi-tenant SaaS quality assurance.",
-    canonical: "https://hamzakt.com/services/"
+    title: "Services & Practice Areas | Hira Ahmed",
+    description: "Production-grade engineering across autonomous AI pipelines, resilient n8n automation, deterministic API integrations, and multi-tenant B2B SaaS QA governance.",
+    canonical: `${SITE_URL}/services/`
   });
   const servicesHubDir = path.join(distDir, "services");
   fs.mkdirSync(servicesHubDir, { recursive: true });
@@ -106,10 +124,11 @@ async function prerenderAll() {
       '<div id="root"></div>',
       `<div id="root">${svcHtml}</div>`
     );
+    const serviceCanonical = svc.href.endsWith("/") ? `${SITE_URL}${svc.href}` : `${SITE_URL}${svc.href}/`;
     svcFull = applyMetadata(svcFull, {
       title: svc.seoTitle || svc.title,
       description: svc.description,
-      canonical: `https://hamzakt.com${svc.href}`
+      canonical: serviceCanonical
     });
     const targetDir = path.join(distDir, routeFolder);
     fs.mkdirSync(targetDir, { recursive: true });
@@ -126,9 +145,9 @@ async function prerenderAll() {
     `<div id="root">${csHubHtml}</div>`
   );
   csHubFull = applyMetadata(csHubFull, {
-    title: "Technical Case Studies & QA Proof | Hamza",
+    title: "Technical Case Studies & Engineering Proof | Hira Ahmed",
     description: "Deep-dive case studies covering 28K+ record AI pipelines, multi-tenant SaaS QA governance, automated cloud security compliance, and infrastructure optimization.",
-    canonical: "https://hamzakt.com/case-studies/"
+    canonical: `${SITE_URL}/case-studies/`
   });
   const csHubDir = path.join(distDir, "case-studies");
   fs.mkdirSync(csHubDir, { recursive: true });
@@ -147,7 +166,7 @@ async function prerenderAll() {
     csFull = applyMetadata(csFull, {
       title: cs.title,
       description: cs.description,
-      canonical: `https://hamzakt.com/case-studies/${cs.slug}/`
+      canonical: `${SITE_URL}/case-studies/${cs.slug}/`
     });
     const targetDir = path.join(csHubDir, cs.slug);
     fs.mkdirSync(targetDir, { recursive: true });

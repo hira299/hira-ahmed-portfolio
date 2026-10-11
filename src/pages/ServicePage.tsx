@@ -135,7 +135,7 @@ export function ServicePage({ service }: ServicePageProps) {
             Available for technical consultations, hands-on pipeline engineering, or comprehensive QA audits.
           </p>
           <a
-            href="mailto:contact@hamzakt.com"
+            href="mailto:hira229922@gmail.com"
             className="inline-block px-5 py-2.5 rounded-lg bg-[#6B1724] text-[#FAF8F5] text-xs font-mono font-medium hover:bg-[#54111B] transition-colors"
           >
             Schedule a Technical Call
