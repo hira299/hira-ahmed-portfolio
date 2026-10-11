@@ -75,7 +75,12 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                 </div>
 
                 <h3 className="font-serif text-lg text-[#1C1416] mb-1.5 font-normal">
-                  {selectedMobileService.title}
+                  <a
+                    href={`/${selectedMobileService.slug}/`}
+                    className="hover:text-[#6B1724] transition-colors inline-block"
+                  >
+                    {selectedMobileService.title}
+                  </a>
                 </h3>
 
                 <p className="text-xs text-[#5C5254] leading-relaxed mb-3">
@@ -144,8 +149,13 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5">
-                    {svc.title}
+                  <h3 className="font-serif text-base sm:text-lg text-[#1C1416] mb-1.5">
+                    <a
+                      href={`/${svc.slug}/`}
+                      className="hover:text-[#6B1724] transition-colors inline-block"
+                    >
+                      {svc.title}
+                    </a>
                   </h3>
 
                   <p className="text-xs text-[#5C5254] leading-relaxed line-clamp-2 mb-3">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { profile } from "@/data/profile";
 
 interface NavbarProps {
-  onOpenHireModal: () => void;
+  onOpenHireModal?: () => void;
   onOpenSectionModal?: (section: "services" | "research" | "archive") => void;
 }
 
@@ -130,7 +130,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             </div>
           </div>
           <button
-            onClick={onOpenHireModal}
+            onClick={onOpenHireModal || (() => { window.location.href = "mailto:hira229922@gmail.com"; })}
             className="hidden md:inline-flex px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
           >
             Inquire
@@ -266,7 +266,11 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           <button
             onClick={() => {
               setMobileMenuOpen(false);
-              onOpenHireModal();
+              if (onOpenHireModal) {
+                onOpenHireModal();
+              } else {
+                window.location.href = "mailto:hira229922@gmail.com";
+              }
             }}
             className="w-full py-2.5 px-4 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-98 text-center"
           >

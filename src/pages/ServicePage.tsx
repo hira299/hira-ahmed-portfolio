@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { services, type Service } from "@/data/services";
+import { caseStudies } from "@/data/case-studies";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
@@ -29,7 +30,7 @@ export function ServicePage({ service }: ServicePageProps) {
         {/* Header Block with single H1 */}
         <header className="border-b border-[#E8E1D7] pb-8 mb-10">
           <div className="inline-block px-2.5 py-1 rounded text-[11px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium mb-3">
-            Practice Area · {service.slug}
+            Practice Area · {service.title}
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
             {service.seoTitle || service.title}
@@ -109,19 +110,23 @@ export function ServicePage({ service }: ServicePageProps) {
               Related Case Studies
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {service.caseStudies.map((csSlug) => (
-                <a
-                  key={csSlug}
-                  href={`/case-studies/${csSlug}/`}
-                  className="block p-4 bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg transition-all text-xs font-mono text-[#6B1724] hover:-translate-y-0.5"
-                >
-                  <span className="text-[#827577] text-[10px] block mb-1">Detailed Technical Spec</span>
-                  <span className="font-medium text-[#1C1416] text-sm block mb-1">
-                    /case-studies/{csSlug}/
-                  </span>
-                  <span className="text-[11px] text-[#6B1724]">Read full breakdown &rarr;</span>
-                </a>
-              ))}
+              {service.caseStudies.map((csSlug) => {
+                const cs = caseStudies.find((c) => c.slug === csSlug);
+                const title = cs ? cs.title : csSlug;
+                return (
+                  <a
+                    key={csSlug}
+                    href={`/case-studies/${csSlug}/`}
+                    className="block p-4 bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg transition-all text-xs font-mono text-[#6B1724] hover:-translate-y-0.5"
+                  >
+                    <span className="text-[#827577] text-[10px] block mb-1">Detailed Technical Spec</span>
+                    <span className="font-medium text-[#1C1416] text-sm block mb-1 font-serif">
+                      {title}
+                    </span>
+                    <span className="text-[11px] text-[#6B1724]">Read full breakdown &rarr;</span>
+                  </a>
+                );
+              })}
             </div>
           </section>
         )}

@@ -2,7 +2,7 @@ import { profile } from "@/data/profile";
 import { email, socialLinks } from "@/data/social-links";
 
 interface FooterProps {
-  onOpenHireModal: () => void;
+  onOpenHireModal?: () => void;
 }
 
 export function Footer({ onOpenHireModal }: FooterProps) {
@@ -14,7 +14,7 @@ export function Footer({ onOpenHireModal }: FooterProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
             <div className="lg:col-span-8">
               <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] font-semibold">
-                Available for Q2/Q3 Engagements
+                Available for New Engagements
               </span>
               <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] mt-1.5 sm:mt-2 mb-2 sm:mb-3 leading-snug">
                 Need resilient AI pipelines or high-assurance SaaS QA?
@@ -26,7 +26,7 @@ export function Footer({ onOpenHireModal }: FooterProps) {
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 sm:gap-3">
               <button
-                onClick={onOpenHireModal}
+                onClick={onOpenHireModal || (() => { window.location.href = `mailto:${email}`; })}
                 className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
               >
                 Start an Engagement
@@ -60,12 +60,12 @@ export function Footer({ onOpenHireModal }: FooterProps) {
               Index
             </div>
             <ul className="space-y-2 text-xs font-mono text-[#5C5254]">
-              <li><a href="#work" className="hover:text-[#6B1724]">01 / Selected Work</a></li>
-              <li><a href="#architecture" className="hover:text-[#6B1724]">02 / System Architecture</a></li>
-              <li><a href="#services" className="hover:text-[#6B1724]">03 / Services</a></li>
-              <li><a href="#archive" className="hover:text-[#6B1724]">04 / Project Archive</a></li>
-              <li><a href="#research" className="hover:text-[#6B1724]">05 / Research Artifacts</a></li>
-              <li><a href="#experience" className="hover:text-[#6B1724]">06 / Experience</a></li>
+              <li><a href="/#work" className="hover:text-[#6B1724]">01 / Selected Work</a></li>
+              <li><a href="/#work" className="hover:text-[#6B1724]">02 / System Architecture</a></li>
+              <li><a href="/services/" className="hover:text-[#6B1724]">03 / Services</a></li>
+              <li><a href="/case-studies/" className="hover:text-[#6B1724]">04 / Project Archive</a></li>
+              <li><a href="/case-studies/sentinel-mesh/" className="hover:text-[#6B1724]">05 / Research Artifacts</a></li>
+              <li><a href="/#experience" className="hover:text-[#6B1724]">06 / Experience</a></li>
             </ul>
           </div>
 

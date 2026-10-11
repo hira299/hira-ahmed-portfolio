@@ -59,15 +59,30 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
               Flagship Projects
             </h2>
           </div>
-          {onOpenArchive && (
-            <button
-              onClick={onOpenArchive}
-              className="text-xs font-mono font-medium text-[#6B1724] hover:underline flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-mono font-medium self-start sm:self-auto">
+            <a
+              href="/case-studies/"
+              onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                  return;
+                }
+                // Plain left clicks allow default navigation to /case-studies/
+              }}
+              className="text-[#6B1724] hover:underline flex items-center gap-1.5"
             >
-              <span>View Full Archive (10+ Repos)</span>
-              <span aria-hidden="true">&gt;</span>
-            </button>
-          )}
+              <span>View all case studies</span>
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+            {onOpenArchive && (
+              <button
+                onClick={onOpenArchive}
+                className="text-[#827577] hover:text-[#6B1724] hover:underline flex items-center gap-1.5 cursor-pointer"
+              >
+                <span>View Full Archive (10+ Repos)</span>
+                <span aria-hidden="true">&gt;</span>
+              </button>
+            )}
+          </div>
         </div>
 
         {/* 1 Row, 3 Columns Grid: Compact Design with Screenshot Previews */}
