@@ -174,6 +174,34 @@ async function prerenderAll() {
     const csWords = csHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
     console.log(`    Done: dist/case-studies/${cs.slug}/index.html (${csWords} words)`);
   }
+
+  // 6. Generate sitemap.xml for all 18 routes
+  const today = new Date().toISOString().split("T")[0];
+  const sitemapRoutes = [
+    "/",
+    "/services/",
+    ...servicePages.map((s) => (s.href.endsWith("/") ? s.href : `${s.href}/`)),
+    "/case-studies/",
+    ...caseStudies.map((cs) => `/case-studies/${cs.slug}/`),
+  ];
+
+  const xmlEntries = sitemapRoutes
+    .map(
+      (r) => `  <url>
+    <loc>${SITE_URL}${r}</loc>
+    <lastmod>${today}</lastmod>
+  </url>`
+    )
+    .join("\n");
+
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${xmlEntries}
+</urlset>
+`;
+
+  fs.writeFileSync(path.join(distDir, "sitemap.xml"), sitemapXml, "utf8");
+  console.log(`--> Generated dist/sitemap.xml (${sitemapRoutes.length} routes)`);
 }
 
 prerenderAll().catch((err) => {
