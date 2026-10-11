@@ -3,8 +3,55 @@ import path from "node:path";
 import React from "react";
 import { renderToString } from "react-dom/server";
 import App from "../src/App";
+import { services } from "../src/data/services";
+import { caseStudies } from "../src/data/case-studies";
+import { ServicePage } from "../src/pages/ServicePage";
+import { ServicesHubPage } from "../src/pages/ServicesHubPage";
+import { CaseStudyPage } from "../src/pages/CaseStudyPage";
+import { CaseStudiesHubPage } from "../src/pages/CaseStudiesHubPage";
 
-async function prerenderHomepage() {
+function applyMetadata(
+  template: string,
+  meta: { title: string; description: string; canonical: string }
+): string {
+  let html = template;
+
+  // Replace <title>
+  html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${meta.title}</title>`);
+
+  // Replace <meta name="description" ...>
+  html = html.replace(
+    /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/i,
+    `<meta name="description" content="${meta.description}" />`
+  );
+
+  // Replace or inject canonical
+  if (/<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i.test(html)) {
+    html = html.replace(
+      /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
+      `<link rel="canonical" href="${meta.canonical}" />`
+    );
+  } else {
+    html = html.replace(
+      "</head>",
+      `  <link rel="canonical" href="${meta.canonical}" />\n  </head>`
+    );
+  }
+
+  // Replace og:title & og:description
+  html = html.replace(
+    /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/i,
+    `<meta property="og:title" content="${meta.title}" />`
+  );
+  html = html.replace(
+    /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/i,
+    `<meta property="og:description" content="${meta.description}" />`
+  );
+
+  return html;
+}
+
+async function prerenderAll() {
   const distDir = path.resolve(process.cwd(), "dist");
   const templatePath = path.join(distDir, "index.html");
 
@@ -13,27 +60,104 @@ async function prerenderHomepage() {
     process.exit(1);
   }
 
-  const template = fs.readFileSync(templatePath, "utf8");
+  const baseTemplate = fs.readFileSync(templatePath, "utf8");
 
-  // Render homepage HTML (only summaries and links rendered in App)
-  const appHtml = renderToString(React.createElement(App));
-
-  // Insert SSR HTML into the <div id="root"></div> mount point
-  const prerendered = template.replace(
+  // 1. Homepage
+  console.log("--> Prerendering Homepage (/)");
+  const homeHtml = renderToString(React.createElement(App));
+  let homeFull = baseTemplate.replace(
     '<div id="root"></div>',
-    `<div id="root">${appHtml}</div>`
+    `<div id="root">${homeHtml}</div>`
   );
+  homeFull = applyMetadata(homeFull, {
+    title: "Hamza | Senior Full-Stack Engineer & QA Lead",
+    description: "Senior full-stack engineer and QA lead specializing in autonomous AI pipelines, n8n workflows, API integrations, and multi-tenant SaaS quality assurance.",
+    canonical: "https://hamzakt.com/"
+  });
+  fs.writeFileSync(templatePath, homeFull, "utf8");
+  const homeWords = homeHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
+  console.log(`    Done: dist/index.html (${homeWords} words)`);
 
-  fs.writeFileSync(templatePath, prerendered, "utf8");
+  // 2. Services Hub (/services/)
+  console.log("--> Prerendering Services Hub (/services/)");
+  const hubHtml = renderToString(React.createElement(ServicesHubPage));
+  let hubFull = baseTemplate.replace(
+    '<div id="root"></div>',
+    `<div id="root">${hubHtml}</div>`
+  );
+  hubFull = applyMetadata(hubFull, {
+    title: "Services & Practice Areas | Hamza",
+    description: "Senior full-stack engineer and QA lead specializing in autonomous AI pipelines, n8n workflows, API integrations, and multi-tenant SaaS quality assurance.",
+    canonical: "https://hamzakt.com/services/"
+  });
+  const servicesHubDir = path.join(distDir, "services");
+  fs.mkdirSync(servicesHubDir, { recursive: true });
+  fs.writeFileSync(path.join(servicesHubDir, "index.html"), hubFull, "utf8");
+  const hubWords = hubHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
+  console.log(`    Done: dist/services/index.html (${hubWords} words)`);
 
-  // Verify word count of prerendered homepage
-  const plainText = appHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
-  const wordCount = plainText.split(" ").filter(Boolean).length;
-  console.log(`[prerender] Homepage prerendered successfully into dist/index.html`);
-  console.log(`[prerender] Homepage body word count: ${wordCount} words`);
+  // 3. Service pages (the 6 pages with hasPage: true)
+  const servicePages = services.filter((s) => s.hasPage);
+  for (const svc of servicePages) {
+    const routeFolder = svc.href.replace(/^\//, "").replace(/\/$/, "");
+    console.log(`--> Prerendering Service Page: ${svc.href}`);
+    const svcHtml = renderToString(React.createElement(ServicePage, { service: svc }));
+    let svcFull = baseTemplate.replace(
+      '<div id="root"></div>',
+      `<div id="root">${svcHtml}</div>`
+    );
+    svcFull = applyMetadata(svcFull, {
+      title: svc.seoTitle || svc.title,
+      description: svc.description,
+      canonical: `https://hamzakt.com${svc.href}`
+    });
+    const targetDir = path.join(distDir, routeFolder);
+    fs.mkdirSync(targetDir, { recursive: true });
+    fs.writeFileSync(path.join(targetDir, "index.html"), svcFull, "utf8");
+    const svcWords = svcHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
+    console.log(`    Done: dist/${routeFolder}/index.html (${svcWords} words)`);
+  }
+
+  // 4. Case Studies Hub (/case-studies/)
+  console.log("--> Prerendering Case Studies Hub (/case-studies/)");
+  const csHubHtml = renderToString(React.createElement(CaseStudiesHubPage));
+  let csHubFull = baseTemplate.replace(
+    '<div id="root"></div>',
+    `<div id="root">${csHubHtml}</div>`
+  );
+  csHubFull = applyMetadata(csHubFull, {
+    title: "Technical Case Studies & QA Proof | Hamza",
+    description: "Deep-dive case studies covering 28K+ record AI pipelines, multi-tenant SaaS QA governance, automated cloud security compliance, and infrastructure optimization.",
+    canonical: "https://hamzakt.com/case-studies/"
+  });
+  const csHubDir = path.join(distDir, "case-studies");
+  fs.mkdirSync(csHubDir, { recursive: true });
+  fs.writeFileSync(path.join(csHubDir, "index.html"), csHubFull, "utf8");
+  const csHubWords = csHubHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
+  console.log(`    Done: dist/case-studies/index.html (${csHubWords} words)`);
+
+  // 5. The 9 Case Study Pages (/case-studies/[slug]/)
+  for (const cs of caseStudies) {
+    console.log(`--> Prerendering Case Study Page: /case-studies/${cs.slug}/`);
+    const csHtml = renderToString(React.createElement(CaseStudyPage, { study: cs }));
+    let csFull = baseTemplate.replace(
+      '<div id="root"></div>',
+      `<div id="root">${csHtml}</div>`
+    );
+    csFull = applyMetadata(csFull, {
+      title: cs.title,
+      description: cs.description,
+      canonical: `https://hamzakt.com/case-studies/${cs.slug}/`
+    });
+    const targetDir = path.join(csHubDir, cs.slug);
+    fs.mkdirSync(targetDir, { recursive: true });
+    fs.writeFileSync(path.join(targetDir, "index.html"), csFull, "utf8");
+    const csWords = csHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
+    console.log(`    Done: dist/case-studies/${cs.slug}/index.html (${csWords} words)`);
+  }
 }
 
-prerenderHomepage().catch((err) => {
+prerenderAll().catch((err) => {
   console.error("[prerender] Fatal error:", err);
   process.exit(1);
 });

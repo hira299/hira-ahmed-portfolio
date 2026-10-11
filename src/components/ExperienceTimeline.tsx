@@ -189,6 +189,9 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
                     <a
                       href={`/case-studies/${exp.caseStudySlug}/`}
                       onClick={(e) => {
+                        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                          return;
+                        }
                         if (onSelectCaseStudy) {
                           e.preventDefault();
                           e.stopPropagation();

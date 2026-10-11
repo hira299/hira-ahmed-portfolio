@@ -77,6 +77,9 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
               key={project.slug}
               href={`/case-studies/${project.slug}/`}
               onClick={(e) => {
+                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                  return;
+                }
                 e.preventDefault();
                 onSelectCaseStudy(project.slug);
               }}

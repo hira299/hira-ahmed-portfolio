@@ -58,6 +58,9 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           <a
             href="/services/"
             onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                return;
+              }
               if (onOpenSectionModal) {
                 e.preventDefault();
                 onOpenSectionModal("services");
@@ -190,6 +193,9 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           <a
             href="/services/"
             onClick={(e) => {
+              if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                return;
+              }
               e.preventDefault();
               setMobileMenuOpen(false);
               onOpenSectionModal?.("services");
