@@ -23,7 +23,7 @@ export const profile = {
   workflow: ["Build", "Integrate", "Test", "Verify", "Deploy"],
   location: "Karachi, Sindh, Pakistan",
   workPreference: "Remote and international projects",
-  availability: "Working hours overlap with US Eastern and Pacific business hours.",
+  availability: "European working hours (CET) overlap · Remote",
   languages: ["English", "Urdu", "Hindi"],
   education: {
     degree: "B.S. Cybersecurity",

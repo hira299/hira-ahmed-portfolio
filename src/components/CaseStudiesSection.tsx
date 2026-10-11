@@ -9,8 +9,11 @@ const flagshipProjects = [
     num: "01",
     client: "TECHPOTION.AI",
     tag: "PRODUCTION SYSTEM",
-    image: "/images/28k_records.png",
+    image: "/images/28k_records.webp",
+    width: 1536,
+    height: 1024,
     title: "28K+ Production AI Enrichment & Content Pipeline",
+    alt: "Architecture diagram and workflow interface of the 28K+ record AI enrichment pipeline showing status-gated stages and data processing steps.",
     description:
       "Production LLM enrichment pipeline processing 28,000+ live records with 4 status-gated stages and 9-language translation.",
   },
@@ -19,8 +22,11 @@ const flagshipProjects = [
     num: "02",
     client: "INDEPENDENT BUILD",
     tag: "AI AUDITING ENGINE",
-    image: "/images/cloud_compliance.png",
+    image: "/images/cloud_compliance.webp",
+    width: 1914,
+    height: 822,
     title: "Autonomous Cloud Compliance & AI Auditing Engine",
+    alt: "Dark-mode dashboard interface of the autonomous cloud compliance engine showing AWS security audit posture and findings.",
     description:
       "Autonomous cloud auditing engine verifying multi-account AWS posture across S3, IAM, and GuardDuty with Corrective RAG.",
   },
@@ -29,8 +35,11 @@ const flagshipProjects = [
     num: "03",
     client: "PHARMACONNECT",
     tag: "B2B SAAS QA",
-    image: "/images/PharmaConnect.png",
+    image: "/images/PharmaConnect.webp",
+    width: 1536,
+    height: 1024,
     title: "Multi-Tenant B2B SaaS QA",
+    alt: "Quality assurance testing matrix and defect tracking dashboard for the PharmaConnect multi-tenant platform.",
     description:
       "Lead QA on multi-tenant pharma platform: 20 E2E journeys across 15 modules, 110+ defects documented, and 75 closed fixes.",
   },
@@ -88,7 +97,9 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                 <div className="mb-3 rounded-lg border border-[#E8E1D7] overflow-hidden bg-[#FAF8F5] h-36 sm:h-40 md:h-42 w-full">
                   <img
                     src={project.image}
-                    alt={project.title}
+                    alt={project.alt}
+                    width={project.width}
+                    height={project.height}
                     className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />

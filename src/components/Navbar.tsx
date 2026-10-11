@@ -106,7 +106,7 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
                   <span className="font-medium text-[#1C1416]">9:00 AM – 6:00 PM EST</span>
                 </div>
                 <div className="text-[10px] font-mono text-[#6B1724] pt-1.5 border-t border-[#E8E1D7]/70 leading-snug">
-                  US Eastern &amp; Pacific overlap · Remote
+                  European working hours (CET) overlap · Remote
                 </div>
               </div>
             </div>

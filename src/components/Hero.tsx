@@ -79,12 +79,9 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
               AI Engineer &amp; Systems QA Lead
             </div>
 
-            {/* Main Title <h1>: 100ms delay, 4px gentle drift up & fade */}
+            {/* Main Title <h1> */}
             <h1
-              style={{ transitionDelay: "100ms" }}
-              className={`font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-[1.25] sm:leading-tight max-w-3xl transition-all duration-500 ease-out ${
-                mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
-              }`}
+              className="font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-[1.25] sm:leading-tight max-w-3xl"
             >
               Autonomous LLM pipelines and{" "}
               <span className="italic text-[#6B1724]">mission-critical software verification</span>.
