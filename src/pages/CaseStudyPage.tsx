@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { caseStudies, type CaseStudy } from "@/data/case-studies";
 import { caseStudyContent } from "@/data/case-study-content";
+import { services } from "@/data/services";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import {
@@ -212,6 +213,30 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
             <span className="text-[#827577] text-xs font-mono">Client: {study.client}</span>
             <span className="text-[#D8CEC1]">·</span>
             <span className="text-[#827577] text-xs font-mono">Role: {study.role}</span>
+            {study.services && study.services.length > 0 && (
+              <>
+                <span className="text-[#D8CEC1]">·</span>
+                <span className="text-[#827577] text-xs font-mono">
+                  Practice Area:{" "}
+                  {study.services.map((svcSlug, sidx) => {
+                    const svc = services.find((s) => s.slug === svcSlug);
+                    const label = svc ? svc.title : svcSlug;
+                    const href = svc?.hasPage ? svc.href : "/services/";
+                    return (
+                      <span key={svcSlug}>
+                        {sidx > 0 && ", "}
+                        <a
+                          href={href}
+                          className="text-[#6B1724] underline hover:text-[#54111B] transition-colors"
+                        >
+                          {label}
+                        </a>
+                      </span>
+                    );
+                  })}
+                </span>
+              </>
+            )}
           </div>
           <h1 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal leading-tight mb-4">
             {study.title}

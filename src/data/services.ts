@@ -34,9 +34,9 @@ export const services: Service[] = [
     title: "AI Automation",
     href: "/ai-automation/",
     hasPage: true,
-    seoTitle: "AI Automation Engineer",
+    seoTitle: "AI Automation Consultant | Hira Ahmed",
     description:
-      "Production AI automation and LLM pipelines: multi-stage LLM processing, state-aware workflows, retries, and fault tolerance with Python, n8n, and AWS.",
+      "Production AI pipelines with status-gated validation, multi-stage LLM processing, and fault tolerance in Python and AWS. Schedule a call.",
     summary:
       "Workflows that connect your tools, APIs, databases, and LLMs, and keep working when inputs are messy or services fail.",
     problems: [
@@ -58,9 +58,9 @@ export const services: Service[] = [
     title: "n8n Automation",
     href: "/n8n-automation/",
     hasPage: true,
-    seoTitle: "n8n Automation Engineer | AI Workflows",
+    seoTitle: "n8n Automation Consultant | Hira Ahmed",
     description:
-      "Production n8n workflows and AI agents with error handling, retry logic, PostgreSQL state, dead-letter queues, and self-hosted deployment.",
+      "Production n8n workflows with dead-letter queues, PostgreSQL state, retry logic and self-hosted deployment. Schedule a call to discuss your automation.",
     summary:
       "Self-hosted or cloud n8n workflows with explicit state, error routing, and dead-letter queues, so failures are caught instead of lost.",
     problems: [
@@ -134,9 +134,9 @@ export const services: Service[] = [
     title: "B2B SaaS QA",
     href: "/qa-testing/",
     hasPage: true,
-    seoTitle: "B2B SaaS QA & Exploratory Testing",
+    seoTitle: "B2B SaaS QA Lead & Testing | Hira Ahmed",
     description:
-      "Production SaaS QA: end-to-end journeys, exploratory and security-oriented testing, API-level reproduction, root-cause analysis, and pre-launch release checks.",
+      "End-to-end user journeys, exploratory verification, and API-level defect reproduction for high-assurance B2B SaaS. Schedule a call.",
     summary:
       "Pre-launch and production QA that goes past the UI: journeys, network/API evidence, controlled reproduction, and root cause.",
     problems: [
@@ -159,9 +159,9 @@ export const services: Service[] = [
     title: "API Testing",
     href: "/api-testing/",
     hasPage: true,
-    seoTitle: "API Testing & Backend QA",
+    seoTitle: "API Testing & Backend QA Lead | Hira Ahmed",
     description:
-      "API and backend testing: authentication, authorization, status codes, payload validation, state transitions, error handling, and API/UI mismatches.",
+      "Backend API verification covering RBAC boundaries, payload validation, token lifecycles, and cross-tenant isolation. Schedule a technical call.",
     summary:
       "Testing the API behind the interface: auth, permissions, payloads, status codes, and what happens to state when things fail.",
     problems: [
@@ -182,9 +182,9 @@ export const services: Service[] = [
     title: "Multi-Tenant Testing",
     href: "/multitenant-qa/",
     hasPage: true,
-    seoTitle: "Multi-Tenant SaaS QA",
+    seoTitle: "Multi-Tenant SaaS QA Specialist | Hira Ahmed",
     description:
-      "Multi-tenant SaaS testing: tenant isolation, RBAC, access boundaries, session persistence, cross-tenant access, financial reconciliation, and data integrity.",
+      "Verification of tenant isolation, RBAC boundaries, and financial calculation integrity across complex B2B platforms. Schedule a consultation.",
     summary:
       "Checking that each tenant, role, and session only sees and changes what it should.",
     problems: [

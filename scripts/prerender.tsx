@@ -89,7 +89,7 @@ async function prerenderAll() {
   );
   homeFull = applyMetadata(homeFull, {
     title: "Hira Ahmed | AI Engineer & Systems QA Lead",
-    description: "QA Lead across four concurrent client contracts with 1,500+ defects documented. Autonomous LLM pipelines and mission-critical software verification.",
+    description: "QA Lead with 1,500+ documented defects and production LLM pipelines. Available remotely for EU teams. Get in touch to discuss your project.",
     canonical: `${SITE_URL}/`
   });
   fs.writeFileSync(templatePath, homeFull, "utf8");
@@ -104,8 +104,8 @@ async function prerenderAll() {
     `<div id="root">${hubHtml}</div>`
   );
   hubFull = applyMetadata(hubFull, {
-    title: "Services & Practice Areas | Hira Ahmed",
-    description: "Production-grade engineering across autonomous AI pipelines, resilient n8n automation, deterministic API integrations, and multi-tenant B2B SaaS QA governance.",
+    title: "AI Engineering & SaaS QA Services | Hira Ahmed",
+    description: "Production-grade AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review practice areas or hire.",
     canonical: `${SITE_URL}/services/`
   });
   const servicesHubDir = path.join(distDir, "services");
@@ -145,8 +145,8 @@ async function prerenderAll() {
     `<div id="root">${csHubHtml}</div>`
   );
   csHubFull = applyMetadata(csHubFull, {
-    title: "Technical Case Studies & Engineering Proof | Hira Ahmed",
-    description: "Deep-dive case studies covering 28K+ record AI pipelines, multi-tenant SaaS QA governance, automated cloud security compliance, and infrastructure optimization.",
+    title: "AI Engineering & QA Case Studies | Hira Ahmed",
+    description: "Documented proof across 28K+ record AI pipelines, multi-tenant SaaS QA audits, and cloud compliance engines. Read technical breakdowns.",
     canonical: `${SITE_URL}/case-studies/`
   });
   const csHubDir = path.join(distDir, "case-studies");

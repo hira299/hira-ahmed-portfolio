@@ -25,7 +25,7 @@ export function ServicesHubPage() {
             Engineering Practice Areas & Capabilities
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
-            Services &amp; Practice Areas
+            AI Engineering &amp; SaaS QA Services
           </h1>
           <p className="text-base sm:text-lg text-[#5C5254] leading-relaxed max-w-3xl">
             Production-grade engineering across autonomous AI pipelines, resilient n8n automation, deterministic API integrations, and multi-tenant B2B SaaS QA governance.
