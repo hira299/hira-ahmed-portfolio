@@ -14,6 +14,7 @@ export type Service = {
   href: string;
   /** Services without their own route point to the closest page. */
   hasPage: boolean;
+  h1Title?: string;
   seoTitle?: string;
   description: string;
   summary: string;
@@ -34,6 +35,7 @@ export const services: Service[] = [
     title: "AI Automation",
     href: "/ai-automation/",
     hasPage: true,
+    h1Title: "AI Automation Engineer",
     seoTitle: "AI Automation Consultant | Hira Ahmed",
     description:
       "Production AI pipelines with status-gated validation, multi-stage LLM processing, and fault tolerance in Python and AWS. Schedule a call.",
@@ -58,6 +60,7 @@ export const services: Service[] = [
     title: "n8n Automation",
     href: "/n8n-automation/",
     hasPage: true,
+    h1Title: "n8n Automation Engineer | AI Workflows",
     seoTitle: "n8n Automation Consultant | Hira Ahmed",
     description:
       "Production n8n workflows with dead-letter queues, PostgreSQL state, retry logic and self-hosted deployment. Schedule a call to discuss your automation.",
@@ -88,6 +91,7 @@ export const services: Service[] = [
     title: "AI Agent Development",
     href: "/ai-agents/",
     hasPage: true,
+    h1Title: "AI Agent Development",
     seoTitle: "AI Agent Development Consultant | Hira Ahmed",
     description:
       "Stateful AI agents and Corrective RAG pipelines with verifiable citation checks, Critic agents, and structured outputs in LangGraph. Book a call.",
@@ -134,6 +138,7 @@ export const services: Service[] = [
     title: "B2B SaaS QA",
     href: "/qa-testing/",
     hasPage: true,
+    h1Title: "B2B SaaS QA & Exploratory Testing",
     seoTitle: "B2B SaaS QA Lead & Testing | Hira Ahmed",
     description:
       "End-to-end user journeys, exploratory verification, and API-level defect reproduction for high-assurance B2B SaaS. Schedule a call.",
@@ -159,6 +164,7 @@ export const services: Service[] = [
     title: "API Testing",
     href: "/api-testing/",
     hasPage: true,
+    h1Title: "API Testing & Backend QA",
     seoTitle: "API Testing & Backend QA Lead | Hira Ahmed",
     description:
       "Backend API verification covering RBAC boundaries, payload validation, token lifecycles, and cross-tenant isolation. Schedule a technical call.",
@@ -182,6 +188,7 @@ export const services: Service[] = [
     title: "Multi-Tenant Testing",
     href: "/multitenant-qa/",
     hasPage: true,
+    h1Title: "Multi-Tenant SaaS QA",
     seoTitle: "Multi-Tenant SaaS QA Specialist | Hira Ahmed",
     description:
       "Verification of tenant isolation, RBAC boundaries, and financial calculation integrity across complex B2B platforms. Schedule a consultation.",

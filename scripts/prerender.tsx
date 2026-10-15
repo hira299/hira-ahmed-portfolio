@@ -164,7 +164,7 @@ async function prerenderAll() {
       `<div id="root">${csHtml}</div>`
     );
     csFull = applyMetadata(csFull, {
-      title: cs.title,
+      title: cs.seoTitle || cs.title,
       description: cs.description,
       canonical: `${SITE_URL}/case-studies/${cs.slug}/`
     });

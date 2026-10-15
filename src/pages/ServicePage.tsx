@@ -33,7 +33,7 @@ export function ServicePage({ service }: ServicePageProps) {
             Practice Area · {service.title}
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
-            {service.seoTitle || service.title}
+            {service.h1Title || service.title}
           </h1>
           <p className="text-base sm:text-lg text-[#5C5254] leading-relaxed max-w-3xl">
             {service.description}

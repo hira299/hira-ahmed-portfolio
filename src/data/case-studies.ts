@@ -23,6 +23,7 @@ export type CaseStudy = {
   slug: CaseStudySlug;
   kind: CaseStudyKind;
   title: string;
+  seoTitle?: string;
   href: string;
   description: string;
   summary: string;
@@ -39,7 +40,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "28k-record-pipeline",
     kind: "professional",
-    title: "28K+ AI Enrichment Pipeline Case Study | Hira Ahmed",
+    title: "28K+ Production AI Enrichment & Content Pipeline",
+    seoTitle: "28K+ AI Enrichment Pipeline Case Study | Hira Ahmed",
     href: "/case-studies/28k-record-pipeline/",
     description:
       "Production AI pipeline processing 28,000+ records with status-gated LLM stages, 9 translations, and a 5.6x speedup. Read the full case study.",
@@ -63,7 +65,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "aws-cost-optimization",
     kind: "professional",
-    title: "AWS Cost Optimization Case Study | Hira Ahmed",
+    title: "AWS Infrastructure & Cost Optimization",
+    seoTitle: "AWS Cost Optimization Case Study | Hira Ahmed",
     href: "/case-studies/aws-cost-optimization/",
     description:
       "Cutting monthly AWS infrastructure spend by 34% across Lambda, API Gateway, and PostgreSQL on a 28K+ record platform. Read the breakdown.",
@@ -80,7 +83,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "multitenant-saas-qa",
     kind: "professional",
-    title: "PharmaConnect: Multi-Tenant SaaS QA | Hira Ahmed",
+    title: "PharmaConnect: Multi-Tenant B2B SaaS QA",
+    seoTitle: "PharmaConnect: Multi-Tenant SaaS QA | Hira Ahmed",
     href: "/case-studies/multitenant-saas-qa/",
     description:
       "Lead QA on a multi-tenant B2B pharma platform: 20 end-to-end journeys across 6 user roles and 110+ documented defects. Read the case study.",
@@ -109,7 +113,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "tekruiter-qa",
     kind: "professional",
-    title: "Tekruiter: Recruitment Platform QA | Hira Ahmed",
+    title: "Tekruiter: Multi-Tenant Recruitment Platform QA",
+    seoTitle: "Tekruiter: Recruitment Platform QA | Hira Ahmed",
     href: "/case-studies/tekruiter-qa/",
     description:
       "Lead QA on Tekruiter, a multi-tenant recruitment SaaS: 60+ defects across 20+ modules, including a $7.95M billing calculation bug. Read the case study.",
@@ -133,7 +138,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "toolpotion-qa",
     kind: "professional",
-    title: "ToolPotion: 28K+ AI Directory QA | Hira Ahmed",
+    title: "ToolPotion: 28K+ AI Directory Data & Listing QA",
+    seoTitle: "ToolPotion: 28K+ AI Directory QA | Hira Ahmed",
     href: "/case-studies/toolpotion-qa/",
     description:
       "QA governance for a 28,000+ listing AI directory: 1,300+ defects across 10 QA rounds, with phishing and malware listings flagged. Read the case study.",
@@ -157,7 +163,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-cloud-academy-qa",
     kind: "professional",
-    title: "AI Cloud Academy: E-Learning Platform QA | Hira Ahmed",
+    title: "AI Cloud Academy: E-Learning Platform & Progress QA",
+    seoTitle: "AI Cloud Academy: E-Learning Platform QA | Hira Ahmed",
     href: "/case-studies/ai-cloud-academy-qa/",
     description:
       "Platform and curriculum QA across 37 courses: 80+ defects logged, including mobile progression blockers and a gamification XP exploit. Read the case study.",
@@ -181,7 +188,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "n8n-email-agent",
     kind: "build",
-    title: "Autonomous n8n AI Email Agent | Hira Ahmed",
+    title: "Autonomous AI Email Agent",
+    seoTitle: "Autonomous n8n AI Email Agent | Hira Ahmed",
     href: "/case-studies/n8n-email-agent/",
     description:
       "Stateful n8n email agent with multi-turn thread memory and Groq LLM inference for autonomous inbound screening and drafting. Read the case study.",
@@ -204,7 +212,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "cloud-compliance",
     kind: "build",
-    title: "Cloud Compliance Corrective RAG | Hira Ahmed",
+    title: "Autonomous Cloud Compliance & AI Auditing Engine",
+    seoTitle: "Cloud Compliance Corrective RAG | Hira Ahmed",
     href: "/case-studies/cloud-compliance/",
     description:
       "LangGraph Corrective RAG auditing engine answering 250+ question reviews from live AWS evidence with verified citations. Read the case study.",
@@ -236,7 +245,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "sentinel-mesh",
     kind: "research",
-    title: "Sentinel-Mesh: Verified Cloud Remediation | Hira Ahmed",
+    title: "Sentinel-Mesh: Formally Verified Remediation of Cloud Misconfigurations",
+    seoTitle: "Sentinel-Mesh: Verified Cloud Remediation | Hira Ahmed",
     href: "/case-studies/sentinel-mesh/",
     description:
       "Closed-loop LLM remediation with Z3 SMT verification for Terraform misconfigurations, evaluated on CloudFix-Bench. Read the case study and preprint.",
