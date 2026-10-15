@@ -48,7 +48,7 @@ Hira Ahmed builds production LLM pipelines, AI agents, and n8n automations, and 
 - [Fiverr](https://www.fiverr.com/hira299)
 - [Upwork](https://www.upwork.com/freelancers/~0178616a4e00b82166)
 - [Topmate](https://topmate.io/hira_ahmed)
-- [Medium](https://medium.com/@hira299/beyond-heuristics-formally-verifying-ai-generated-infrastructure-with-z3-smt-solvers-e95fd3a7bf95)
+- [Medium](https://medium.com/@hira299)
 - [ORCID](https://orcid.org/0009-0005-3219-7252)
 - [ResearchGate](https://www.researchgate.net/profile/Hira-Ahmed-28)
 - [Web of Science](https://www.webofscience.com/wos/author/record/QIV-1552-2026)
