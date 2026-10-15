@@ -121,10 +121,10 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
                 </div>
                 <div className="flex items-center justify-between text-[11px]">
                   <span className="font-mono text-[#827577]">Hours:</span>
-                  <span className="font-medium text-[#1C1416]">9:00 AM – 6:00 PM EST</span>
+                  <span className="font-medium text-[#1C1416]">7:00 PM to 3:00 AM PKT</span>
                 </div>
                 <div className="text-[10px] font-mono text-[#6B1724] pt-1.5 border-t border-[#E8E1D7]/70 leading-snug">
-                  European working hours (CET) overlap · Remote
+                  Overlaps US and Canada business hours, plus UK, Ireland and Germany afternoons · Remote
                 </div>
               </div>
             </div>

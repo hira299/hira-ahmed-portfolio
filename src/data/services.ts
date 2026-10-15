@@ -88,9 +88,9 @@ export const services: Service[] = [
     title: "AI Agent Development",
     href: "/ai-agents/",
     hasPage: true,
-    seoTitle: "AI Agent Development",
+    seoTitle: "AI Agent Development Consultant | Hira Ahmed",
     description:
-      "AI agents and LLM systems with persistent context, RAG and Corrective RAG over verified data, structured outputs, validation, and LangGraph or n8n orchestration.",
+      "Stateful AI agents and Corrective RAG pipelines with verifiable citation checks, Critic agents, and structured outputs in LangGraph. Book a call.",
     summary:
       "Agents that keep context across conversations, answer from verified sources, and hand off to people when they should.",
     problems: [

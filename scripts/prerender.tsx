@@ -89,7 +89,7 @@ async function prerenderAll() {
   );
   homeFull = applyMetadata(homeFull, {
     title: "Hira Ahmed | AI Engineer & Systems QA Lead",
-    description: "QA Lead with 1,500+ documented defects and production LLM pipelines. Available remotely for EU teams. Get in touch to discuss your project.",
+    description: "QA Lead with 1,500+ documented defects and production LLM pipelines. Available remotely for teams in the US, Canada, UK, Ireland and Germany. Get in touch.",
     canonical: `${SITE_URL}/`
   });
   fs.writeFileSync(templatePath, homeFull, "utf8");

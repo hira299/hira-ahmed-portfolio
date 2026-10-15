@@ -279,6 +279,69 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
           </article>
         )}
 
+        {/* Author Bio Card (N7) */}
+        <section className="mb-10 bg-white border border-[#E8E1D7] rounded-xl p-6 sm:p-8">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-[#6B1724] font-semibold mb-2">
+            Author &amp; System Architect
+          </div>
+          <h2 className="font-serif text-lg sm:text-xl text-[#1C1416] font-normal mb-2">
+            Hira Ahmed
+          </h2>
+          <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-4">
+            AI Engineer &amp; Systems QA Lead specializing in autonomous LLM pipelines, formal verification with Z3 SMT solvers, and mission-critical SaaS reliability.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-3 border-t border-[#F0EBE1] text-xs font-mono">
+            <a
+              href="https://github.com/hira299"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              GitHub &rarr;
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hira-ahmed-4068402a7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              LinkedIn &rarr;
+            </a>
+            <a
+              href="https://www.researchgate.net/profile/Hira-Ahmed-28"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              ResearchGate &rarr;
+            </a>
+            <a
+              href="https://doi.org/10.21203/rs.3.rs-10674271/v1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Preprint DOI &rarr;
+            </a>
+            <a
+              href="https://topmate.io/hira_ahmed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Topmate &rarr;
+            </a>
+            <a
+              href="https://medium.com/@hira299"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Medium &rarr;
+            </a>
+          </div>
+        </section>
+
         {/* Stack & Links */}
         <section className="mb-10 bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl p-6">
           <h2 className="font-mono text-xs uppercase tracking-wider text-[#6B1724] font-semibold mb-3">
