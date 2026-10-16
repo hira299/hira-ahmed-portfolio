@@ -1,8 +1,9 @@
 # Hira Ahmed
 
 - Identity: Hira Ahmed
-- Roles: AI Engineer; AI Automation & QA Engineer
+- Roles: AI Engineer & Systems QA Lead
 - Location: Karachi, Pakistan; remote
+- Availability: remote, working hours 7:00 PM to 3:00 AM PKT, for teams in the US, Canada, UK, Ireland and Germany
 - Portfolio: https://hiraahmed.me/
 
 Hira Ahmed builds production LLM pipelines, AI agents, and n8n automations, and provides B2B SaaS QA, API testing, and multi-tenant testing. Research work includes Sentinel-Mesh, a preprint on formally verified cloud-misconfiguration remediation.
@@ -22,7 +23,7 @@ Hira Ahmed builds production LLM pipelines, AI agents, and n8n automations, and 
 - [Case Studies Hub](https://hiraahmed.me/case-studies/)
 - [28K+ Production AI Enrichment & Content Pipeline](https://hiraahmed.me/case-studies/28k-record-pipeline/)
 - [AWS Infrastructure & Cost Optimization](https://hiraahmed.me/case-studies/aws-cost-optimization/)
-- [Multi-Tenant B2B SaaS QA](https://hiraahmed.me/case-studies/multitenant-saas-qa/)
+- [PharmaConnect: Multi-Tenant B2B SaaS QA](https://hiraahmed.me/case-studies/multitenant-saas-qa/)
 - [Tekruiter: Multi-Tenant Recruitment Platform QA](https://hiraahmed.me/case-studies/tekruiter-qa/)
 - [ToolPotion: 28K+ AI Directory Data & Listing QA](https://hiraahmed.me/case-studies/toolpotion-qa/)
 - [AI Cloud Academy: E-Learning Platform & Progress QA](https://hiraahmed.me/case-studies/ai-cloud-academy-qa/)

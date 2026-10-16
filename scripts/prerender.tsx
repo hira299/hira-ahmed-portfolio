@@ -10,11 +10,19 @@ import { ServicesHubPage } from "../src/pages/ServicesHubPage";
 import { CaseStudyPage } from "../src/pages/CaseStudyPage";
 import { CaseStudiesHubPage } from "../src/pages/CaseStudiesHubPage";
 
+import {
+  getHomepageSchema,
+  getServicesHubSchema,
+  getServicePageSchema,
+  getCaseStudiesHubSchema,
+  getCaseStudyPageSchema,
+} from "./schema";
+
 export const SITE_URL = "https://hiraahmed.me";
 
 function applyMetadata(
   template: string,
-  meta: { title: string; description: string; canonical: string }
+  meta: { title: string; description: string; canonical: string; schema?: object }
 ): string {
   let html = template;
 
@@ -66,6 +74,16 @@ function applyMetadata(
     `<meta property="og:url" content="${meta.canonical}" />`
   );
 
+  // Replace or inject JSON-LD schema
+  if (meta.schema) {
+    const jsonLd = `    <script type="application/ld+json">\n${JSON.stringify(meta.schema, null, 2)}\n    </script>`;
+    if (/<script type="application\/ld\+json">[\s\S]*?<\/script>/i.test(html)) {
+      html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/i, jsonLd.trim());
+    } else {
+      html = html.replace("</head>", `${jsonLd}\n  </head>`);
+    }
+  }
+
   return html;
 }
 
@@ -90,7 +108,8 @@ async function prerenderAll() {
   homeFull = applyMetadata(homeFull, {
     title: "Hira Ahmed | AI Engineer & Systems QA Lead",
     description: "QA Lead with 1,500+ documented defects and production LLM pipelines. Available remotely for teams in the US, Canada, UK, Ireland and Germany. Get in touch.",
-    canonical: `${SITE_URL}/`
+    canonical: `${SITE_URL}/`,
+    schema: getHomepageSchema()
   });
   fs.writeFileSync(templatePath, homeFull, "utf8");
   const homeWords = homeHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
@@ -106,7 +125,8 @@ async function prerenderAll() {
   hubFull = applyMetadata(hubFull, {
     title: "AI Engineering & SaaS QA Services | Hira Ahmed",
     description: "Production-grade AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review practice areas or hire.",
-    canonical: `${SITE_URL}/services/`
+    canonical: `${SITE_URL}/services/`,
+    schema: getServicesHubSchema(services.filter((s) => s.hasPage))
   });
   const servicesHubDir = path.join(distDir, "services");
   fs.mkdirSync(servicesHubDir, { recursive: true });
@@ -128,7 +148,8 @@ async function prerenderAll() {
     svcFull = applyMetadata(svcFull, {
       title: svc.seoTitle || svc.title,
       description: svc.description,
-      canonical: serviceCanonical
+      canonical: serviceCanonical,
+      schema: getServicePageSchema(svc)
     });
     const targetDir = path.join(distDir, routeFolder);
     fs.mkdirSync(targetDir, { recursive: true });
@@ -147,7 +168,8 @@ async function prerenderAll() {
   csHubFull = applyMetadata(csHubFull, {
     title: "AI Engineering & QA Case Studies | Hira Ahmed",
     description: "Documented proof across 28K+ record AI pipelines, multi-tenant SaaS QA audits, and cloud compliance engines. Read technical breakdowns.",
-    canonical: `${SITE_URL}/case-studies/`
+    canonical: `${SITE_URL}/case-studies/`,
+    schema: getCaseStudiesHubSchema(caseStudies)
   });
   const csHubDir = path.join(distDir, "case-studies");
   fs.mkdirSync(csHubDir, { recursive: true });
@@ -166,7 +188,8 @@ async function prerenderAll() {
     csFull = applyMetadata(csFull, {
       title: cs.seoTitle || cs.title,
       description: cs.description,
-      canonical: `${SITE_URL}/case-studies/${cs.slug}/`
+      canonical: `${SITE_URL}/case-studies/${cs.slug}/`,
+      schema: getCaseStudyPageSchema(cs)
     });
     const targetDir = path.join(csHubDir, cs.slug);
     fs.mkdirSync(targetDir, { recursive: true });
