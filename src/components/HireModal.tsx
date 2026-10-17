@@ -22,15 +22,22 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        onClose();
+      }
     };
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown, true);
     }
     return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown, true);
+      // If SectionModal or CaseStudyModal is still open, preserve hidden overflow
+      if (!document.querySelector('.fixed.inset-0.z-50')) {
+        document.body.style.overflow = "";
+      }
     };
   }, [isOpen, onClose]);
 
@@ -52,7 +59,7 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-[#1C1416]/40 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-[#1C1416]/40 backdrop-blur-sm animate-fade-in">
       <div className="fixed inset-0" onClick={onClose} />
 
       <div className="relative w-full max-w-xl bg-white border border-[#E8E1D7] rounded shadow-xl overflow-hidden my-auto z-10 max-h-[96vh] flex flex-col">

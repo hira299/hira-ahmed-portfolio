@@ -118,9 +118,9 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
                 <button
                   onClick={() => onOpenHireModal(selectedMobileService.title)}
-                  className="w-full py-2.5 px-3 bg-[#FAF0F0] hover:bg-[#6B1724] text-[#6B1724] hover:text-[#FAF8F5] border border-[#F0D5D8] hover:border-[#6B1724] rounded font-mono text-xs font-medium tracking-wide transition-all text-center block shadow-xs"
+                  className="w-full py-2.5 px-3 bg-[#FAF0F0] hover:bg-[#6B1724] text-[#6B1724] hover:text-[#FAF8F5] border border-[#F0D5D8] hover:border-[#6B1724] rounded font-mono text-xs font-medium tracking-wide transition-all text-center block shadow-xs leading-tight"
                 >
-                  Inquire for {selectedMobileService.title.split(" ")[0]} →
+                  Inquire for {selectedMobileService.title} →
                 </button>
               </div>
             </div>
@@ -193,9 +193,9 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
                   <button
                     onClick={() => onOpenHireModal(svc.title)}
-                    className="w-full py-1.5 text-xs font-mono text-[#6B1724] group-hover:text-white bg-[#FAF0F0] group-hover:bg-[#6B1724] border border-[#F0D5D8] group-hover:border-[#6B1724] rounded text-center transition-all font-medium cursor-pointer"
+                    className="w-full py-2 px-2 text-xs font-mono text-[#6B1724] group-hover:text-white bg-[#FAF0F0] group-hover:bg-[#6B1724] border border-[#F0D5D8] group-hover:border-[#6B1724] rounded text-center transition-all font-medium cursor-pointer leading-tight break-words flex items-center justify-center"
                   >
-                    Inquire for {svc.title.split(" ")[0]} →
+                    Inquire for {svc.title} →
                   </button>
                 </div>
               </div>

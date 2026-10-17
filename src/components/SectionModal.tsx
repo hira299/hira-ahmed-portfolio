@@ -17,15 +17,22 @@ export function SectionModal({
   onSelectCaseStudy,
 }: SectionModalProps) {
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
     if (section) {
       document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
     } else {
       document.body.style.overflow = "unset";
     }
     return () => {
       document.body.style.overflow = "unset";
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [section]);
+  }, [section, onClose]);
 
   if (!section) return null;
 
@@ -62,7 +69,6 @@ export function SectionModal({
           {section === "services" && (
             <ServicesSection
               onOpenHireModal={(title) => {
-                onClose();
                 onOpenHireModal(title);
               }}
             />

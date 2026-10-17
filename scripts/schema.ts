@@ -32,10 +32,9 @@ export const APPROVED_SAME_AS = [
 
 /**
  * T1: Homepage Schema
- * Primary Person entity + WebSite + ProfessionalService
- * alumniOf / education omitted entirely
- * datePublished / dateModified omitted
- * no address, no email, no ratings/reviews
+ * Exactly ONE Person node on the homepage.
+ * WebSite and ProfessionalService reference Person via minimal node.
+ * No seoTitle, no "| Hira Ahmed" suffix in names, no education, no dates, no address, no email.
  */
 export function getHomepageSchema() {
   return {
@@ -74,7 +73,7 @@ export function getHomepageSchema() {
       {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#service`,
-        "name": "Hira Ahmed - AI Engineering & Systems QA",
+        "name": "Hira Ahmed",
         "url": `${SITE_URL}/`,
         "image": `${SITE_URL}/og-image.png`,
         "provider": MINIMAL_PERSON,
@@ -86,7 +85,8 @@ export function getHomepageSchema() {
 
 /**
  * T2: Services Hub Schema (/services/)
- * CollectionPage + ItemList of the 6 services
+ * CollectionPage + BreadcrumbList
+ * Name equals visible text; no seoTitle or "| Hira Ahmed".
  */
 export function getServicesHubSchema(serviceList: Service[]) {
   return {
@@ -96,7 +96,7 @@ export function getServicesHubSchema(serviceList: Service[]) {
         "@type": "CollectionPage",
         "@id": `${SITE_URL}/services/#webpage`,
         "url": `${SITE_URL}/services/`,
-        "name": "AI Engineering & SaaS QA Services | Hira Ahmed",
+        "name": "AI Engineering & SaaS QA Services",
         "description":
           "Production-grade AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review practice areas or hire.",
         "publisher": MINIMAL_PERSON,
@@ -137,7 +137,9 @@ export function getServicesHubSchema(serviceList: Service[]) {
 
 /**
  * T3: Service Pages Schema (6 individual service pages)
- * Service entity + WebPage with BreadcrumbList
+ * Service entity + BreadcrumbList.
+ * WebPage node removed per user approval.
+ * Name equals visible text from services.ts; no seoTitle or "| Hira Ahmed".
  */
 export function getServicePageSchema(svc: Service) {
   const serviceCanonical = svc.href.endsWith("/")
@@ -150,48 +152,35 @@ export function getServicePageSchema(svc: Service) {
       {
         "@type": "Service",
         "@id": `${serviceCanonical}#service`,
-        "name": svc.h1Title || svc.title,
+        "name": svc.title,
         "description": svc.description,
         "url": serviceCanonical,
         "provider": MINIMAL_PERSON,
         "areaServed": APPROVED_AREAS_SERVED,
       },
       {
-        "@type": "WebPage",
-        "@id": `${serviceCanonical}#webpage`,
-        "url": serviceCanonical,
-        "name": svc.seoTitle || svc.title,
-        "description": svc.description,
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": `${SITE_URL}/#website`,
-          "name": "Hira Ahmed",
-          "url": `${SITE_URL}/`,
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "@id": `${serviceCanonical}#breadcrumb`,
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": `${SITE_URL}/`,
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Services",
-              "item": `${SITE_URL}/services/`,
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": svc.title,
-              "item": serviceCanonical,
-            },
-          ],
-        },
+        "@type": "BreadcrumbList",
+        "@id": `${serviceCanonical}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Services",
+            "item": `${SITE_URL}/services/`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": svc.title,
+            "item": serviceCanonical,
+          },
+        ],
       },
     ],
   };
@@ -199,7 +188,8 @@ export function getServicePageSchema(svc: Service) {
 
 /**
  * T4: Case Studies Hub Schema (/case-studies/)
- * CollectionPage + ItemList of the 9 case studies
+ * CollectionPage + BreadcrumbList.
+ * Name equals visible text; no seoTitle or "| Hira Ahmed".
  */
 export function getCaseStudiesHubSchema(studies: CaseStudy[]) {
   return {
@@ -209,7 +199,7 @@ export function getCaseStudiesHubSchema(studies: CaseStudy[]) {
         "@type": "CollectionPage",
         "@id": `${SITE_URL}/case-studies/#webpage`,
         "url": `${SITE_URL}/case-studies/`,
-        "name": "AI Engineering & QA Case Studies | Hira Ahmed",
+        "name": "Technical Case Studies & Engineering Proof",
         "description":
           "Documented proof across 28K+ record AI pipelines, multi-tenant SaaS QA audits, and cloud compliance engines. Read technical breakdowns.",
         "publisher": MINIMAL_PERSON,
@@ -248,8 +238,10 @@ export function getCaseStudiesHubSchema(studies: CaseStudy[]) {
 
 /**
  * T5: Case Study Pages Schema (9 individual case study pages)
- * TechArticle (or ScholarlyArticle for Sentinel-Mesh preprint)
- * Omit datePublished and dateModified per T6 Q2
+ * TechArticle (or ScholarlyArticle for Sentinel-Mesh preprint) + BreadcrumbList.
+ * WebPage node removed per user approval.
+ * Headline equals visible text from case-studies.ts; no seoTitle or "| Hira Ahmed".
+ * Omit datePublished and dateModified per T6 Q2.
  */
 export function getCaseStudyPageSchema(cs: CaseStudy) {
   const pageCanonical = `${SITE_URL}/case-studies/${cs.slug}/`;
@@ -275,41 +267,28 @@ export function getCaseStudyPageSchema(cs: CaseStudy) {
     "@graph": [
       articleNode,
       {
-        "@type": "WebPage",
-        "@id": `${pageCanonical}#webpage`,
-        "url": pageCanonical,
-        "name": cs.seoTitle || cs.title,
-        "description": cs.description,
-        "isPartOf": {
-          "@type": "WebSite",
-          "@id": `${SITE_URL}/#website`,
-          "name": "Hira Ahmed",
-          "url": `${SITE_URL}/`,
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "@id": `${pageCanonical}#breadcrumb`,
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": `${SITE_URL}/`,
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "Case Studies",
-              "item": `${SITE_URL}/case-studies/`,
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": cs.title,
-              "item": pageCanonical,
-            },
-          ],
-        },
+        "@type": "BreadcrumbList",
+        "@id": `${pageCanonical}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": `${SITE_URL}/`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Case Studies",
+            "item": `${SITE_URL}/case-studies/`,
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": cs.title,
+            "item": pageCanonical,
+          },
+        ],
       },
     ],
   };

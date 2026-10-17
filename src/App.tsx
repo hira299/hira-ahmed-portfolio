@@ -8,7 +8,6 @@ import { CaseStudyModal } from "./components/CaseStudyModal";
 import { HireModal } from "./components/HireModal";
 import { SectionModal } from "./components/SectionModal";
 import { CustomCursor } from "./components/CustomCursor";
-import { QuickFacts } from "./components/QuickFacts";
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -37,11 +36,13 @@ export default function App() {
       if (path === "/" || path === "") {
         setActiveCaseStudySlug(null);
         setActiveSectionModal(null);
+        setIsHireModalOpen(false);
       } else if (path.startsWith("/case-studies/")) {
         const slug = path.replace("/case-studies/", "").replace(/\/$/, "");
         if (slug) {
           setActiveCaseStudySlug(slug);
           setActiveSectionModal(null);
+          setIsHireModalOpen(false);
         } else {
           setActiveCaseStudySlug(null);
         }
@@ -122,9 +123,6 @@ export default function App() {
           onOpenHireModal={() => handleOpenHireModal()}
           onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
         />
-
-        {/* Quick Facts (N1) */}
-        <QuickFacts />
 
         {/* Selected Works: 1 Row, 3 Columns (3 Cards) */}
         <CaseStudiesSection
