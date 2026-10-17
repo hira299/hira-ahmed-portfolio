@@ -259,7 +259,7 @@ export function getCaseStudyPageSchema(cs: CaseStudy) {
 
   if (isSentinelMesh) {
     // Preprint publication DOI, manuscript under review
-    articleNode["sameAs"] = "https://doi.org/10.21203/rs.3.rs-10674271/v1";
+    articleNode["identifier"] = "https://doi.org/10.21203/rs.3.rs-10674271/v1";
   }
 
   return {
