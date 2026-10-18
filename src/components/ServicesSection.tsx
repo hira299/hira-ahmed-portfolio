@@ -60,7 +60,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
 
           {/* Selected Single Card */}
           {selectedMobileService && (
-            <div className="relative bg-white border border-[#E8E1D7] rounded-lg p-4 sm:p-5 flex flex-col justify-between shadow-xs">
+            <div className="relative bg-white plate-frame rounded-lg p-4 sm:p-5 flex flex-col justify-between shadow-xs">
               <div className="ticket-notch-sm-left" aria-hidden="true" />
               <div className="ticket-notch-sm-right" aria-hidden="true" />
 
@@ -135,7 +135,7 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
             return (
               <div
                 key={svc.slug}
-                className="relative bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="relative bg-white plate-frame rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 group hover:shadow-md hover:-translate-y-0.5"
               >
                 {/* Smaller Ticket Notches */}
                 <div className="ticket-notch-sm-left" aria-hidden="true" />

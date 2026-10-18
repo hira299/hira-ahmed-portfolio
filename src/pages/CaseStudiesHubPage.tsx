@@ -36,8 +36,10 @@ export function CaseStudiesHubPage() {
             <a
               key={study.slug}
               href={`/case-studies/${study.slug}/`}
-              className="group p-6 bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-xl transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 flex flex-col justify-between"
+              className="group p-6 bg-white plate-frame rounded-xl transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-1 flex flex-col justify-between relative"
             >
+              <span className="ticket-notch-sm-left" aria-hidden="true" />
+              <span className="ticket-notch-sm-right" aria-hidden="true" />
               <div>
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#F0EBE1]">
                   <span className="text-[10px] font-mono text-[#827577] uppercase tracking-wider font-medium">

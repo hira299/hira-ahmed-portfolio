@@ -199,7 +199,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
             {filteredProjects.map((project: Project) => (
               <div
                 key={project.title}
-                className="relative bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="relative bg-white plate-frame rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 group hover:shadow-sm"
               >
                 {/* Smaller Ticket Notches */}
                 <div className="ticket-notch-sm-left" aria-hidden="true" />
@@ -298,7 +298,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
             {filteredCaseStudies.map((study: CaseStudy) => (
               <div
                 key={study.slug}
-                className="bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all group hover:shadow-sm"
+                className="bg-white plate-frame rounded-lg p-4 sm:p-5 flex flex-col justify-between transition-all duration-200 group hover:shadow-sm"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">

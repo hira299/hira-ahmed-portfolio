@@ -87,64 +87,68 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
 
         {/* 1 Row, 3 Columns Grid: Compact Design with Screenshot Previews */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-          {flagshipProjects.map((project) => (
-            <a
-              key={project.slug}
-              href={`/case-studies/${project.slug}/`}
-              onClick={(e) => {
-                if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
-                  return;
-                }
-                e.preventDefault();
-                onSelectCaseStudy(project.slug);
-              }}
-              className="group relative flex flex-col justify-between bg-white border border-[#E8E1D7] hover:border-[#6B1724] p-3.5 sm:p-4 rounded-xl transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-0.5 no-underline text-inherit block"
-            >
-              {/* Ticket Notch Semicircles (Left & Right) */}
-              <span className="ticket-notch-left" aria-hidden="true" />
-              <span className="ticket-notch-right" aria-hidden="true" />
+          {flagshipProjects.map((project, idx) => {
+            const rotations = ["hover:-rotate-[0.6deg]", "hover:rotate-[0.75deg]", "hover:-rotate-[0.5deg]"];
+            const rotClass = rotations[idx % rotations.length];
+            return (
+              <a
+                key={project.slug}
+                href={`/case-studies/${project.slug}/`}
+                onClick={(e) => {
+                  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+                    return;
+                  }
+                  e.preventDefault();
+                  onSelectCaseStudy(project.slug);
+                }}
+                className={`group relative flex flex-col justify-between bg-white plate-frame p-3.5 sm:p-4 rounded-xl transition-all duration-200 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-1 ${rotClass} no-underline text-inherit block`}
+              >
+                {/* Ticket Notch Semicircles (Left & Right) */}
+                <span className="ticket-notch-left" aria-hidden="true" />
+                <span className="ticket-notch-right" aria-hidden="true" />
 
-              <div>
-                {/* Top Bar: Number + Client & Tag */}
-                <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#F0EBE1]">
-                  <span className="text-[10px] font-mono text-[#827577] uppercase tracking-wider font-medium">
-                    {project.num} {project.client}
-                  </span>
-                  <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
-                    {project.tag}
-                  </span>
+                <div>
+                  {/* Top Bar: Number + Client & Tag */}
+                  <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#F0EBE1]">
+                    <span className="text-[10px] font-mono text-[#827577] uppercase tracking-wider font-medium">
+                      {project.num} {project.client}
+                    </span>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
+                      {project.tag}
+                    </span>
+                  </div>
+
+                  {/* Stamp Frame Screenshot Preview */}
+                  <div className="mb-3 stamp-frame rounded-lg overflow-hidden h-36 sm:h-40 md:h-42 w-full">
+                    <img
+                      src={project.image}
+                      alt={project.alt}
+                      width={project.width}
+                      height={project.height}
+                      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02] rounded"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="font-serif text-[15px] sm:text-[17px] text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug font-normal">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs text-[#5C5254] leading-relaxed mb-3">
+                    {project.description}
+                  </p>
                 </div>
 
-                {/* Compact Screenshot Preview */}
-                <div className="mb-3 rounded-lg border border-[#E8E1D7] overflow-hidden bg-[#FAF8F5] h-36 sm:h-40 md:h-42 w-full">
-                  <img
-                    src={project.image}
-                    alt={project.alt}
-                    width={project.width}
-                    height={project.height}
-                    className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02]"
-                    loading="lazy"
-                  />
+                {/* Bottom Action */}
+                <div className="pt-2.5 border-t border-[#F0EBE1] flex items-center justify-between text-[11px] font-mono text-[#6B1724] font-medium group-hover:translate-x-0.5 transition-transform">
+                  <span>View Technical Specs</span>
+                  <span aria-hidden="true">&gt;</span>
                 </div>
-
-                {/* Title */}
-                <h3 className="font-serif text-[15px] sm:text-[17px] text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-1.5 leading-snug font-normal">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs text-[#5C5254] leading-relaxed mb-3">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Bottom Action */}
-              <div className="pt-2.5 border-t border-[#F0EBE1] flex items-center justify-between text-[11px] font-mono text-[#6B1724] font-medium group-hover:translate-x-0.5 transition-transform">
-                <span>View Technical Specs</span>
-                <span aria-hidden="true">&gt;</span>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>

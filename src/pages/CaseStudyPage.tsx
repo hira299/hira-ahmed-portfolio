@@ -56,98 +56,173 @@ function renderInline(text: string): ReactNode {
   });
 }
 
+function renderBlockContent(block: string, key: string, isFirstParagraph: boolean = false) {
+  const trimmed = block.trim();
+
+  if (trimmed.startsWith("### ")) {
+    return (
+      <h3
+        key={key}
+        className="font-serif text-base sm:text-xl text-[#1C1416] pt-3 font-normal"
+      >
+        {renderInline(trimmed.replace(/^###\s+/, ""))}
+      </h3>
+    );
+  }
+
+  if (trimmed.startsWith("**") && trimmed.endsWith("**") && !trimmed.includes("\n")) {
+    return (
+      <h4
+        key={key}
+        className="font-serif text-sm sm:text-lg text-[#1C1416] pt-2 sm:pt-3 font-semibold"
+      >
+        {trimmed.slice(2, -2)}
+      </h4>
+    );
+  }
+
+  const lines = trimmed.split("\n");
+
+  const isUnorderedList = lines.every((line) => /^\s*[-*]\s+/.test(line));
+  if (isUnorderedList) {
+    return (
+      <ul key={key} className="space-y-1.5 sm:space-y-2 my-2 text-[#5C5254] text-xs sm:text-sm">
+        {lines.map((line, lidx) => {
+          const isIndented = /^\s{2,}[-*]\s+/.test(line);
+          const text = line.replace(/^\s*[-*]\s+/, "");
+          return (
+            <li
+              key={lidx}
+              className={`leading-relaxed flex items-start gap-2 ${
+                isIndented ? "ml-4 sm:ml-6 text-[11px] sm:text-xs text-[#6E6365]" : ""
+              }`}
+            >
+              <span className="text-[#6B1724] select-none font-bold mt-1 text-xs">
+                {isIndented ? "◦" : "•"}
+              </span>
+              <span className="flex-1">{renderInline(text)}</span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+
+  const isOrderedList = lines.every((line) => /^\s*\d+\.\s+/.test(line));
+  if (isOrderedList) {
+    return (
+      <ol key={key} className="space-y-2 my-2 text-[#5C5254] text-xs sm:text-sm">
+        {lines.map((line, lidx) => {
+          const numMatch = line.match(/^\s*(\d+)\.\s+(.*)$/);
+          const num = numMatch ? numMatch[1] : String(lidx + 1);
+          const text = numMatch ? numMatch[2] : line;
+          return (
+            <li key={lidx} className="leading-relaxed flex items-start gap-2">
+              <span className="font-mono text-[11px] sm:text-xs text-[#6B1724] font-semibold min-w-[1.25rem] pt-0.5 select-none">
+                {num}.
+              </span>
+              <span className="flex-1">{renderInline(text)}</span>
+            </li>
+          );
+        })}
+      </ol>
+    );
+  }
+
+  return (
+    <p
+      key={key}
+      className={`leading-relaxed text-xs sm:text-sm text-[#5C5254] ${isFirstParagraph ? "drop-cap" : ""}`}
+    >
+      {renderInline(trimmed)}
+    </p>
+  );
+}
+
+interface MarkdownSection {
+  headingRaw: string | null;
+  headingText: string | null;
+  blocks: string[];
+}
+
+function shouldKeepSectionOpen(sectionIndex: number, headingText: string | null): boolean {
+  if (sectionIndex === 0) return true; // first section (Problem / Research Motivation)
+  if (!headingText) return true;
+  const lower = headingText.toLowerCase();
+  if (lower.includes("architecture")) return true; // Architecture section
+  if (lower.includes("results") || lower.includes("evaluation") || lower.includes("findings")) return true; // Results section
+  return false;
+}
+
 function renderMarkdown(content: string) {
   const cleanContent = content.replace(/<[A-Za-z]+Diagram\s*\/>/g, "");
-  const blocks = cleanContent.split("\n\n").filter((b) => b.trim().length > 0);
+  const rawBlocks = cleanContent.split("\n\n").filter((b) => b.trim().length > 0);
 
-  return blocks.map((block, bidx) => {
+  const sections: MarkdownSection[] = [];
+  let currentSection: MarkdownSection = { headingRaw: null, headingText: null, blocks: [] };
+
+  for (const block of rawBlocks) {
     const trimmed = block.trim();
-
     if (trimmed.startsWith("## ")) {
-      return (
-        <h2
-          key={bidx}
-          className="font-serif text-lg sm:text-2xl text-[#1C1416] pt-4 sm:pt-6 pb-1 font-normal border-b border-[#F0EBE1]"
-        >
-          {renderInline(trimmed.replace(/^##\s+/, ""))}
-        </h2>
-      );
+      if (currentSection.headingRaw !== null || currentSection.blocks.length > 0) {
+        sections.push(currentSection);
+      }
+      currentSection = {
+        headingRaw: trimmed,
+        headingText: trimmed.replace(/^##\s+/, ""),
+        blocks: [],
+      };
+    } else {
+      currentSection.blocks.push(trimmed);
     }
+  }
+  if (currentSection.headingRaw !== null || currentSection.blocks.length > 0) {
+    sections.push(currentSection);
+  }
 
-    if (trimmed.startsWith("### ")) {
+  return sections.map((section, sidx) => {
+    const isOpen = shouldKeepSectionOpen(sidx, section.headingText);
+
+    if (isOpen) {
       return (
-        <h3
-          key={bidx}
-          className="font-serif text-base sm:text-xl text-[#1C1416] pt-3 font-normal"
-        >
-          {renderInline(trimmed.replace(/^###\s+/, ""))}
-        </h3>
-      );
-    }
-
-    if (trimmed.startsWith("**") && trimmed.endsWith("**") && !trimmed.includes("\n")) {
-      return (
-        <h4
-          key={bidx}
-          className="font-serif text-sm sm:text-lg text-[#1C1416] pt-2 sm:pt-3 font-semibold"
-        >
-          {trimmed.slice(2, -2)}
-        </h4>
-      );
-    }
-
-    const lines = trimmed.split("\n");
-
-    const isUnorderedList = lines.every((line) => /^\s*[-*]\s+/.test(line));
-    if (isUnorderedList) {
-      return (
-        <ul key={bidx} className="space-y-1.5 sm:space-y-2 my-2 text-[#5C5254] text-xs sm:text-sm">
-          {lines.map((line, lidx) => {
-            const isIndented = /^\s{2,}[-*]\s+/.test(line);
-            const text = line.replace(/^\s*[-*]\s+/, "");
-            return (
-              <li
-                key={lidx}
-                className={`leading-relaxed flex items-start gap-2 ${
-                  isIndented ? "ml-4 sm:ml-6 text-[11px] sm:text-xs text-[#6E6365]" : ""
-                }`}
-              >
-                <span className="text-[#6B1724] select-none font-bold mt-1 text-xs">
-                  {isIndented ? "◦" : "•"}
-                </span>
-                <span className="flex-1">{renderInline(text)}</span>
-              </li>
-            );
-          })}
-        </ul>
-      );
-    }
-
-    const isOrderedList = lines.every((line) => /^\s*\d+\.\s+/.test(line));
-    if (isOrderedList) {
-      return (
-        <ol key={bidx} className="space-y-2 my-2 text-[#5C5254] text-xs sm:text-sm">
-          {lines.map((line, lidx) => {
-            const numMatch = line.match(/^\s*(\d+)\.\s+(.*)$/);
-            const num = numMatch ? numMatch[1] : String(lidx + 1);
-            const text = numMatch ? numMatch[2] : line;
-            return (
-              <li key={lidx} className="leading-relaxed flex items-start gap-2">
-                <span className="font-mono text-[11px] sm:text-xs text-[#6B1724] font-semibold min-w-[1.25rem] pt-0.5 select-none">
-                  {num}.
-                </span>
-                <span className="flex-1">{renderInline(text)}</span>
-              </li>
-            );
-          })}
-        </ol>
+        <div key={sidx} className="space-y-4">
+          {section.headingRaw && (
+            <h2 className="font-serif text-lg sm:text-2xl text-[#1C1416] pt-4 sm:pt-6 pb-1 font-normal border-b border-[#F0EBE1]">
+              {renderInline(section.headingText!)}
+            </h2>
+          )}
+          {section.blocks.map((block, bidx) =>
+            renderBlockContent(block, `${sidx}-${bidx}`, sidx === 0 && bidx === 0)
+          )}
+        </div>
       );
     }
 
     return (
-      <p key={bidx} className="leading-relaxed text-xs sm:text-sm text-[#5C5254]">
-        {renderInline(trimmed)}
-      </p>
+      <details
+        key={sidx}
+        className="border border-[#E8E1D7] rounded-xl bg-white p-4 sm:p-5 my-4 group/folio shadow-xs"
+      >
+        <summary className="font-serif text-lg sm:text-2xl text-[#1C1416] font-normal cursor-pointer list-none flex items-center justify-between select-none">
+          <h2 className="inline font-serif text-lg sm:text-2xl text-[#1C1416] font-normal">
+            {renderInline(section.headingText!)}
+          </h2>
+          <svg
+            className="w-4 h-4 text-[#827577] transition-transform duration-200 group-open/folio:rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div className="pt-4 space-y-4">
+          {section.blocks.map((block, bidx) =>
+            renderBlockContent(block, `${sidx}-${bidx}`, false)
+          )}
+        </div>
+      </details>
     );
   });
 }
@@ -264,7 +339,7 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
 
         {/* Interactive / Architecture Diagram */}
         {diagram && (
-          <div className="mb-8 p-4 sm:p-6 bg-white border border-[#E8E1D7] rounded-xl overflow-x-auto">
+          <div className="mb-8 p-4 sm:p-6 bg-white plate-frame rounded-xl overflow-x-auto shadow-xs">
             <div className="text-[10px] font-mono uppercase tracking-wider text-[#827577] mb-3">
               System Architecture & Execution Flow
             </div>
@@ -274,13 +349,15 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
 
         {/* Full Markdown Body */}
         {content && (
-          <article className="space-y-4 mb-12 bg-white border border-[#E8E1D7] rounded-xl p-6 sm:p-8">
+          <article className="space-y-4 mb-12 bg-white plate-frame rounded-xl p-6 sm:p-8 shadow-xs">
             {renderMarkdown(content)}
           </article>
         )}
 
         {/* Author Bio Card (N7) */}
-        <section className="mb-10 bg-white border border-[#E8E1D7] rounded-xl p-6 sm:p-8">
+        <section className="mb-10 bg-white plate-frame rounded-xl p-6 sm:p-8 relative shadow-xs">
+          <span className="ticket-notch-sm-left" aria-hidden="true" />
+          <span className="ticket-notch-sm-right" aria-hidden="true" />
           <div className="text-[10px] font-mono uppercase tracking-wider text-[#6B1724] font-semibold mb-2">
             Author &amp; System Architect
           </div>

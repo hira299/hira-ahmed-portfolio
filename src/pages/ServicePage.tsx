@@ -41,7 +41,7 @@ export function ServicePage({ service }: ServicePageProps) {
         </header>
 
         {/* Overview Summary */}
-        <section className="mb-10 bg-white border border-[#E8E1D7] rounded-xl p-6 sm:p-8 shadow-xs">
+        <section className="mb-10 bg-white plate-frame rounded-xl p-6 sm:p-8 shadow-xs">
           <h2 className="font-mono text-xs uppercase tracking-wider text-[#6B1724] font-semibold mb-3">
             Core Scope & Focus
           </h2>
@@ -50,40 +50,66 @@ export function ServicePage({ service }: ServicePageProps) {
           </p>
         </section>
 
-        {/* Problems Solved */}
-        <section className="mb-10">
-          <h2 className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal mb-4">
-            Common Production Challenges Solved
-          </h2>
-          <ul className="space-y-3">
-            {service.problems.map((problem, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 bg-white border border-[#E8E1D7] p-4 rounded-lg text-xs sm:text-sm text-[#1C1416] leading-relaxed"
-              >
-                <span className="text-[#6B1724] font-mono font-bold mt-0.5">0{i + 1}.</span>
-                <span>{problem}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Technologies & Tooling */}
-        <section className="mb-10">
-          <h2 className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal mb-4">
-            Technology Stack & Tooling
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {service.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 rounded text-xs font-mono bg-white border border-[#E8E1D7] text-[#1C1416]"
-              >
-                {tech}
-              </span>
-            ))}
+        {/* Problems Solved (Folded into <details> per Rule 1) */}
+        <details className="mb-8 border border-[#E8E1D7] rounded-xl bg-white p-5 sm:p-6 group/folio shadow-xs">
+          <summary className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal cursor-pointer list-none flex items-center justify-between select-none">
+            <h2 className="inline font-serif text-xl sm:text-2xl text-[#1C1416] font-normal">
+              Common Production Challenges Solved
+            </h2>
+            <svg
+              className="w-4 h-4 text-[#827577] transition-transform duration-200 group-open/folio:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div className="pt-4">
+            <ul className="space-y-3">
+              {service.problems.map((problem, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 bg-[#FAF8F5] border border-[#E8E1D7] p-4 rounded-lg text-xs sm:text-sm text-[#1C1416] leading-relaxed"
+                >
+                  <span className="text-[#6B1724] font-mono font-bold mt-0.5">0{i + 1}.</span>
+                  <span>{problem}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </section>
+        </details>
+
+        {/* Technologies & Tooling (Folded into <details> per Rule 1) */}
+        <details className="mb-8 border border-[#E8E1D7] rounded-xl bg-white p-5 sm:p-6 group/folio shadow-xs">
+          <summary className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal cursor-pointer list-none flex items-center justify-between select-none">
+            <h2 className="inline font-serif text-xl sm:text-2xl text-[#1C1416] font-normal">
+              Technology Stack & Tooling
+            </h2>
+            <svg
+              className="w-4 h-4 text-[#827577] transition-transform duration-200 group-open/folio:rotate-180"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+            </svg>
+          </summary>
+          <div className="pt-4">
+            <div className="flex flex-wrap gap-2">
+              {service.technologies.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 rounded text-xs font-mono bg-[#FAF8F5] border border-[#E8E1D7] text-[#1C1416]"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </details>
 
         {/* Production Proof Points */}
         <section className="mb-10">
@@ -117,8 +143,10 @@ export function ServicePage({ service }: ServicePageProps) {
                   <a
                     key={csSlug}
                     href={`/case-studies/${csSlug}/`}
-                    className="block p-4 bg-white border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg transition-all text-xs font-mono text-[#6B1724] hover:-translate-y-0.5"
+                    className="group relative block p-4 bg-white plate-frame rounded-lg transition-all duration-200 text-xs font-mono text-[#6B1724] hover:shadow-md hover:-translate-y-0.5 focus-visible:outline-none"
                   >
+                    <span className="ticket-notch-sm-left" aria-hidden="true" />
+                    <span className="ticket-notch-sm-right" aria-hidden="true" />
                     <span className="text-[#827577] text-[10px] block mb-1">Detailed Technical Spec</span>
                     <span className="font-medium text-[#1C1416] text-sm block mb-1 font-serif">
                       {title}

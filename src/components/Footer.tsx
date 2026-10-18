@@ -10,7 +10,9 @@ export function Footer({ onOpenHireModal }: FooterProps) {
     <footer className="pt-10 pb-20 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Top Engagement Banner */}
-        <div className="bg-white border border-[#E8E1D7] rounded-xl sm:rounded p-5 sm:p-12 mb-10 sm:mb-16 shadow-xs">
+        <div className="bg-white plate-frame rounded-2xl p-6 sm:p-12 mb-10 sm:mb-16 shadow-xs relative">
+          <span className="ticket-notch-sm-left" aria-hidden="true" />
+          <span className="ticket-notch-sm-right" aria-hidden="true" />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
             <div className="lg:col-span-8">
               <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] font-semibold">
@@ -27,9 +29,21 @@ export function Footer({ onOpenHireModal }: FooterProps) {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 sm:gap-3">
               <button
                 onClick={onOpenHireModal || (() => { window.location.href = `mailto:${email}`; })}
-                className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer"
+                className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
               >
-                Start an Engagement
+                <svg
+                  className="w-4 h-4 shrink-0 text-[#FAF8F5]/90 wax-seal"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="9" strokeWidth="1.2" strokeDasharray="2 1.5" />
+                  <circle cx="12" cy="12" r="6.5" fill="currentColor" fillOpacity="0.25" />
+                  <path d="M12 8.5v7M8.5 12h7" strokeLinecap="round" />
+                </svg>
+                <span>Start an Engagement</span>
               </button>
               <a
                 href={`mailto:${email}`}
