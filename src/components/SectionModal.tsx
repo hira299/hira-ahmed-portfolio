@@ -68,6 +68,7 @@ export function SectionModal({
         <div className="p-1 sm:p-6">
           {section === "services" && (
             <ServicesSection
+              inModal={true}
               onOpenHireModal={(title) => {
                 onOpenHireModal(title);
               }}

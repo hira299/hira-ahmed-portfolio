@@ -216,21 +216,22 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
       {/* Modal Card */}
       <div className="relative w-full max-w-4xl bg-white border border-[#E8E1D7] rounded shadow-xl overflow-hidden my-auto z-10 max-h-[92vh] flex flex-col">
         {/* Modal Top Header */}
-        <div className="sticky top-0 bg-[#FAF8F5] border-b border-[#E8E1D7] px-4 py-3 sm:px-6 sm:py-4 flex items-center justify-between z-20">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <span className="font-mono text-[11px] sm:text-xs text-[#6B1724] font-semibold uppercase">
+        <div className="sticky top-0 bg-[#FAF8F5] border-b border-[#E8E1D7] px-3.5 py-2.5 sm:px-6 sm:py-4 flex items-center justify-between gap-2 z-20">
+          <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+            <span className="font-mono text-[10px] sm:text-xs text-[#6B1724] font-semibold uppercase truncate">
               Case Study / {study.kind}
             </span>
             <span className="text-[#D8CEC1]">·</span>
-            <span className="text-[11px] sm:text-xs font-mono text-[#827577]">{study.client}</span>
+            <span className="text-[10px] sm:text-xs font-mono text-[#827577] truncate">{study.client}</span>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center shrink-0">
             <button
               onClick={onClose}
-              className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors"
+              className="px-2 py-0.5 sm:px-2.5 sm:py-1 text-[11px] sm:text-xs font-mono bg-white border border-[#E8E1D7] hover:border-[#6B1724] hover:text-[#6B1724] rounded text-[#5C5254] transition-colors whitespace-nowrap"
             >
-              ESC / Close
+              <span className="sm:hidden">Close</span>
+              <span className="hidden sm:inline">ESC / Close</span>
             </button>
           </div>
         </div>
@@ -245,6 +246,15 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
             <p className="text-xs sm:text-base text-[#5C5254] leading-relaxed">
               {study.description}
             </p>
+            <div className="mt-2.5">
+              <a
+                href={`/case-studies/${study.slug}/`}
+                className="inline-flex items-center min-h-[44px] py-2 text-[12px] font-mono text-[#6B1724] underline decoration-1 hover:text-[#54111B] focus:outline-none focus:ring-2 focus:ring-[#6B1724] focus:ring-offset-2 transition-colors cursor-pointer"
+              >
+                <span>View full page →</span>
+                <span className="sr-only"> for {study.title}</span>
+              </a>
+            </div>
           </div>
 
           {/* Key Metrics Strip */}
@@ -266,7 +276,7 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
             <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#827577] mb-2 sm:mb-3">
               Verified System Schematic
             </div>
-            <div className="bg-[#FAF8F5] border border-[#E8E1D7] rounded p-2.5 sm:p-4 overflow-x-auto">
+            <div className="bg-[#FAF8F5] border border-[#E8E1D7] rounded p-1.5 sm:p-4 overflow-x-auto [&_.diagram-svg]:min-w-[420px] sm:[&_.diagram-svg]:min-w-0 [&_.diagram-svg]:p-2.5 sm:[&_.diagram-svg]:p-4 [&_figcaption]:text-[10px] sm:[&_figcaption]:text-[12px] [&_figcaption]:leading-snug [&_figcaption]:mt-2.5 sm:[&_figcaption]:mt-3.5">
               {renderEmbeddedDiagram()}
             </div>
           </div>
@@ -291,20 +301,20 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
           {/* Technical Resources & Repositories */}
           {study.links && study.links.length > 0 && (
             <div>
-              <div className="text-xs font-mono uppercase tracking-wider text-[#827577] mb-3">
+              <div className="text-xs font-mono uppercase tracking-wider text-[#827577] mb-2 sm:mb-3">
                 Technical Resources &amp; Repositories
               </div>
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-wrap gap-2 sm:gap-2.5">
                 {study.links.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-mono text-[#6B1724] bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:bg-white transition-colors"
+                    className="inline-flex items-center gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 min-h-[28px] sm:min-h-[32px] max-w-full min-w-0 rounded text-[11px] sm:text-[12px] leading-tight font-mono text-[#6B1724] bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] hover:bg-white transition-colors cursor-pointer"
                   >
-                    <span>{link.label}</span>
-                    <span className="text-[#827577]">↗</span>
+                    <span className="whitespace-normal [overflow-wrap:anywhere]">{link.label}</span>
+                    <span className="text-[#827577] text-[11px] sm:text-[13px] shrink-0 leading-none">↗</span>
                   </a>
                 ))}
               </div>

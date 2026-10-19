@@ -3,9 +3,10 @@ import { services, type Service } from "@/data/services";
 
 interface ServicesSectionProps {
   onOpenHireModal: (serviceTitle?: string) => void;
+  inModal?: boolean;
 }
 
-export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
+export function ServicesSection({ onOpenHireModal, inModal = false }: ServicesSectionProps) {
   const [selectedServiceSlug, setSelectedServiceSlug] = useState<string>(services[0]?.slug || "");
   const selectedMobileService = services.find((s) => s.slug === selectedServiceSlug) || services[0];
   const selectedMobileIndex = services.findIndex((s) => s.slug === (selectedMobileService?.slug || ""));
@@ -116,6 +117,18 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                   )}
                 </div>
 
+                {inModal && (
+                  <div className="mb-2 text-right">
+                    <a
+                      href={selectedMobileService.href.split("#")[0]}
+                      className="inline-flex items-center min-h-[44px] py-2 text-[12px] font-mono text-[#6B1724] underline decoration-1 hover:text-[#54111B] focus:outline-none focus:ring-2 focus:ring-[#6B1724] focus:ring-offset-2 transition-colors cursor-pointer"
+                    >
+                      <span>View full page →</span>
+                      <span className="sr-only"> for {selectedMobileService.title}</span>
+                    </a>
+                  </div>
+                )}
+
                 <button
                   onClick={() => onOpenHireModal(selectedMobileService.title)}
                   className="w-full py-2.5 px-3 bg-[#FAF0F0] hover:bg-[#6B1724] text-[#6B1724] hover:text-[#FAF8F5] border border-[#F0D5D8] hover:border-[#6B1724] rounded font-mono text-xs font-medium tracking-wide transition-all text-center block shadow-xs leading-tight"
@@ -190,6 +203,18 @@ export function ServicesSection({ onOpenHireModal }: ServicesSectionProps) {
                       </span>
                     )}
                   </div>
+
+                  {inModal && (
+                    <div className="mb-2 text-right">
+                      <a
+                        href={svc.href.split("#")[0]}
+                        className="inline-flex items-center min-h-[44px] py-2 text-[12px] font-mono text-[#6B1724] underline decoration-1 hover:text-[#54111B] focus:outline-none focus:ring-2 focus:ring-[#6B1724] focus:ring-offset-2 transition-colors cursor-pointer"
+                      >
+                        <span>View full page →</span>
+                        <span className="sr-only"> for {svc.title}</span>
+                      </a>
+                    </div>
+                  )}
 
                   <button
                     onClick={() => onOpenHireModal(svc.title)}
