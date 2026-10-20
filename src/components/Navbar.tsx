@@ -147,12 +147,21 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
               </div>
             </div>
           </div>
-          <button
-            onClick={onOpenHireModal || (() => { window.location.href = "mailto:hira229922@gmail.com"; })}
-            className="hidden md:inline-flex px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
-          >
-            Inquire
-          </button>
+          {onOpenHireModal ? (
+            <button
+              onClick={onOpenHireModal}
+              className="hidden md:inline-flex px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
+            >
+              Inquire
+            </button>
+          ) : (
+            <a
+              href="mailto:hira229922@gmail.com"
+              className="hidden md:inline-flex px-3.5 py-1 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-95"
+            >
+              Inquire
+            </a>
+          )}
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -303,19 +312,25 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
               <span>Available for Hire</span>
             </div>
           </div>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              if (onOpenHireModal) {
+          {onOpenHireModal ? (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
                 onOpenHireModal();
-              } else {
-                window.location.href = "mailto:hira229922@gmail.com";
-              }
-            }}
-            className="w-full py-2.5 px-4 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-98 text-center"
-          >
-            Inquire / Start Engagement
-          </button>
+              }}
+              className="w-full py-2.5 px-4 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-98 text-center"
+            >
+              Inquire / Start Engagement
+            </button>
+          ) : (
+            <a
+              href="mailto:hira229922@gmail.com"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full py-2.5 px-4 text-xs font-mono font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all shadow-xs cursor-pointer active:scale-98 text-center block"
+            >
+              Inquire / Start Engagement
+            </a>
+          )}
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ export function ServicesHubPage() {
         {/* Hub Header with single H1 */}
         <header className="border-b border-[#E8E1D7] pb-8 mb-10">
           <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-2 font-medium">
-            Engineering Practice Areas & Capabilities
+            Engineering Services & Capabilities
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
             AI Engineering &amp; SaaS QA Services
@@ -48,7 +48,7 @@ export function ServicesHubPage() {
                     0{idx + 1} · {svc.slug}
                   </span>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-mono bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
-                    Practice Area
+                    Service
                   </span>
                 </div>
                 <h2 className="font-serif text-xl sm:text-2xl text-[#1C1416] group-hover:text-[#6B1724] transition-colors mb-2 font-normal">
@@ -70,7 +70,7 @@ export function ServicesHubPage() {
               </div>
 
               <div className="pt-3 border-t border-[#F0EBE1] flex items-center justify-between text-xs font-mono text-[#6B1724] font-medium group-hover:translate-x-0.5 transition-transform">
-                <span>View Practice Area Details</span>
+                <span>View Service Details</span>
                 <span>&rarr;</span>
               </div>
             </a>

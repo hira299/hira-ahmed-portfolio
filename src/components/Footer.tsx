@@ -27,24 +27,45 @@ export function Footer({ onOpenHireModal }: FooterProps) {
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-2.5 sm:gap-3">
-              <button
-                onClick={onOpenHireModal || (() => { window.location.href = `mailto:${email}`; })}
-                className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
-              >
-                <svg
-                  className="w-4 h-4 shrink-0 text-[#FAF8F5]/90 wax-seal"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  aria-hidden="true"
+              {onOpenHireModal ? (
+                <button
+                  onClick={onOpenHireModal}
+                  className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <circle cx="12" cy="12" r="9" strokeWidth="1.2" strokeDasharray="2 1.5" />
-                  <circle cx="12" cy="12" r="6.5" fill="currentColor" fillOpacity="0.25" />
-                  <path d="M12 8.5v7M8.5 12h7" strokeLinecap="round" />
-                </svg>
-                <span>Start an Engagement</span>
-              </button>
+                  <svg
+                    className="w-4 h-4 shrink-0 text-[#FAF8F5]/90 wax-seal"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="9" strokeWidth="1.2" strokeDasharray="2 1.5" />
+                    <circle cx="12" cy="12" r="6.5" fill="currentColor" fillOpacity="0.25" />
+                    <path d="M12 8.5v7M8.5 12h7" strokeLinecap="round" />
+                  </svg>
+                  <span>Start an Engagement</span>
+                </button>
+              ) : (
+                <a
+                  href={`mailto:${email}`}
+                  className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-medium tracking-wide bg-[#6B1724] hover:bg-[#54111B] text-[#FAF8F5] rounded-full transition-all duration-200 text-center shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <svg
+                    className="w-4 h-4 shrink-0 text-[#FAF8F5]/90 wax-seal"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="9" strokeWidth="1.2" strokeDasharray="2 1.5" />
+                    <circle cx="12" cy="12" r="6.5" fill="currentColor" fillOpacity="0.25" />
+                    <path d="M12 8.5v7M8.5 12h7" strokeLinecap="round" />
+                  </svg>
+                  <span>Start an Engagement</span>
+                </a>
+              )}
               <a
                 href={`mailto:${email}`}
                 className="w-full py-2.5 sm:py-3 px-4 sm:px-5 text-xs sm:text-sm font-mono text-center text-[#1C1416] bg-[#FAF8F5] hover:bg-white border border-[#E8E1D7] hover:border-[#6B1724]/70 rounded-full transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 shadow-2xs hover:shadow-xs cursor-pointer"

@@ -30,7 +30,7 @@ export function ServicePage({ service }: ServicePageProps) {
         {/* Header Block with single H1 */}
         <header className="border-b border-[#E8E1D7] pb-8 mb-10">
           <div className="inline-block px-2.5 py-1 rounded text-[11px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium mb-3">
-            Practice Area · {service.title}
+            Service · {service.title}
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
             {service.h1Title || service.title}
