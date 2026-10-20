@@ -81,35 +81,22 @@ export function ServicePage({ service }: ServicePageProps) {
           </div>
         </details>
 
-        {/* Technologies & Tooling (Folded into <details> per Rule 1) */}
-        <details className="mb-8 border border-[#E8E1D7] rounded-xl bg-white p-5 sm:p-6 group/folio shadow-xs">
-          <summary className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal cursor-pointer list-none flex items-center justify-between select-none">
-            <h2 className="inline font-serif text-xl sm:text-2xl text-[#1C1416] font-normal">
-              Technology Stack & Tooling
-            </h2>
-            <svg
-              className="w-4 h-4 text-[#827577] transition-transform duration-200 group-open/folio:rotate-180"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-            </svg>
-          </summary>
-          <div className="pt-4">
-            <div className="flex flex-wrap gap-2">
-              {service.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-3 py-1.5 rounded text-xs font-mono bg-[#FAF8F5] border border-[#E8E1D7] text-[#1C1416]"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+        {/* Technologies & Tooling (Open Chip Card) */}
+        <section className="mb-10 bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl p-6">
+          <h2 className="font-mono text-xs uppercase tracking-wider text-[#6B1724] font-semibold mb-3">
+            Technology Stack & Tooling
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {service.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="px-2.5 py-1 rounded text-xs font-mono bg-white border border-[#E8E1D7] text-[#1C1416]"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
-        </details>
+        </section>
 
         {/* Production Proof Points */}
         <section className="mb-10">
@@ -131,7 +118,7 @@ export function ServicePage({ service }: ServicePageProps) {
 
         {/* Related Case Studies */}
         {service.caseStudies && service.caseStudies.length > 0 && (
-          <section className="mb-12 border-t border-[#E8E1D7] pt-8">
+          <section className="mb-10 border-t border-[#E8E1D7] pt-8">
             <h2 className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal mb-4">
               Related Case Studies
             </h2>
@@ -159,21 +146,86 @@ export function ServicePage({ service }: ServicePageProps) {
           </section>
         )}
 
-        {/* Call to action */}
-        <section className="bg-[#FAF0F0] border border-[#F0D5D8] rounded-xl p-6 sm:p-8 text-center">
-          <h2 className="font-serif text-xl sm:text-2xl text-[#1C1416] font-normal mb-2">
-            Interested in discussing {service.title}?
+        {/* Author Bio Card */}
+        <section className="mb-10 bg-white plate-frame rounded-xl p-6 sm:p-8 relative shadow-xs">
+          <span className="ticket-notch-sm-left" aria-hidden="true" />
+          <span className="ticket-notch-sm-right" aria-hidden="true" />
+          <div className="text-[10px] font-mono uppercase tracking-wider text-[#6B1724] font-semibold mb-2">
+            About the Author
+          </div>
+          <h2 className="font-serif text-lg sm:text-xl text-[#1C1416] font-normal mb-2">
+            Hira Ahmed
           </h2>
-          <p className="text-xs sm:text-sm text-[#5C5254] mb-4 max-w-lg mx-auto">
-            Available for technical consultations, hands-on pipeline engineering, or comprehensive QA audits.
+          <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-4">
+            Hira Ahmed is an AI Engineer and Systems QA Lead who has documented 1,500+ defects across four concurrent client contracts, built production LLM pipelines processing 28,000+ records, and authored the Sentinel-Mesh preprint on formally verified cloud remediation.
           </p>
-          <a
-            href="mailto:hira229922@gmail.com"
-            className="inline-block px-5 py-2.5 rounded-lg bg-[#6B1724] text-[#FAF8F5] text-xs font-mono font-medium hover:bg-[#54111B] transition-colors"
-          >
-            Schedule a Technical Call
-          </a>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-3 border-t border-[#F0EBE1] text-xs font-mono">
+            <a
+              href="https://github.com/hira299"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              GitHub &rarr;
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hira-ahmed-4068402a7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              LinkedIn &rarr;
+            </a>
+            <a
+              href="https://www.researchgate.net/profile/Hira-Ahmed-28"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              ResearchGate &rarr;
+            </a>
+            <a
+              href="https://doi.org/10.21203/rs.3.rs-10674271/v1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Preprint DOI &rarr;
+            </a>
+            <a
+              href="https://topmate.io/hira_ahmed"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Topmate &rarr;
+            </a>
+            <a
+              href="https://medium.com/@hira299"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#6B1724] underline hover:text-[#54111B]"
+            >
+              Medium &rarr;
+            </a>
+          </div>
         </section>
+
+        {/* Navigation back to all services */}
+        <div className="flex justify-between items-center pt-6 border-t border-[#E8E1D7]">
+          <a
+            href="/services/"
+            className="text-xs font-mono text-[#6B1724] hover:underline"
+          >
+            &larr; Back to all Services
+          </a>
+          <a
+            href="/"
+            className="text-xs font-mono text-[#827577] hover:text-[#1C1416]"
+          >
+            Return to Homepage
+          </a>
+        </div>
       </main>
 
       <Footer />

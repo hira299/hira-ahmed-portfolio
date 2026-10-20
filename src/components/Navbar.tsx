@@ -86,18 +86,36 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
           >
             Experience
           </a>
-          <button
-            onClick={() => onOpenSectionModal?.("research")}
-            className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
-          >
-            Research
-          </button>
-          <button
-            onClick={() => onOpenSectionModal?.("archive")}
-            className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
-          >
-            Archive
-          </button>
+          {isSubPage ? (
+            <a
+              href="/case-studies/sentinel-mesh/"
+              className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
+            >
+              Research
+            </a>
+          ) : (
+            <button
+              onClick={() => onOpenSectionModal?.("research")}
+              className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
+            >
+              Research
+            </button>
+          )}
+          {isSubPage ? (
+            <a
+              href="/case-studies/"
+              className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
+            >
+              Archive
+            </a>
+          ) : (
+            <button
+              onClick={() => onOpenSectionModal?.("archive")}
+              className="hover:text-[#6B1724] transition-colors py-1 cursor-pointer"
+            >
+              Archive
+            </button>
+          )}
         </nav>
 
         {/* Right CTA */}
@@ -222,26 +240,48 @@ export function Navbar({ onOpenHireModal, onOpenSectionModal }: NavbarProps) {
             <span>Experience Timeline</span>
             <span className="text-[10px] text-[#827577]">03</span>
           </a>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenSectionModal?.("research");
-            }}
-            className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
-          >
-            <span>Research &amp; Verification</span>
-            <span className="text-[10px] text-[#827577]">04</span>
-          </button>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenSectionModal?.("archive");
-            }}
-            className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
-          >
-            <span>Full Project Archive</span>
-            <span className="text-[10px] text-[#827577]">10+</span>
-          </button>
+          {isSubPage ? (
+            <a
+              href="/case-studies/sentinel-mesh/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
+            >
+              <span>Research &amp; Verification</span>
+              <span className="text-[10px] text-[#827577]">04</span>
+            </a>
+          ) : (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSectionModal?.("research");
+              }}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
+            >
+              <span>Research &amp; Verification</span>
+              <span className="text-[10px] text-[#827577]">04</span>
+            </button>
+          )}
+          {isSubPage ? (
+            <a
+              href="/case-studies/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
+            >
+              <span>Full Project Archive</span>
+              <span className="text-[10px] text-[#827577]">10+</span>
+            </a>
+          ) : (
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSectionModal?.("archive");
+              }}
+              className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-[#1C1416] hover:bg-[#FAF0F0] hover:text-[#6B1724] transition-colors text-left cursor-pointer"
+            >
+              <span>Full Project Archive</span>
+              <span className="text-[10px] text-[#827577]">10+</span>
+            </button>
+          )}
           <a
             href="/Hira_Ahmed_Resume.pdf"
             download="Hira_Ahmed_Resume.pdf"

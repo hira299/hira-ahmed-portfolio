@@ -281,38 +281,37 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
 
         {/* Case Study Meta Strip & Single H1 */}
         <header className="border-b border-[#E8E1D7] pb-8 mb-8">
-          <div className="flex flex-wrap items-center gap-2 mb-3">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="inline-block px-2.5 py-1 rounded text-[11px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
               Case Study · {study.kind}
             </span>
             <span className="text-[#827577] text-xs font-mono">Client: {study.client}</span>
             <span className="text-[#D8CEC1]">·</span>
             <span className="text-[#827577] text-xs font-mono">Role: {study.role}</span>
-            {study.services && study.services.length > 0 && (
-              <>
-                <span className="text-[#D8CEC1]">·</span>
-                <span className="text-[#827577] text-xs font-mono">
-                  Practice Area:{" "}
-                  {study.services.map((svcSlug, sidx) => {
-                    const svc = services.find((s) => s.slug === svcSlug);
-                    const label = svc ? svc.title : svcSlug;
-                    const href = svc?.hasPage ? svc.href : "/services/";
-                    return (
-                      <span key={svcSlug}>
-                        {sidx > 0 && ", "}
-                        <a
-                          href={href}
-                          className="text-[#6B1724] underline hover:text-[#54111B] transition-colors"
-                        >
-                          {label}
-                        </a>
-                      </span>
-                    );
-                  })}
-                </span>
-              </>
-            )}
           </div>
+
+          {study.services && study.services.length > 0 && (
+            <div className="mt-4 mb-6 text-[#827577] text-xs font-mono flex flex-wrap items-center gap-y-2">
+              <span>Services:&nbsp;</span>
+              {study.services.map((svcSlug, sidx) => {
+                const svc = services.find((s) => s.slug === svcSlug);
+                const label = svc ? svc.title : svcSlug;
+                const href = svc?.hasPage ? svc.href : "/services/";
+                return (
+                  <span key={svcSlug}>
+                    {sidx > 0 && ", "}
+                    <a
+                      href={href}
+                      className="text-[#6B1724] underline hover:text-[#54111B] transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </span>
+                );
+              })}
+            </div>
+          )}
+
           <h1 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal leading-tight mb-4">
             {study.title}
           </h1>
@@ -359,13 +358,13 @@ export function CaseStudyPage({ study }: CaseStudyPageProps) {
           <span className="ticket-notch-sm-left" aria-hidden="true" />
           <span className="ticket-notch-sm-right" aria-hidden="true" />
           <div className="text-[10px] font-mono uppercase tracking-wider text-[#6B1724] font-semibold mb-2">
-            Author &amp; System Architect
+            About the Author
           </div>
           <h2 className="font-serif text-lg sm:text-xl text-[#1C1416] font-normal mb-2">
             Hira Ahmed
           </h2>
           <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-4">
-            AI Engineer &amp; Systems QA Lead specializing in autonomous LLM pipelines, formal verification with Z3 SMT solvers, and mission-critical SaaS reliability.
+            Hira Ahmed is an AI Engineer and Systems QA Lead who has documented 1,500+ defects across four concurrent client contracts, built production LLM pipelines processing 28,000+ records, and authored the Sentinel-Mesh preprint on formally verified cloud remediation.
           </p>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-3 border-t border-[#F0EBE1] text-xs font-mono">
             <a

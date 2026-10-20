@@ -8,6 +8,8 @@ interface TrailPoint {
   size: number;
 }
 
+let globalTrailId = 0;
+
 export function CustomCursor() {
   const [isEnabled, setIsEnabled] = useState(true);
   const [isHoveringClickable, setIsHoveringClickable] = useState(false);
@@ -17,7 +19,6 @@ export function CustomCursor() {
 
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const mousePos = useRef({ x: -100, y: -100 });
-  const trailIdRef = useRef(0);
   const lastTrailPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
@@ -43,13 +44,13 @@ export function CustomCursor() {
       const dist = Math.hypot(currentX - lastTrailPos.current.x, currentY - lastTrailPos.current.y);
       if (dist > 5) {
         lastTrailPos.current = { x: currentX, y: currentY };
-        trailIdRef.current += 1;
+        globalTrailId += 1;
         setTrail((prev) => [
           ...prev.slice(-15), // Extended trail: 16 points for longer elegant flow
           {
             x: currentX,
             y: currentY,
-            id: trailIdRef.current,
+            id: globalTrailId,
             opacity: 0.5,
             size: 4.5,
           },
