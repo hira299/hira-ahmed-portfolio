@@ -58,7 +58,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "34%", label: "Monthly AWS cost reduction on the platform" },
       { value: "95%", label: "Reported extraction success rate" },
     ],
-    services: ["ai-automation", "api-integrations"],
+    services: ["ai-automation"],
     projects: ["sentinel-mesh"],
     links: [],
   },
@@ -101,7 +101,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "15", label: "Modules tested" },
       { value: "75", label: "Verified & closed fixes" },
     ],
-    services: ["qa-testing", "multitenant-qa", "api-testing", "business-logic-testing"],
+    services: ["qa-testing"],
     projects: [],
     links: [
       {
@@ -131,7 +131,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "57", label: "Defects in sheet (47 + 10 second tester)" },
       { value: "1", label: "Critical P1 finding" },
     ],
-    services: ["qa-testing", "multitenant-qa", "api-testing", "business-logic-testing"],
+    services: ["qa-testing"],
     projects: [],
     links: [],
   },
@@ -156,7 +156,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "190+", label: "Dead or fake tools identified" },
       { value: "3", label: "Malicious listings flagged" },
     ],
-    services: ["qa-testing", "api-testing"],
+    services: ["qa-testing"],
     projects: [],
     links: [],
   },
@@ -181,7 +181,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "68", label: "Video-content recommendations" },
       { value: "12", label: "Critical defects" },
     ],
-    services: ["qa-testing", "api-testing"],
+    services: ["qa-testing"],
     projects: [],
     links: [],
   },
@@ -202,7 +202,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "Multi-turn", label: "Thread memory across replies" },
       { value: "Self-hosted", label: "n8n behind Cloudflare Tunnel" },
     ],
-    services: ["n8n-automation", "ai-agents", "api-integrations"],
+    services: ["ai-automation", "ai-agents"],
     projects: ["ai-email-agent"],
     links: [
       { label: "Demo (Loom)", href: "https://www.loom.com/share/9fbd2526672348f2b8c4284933817e39" },
@@ -228,7 +228,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "2,000+", label: "Questions processed, no timeout failures (reported)" },
       { value: "0.95", label: "Reported semantic relevance score" },
     ],
-    services: ["ai-agents", "ai-automation", "n8n-automation"],
+    services: ["ai-agents", "ai-automation"],
     projects: ["cloud-compliance-engine"],
     links: [
       {

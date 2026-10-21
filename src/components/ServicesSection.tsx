@@ -71,13 +71,13 @@ export function ServicesSection({ onOpenHireModal, inModal = false }: ServicesSe
                     {String(selectedMobileIndex + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
                   </span>
                   <span className="px-2 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase font-medium">
-                    Practice
+                    Service
                   </span>
                 </div>
 
                 <h3 className="font-serif text-lg text-[#1C1416] mb-1.5 font-normal">
                   <a
-                    href={`/${selectedMobileService.slug}/`}
+                    href={selectedMobileService.href}
                     className="hover:text-[#6B1724] transition-colors inline-block"
                   >
                     {selectedMobileService.title}
@@ -88,10 +88,10 @@ export function ServicesSection({ onOpenHireModal, inModal = false }: ServicesSe
                   {selectedMobileService.description}
                 </p>
 
-                {/* Highlighted Guarantee */}
+                {/* Highlighted Proof */}
                 <div className="text-xs py-2 px-2.5 bg-[#FAF8F5] border-l-2 border-[#6B1724] rounded-r mb-3">
                   <span className="font-mono text-[9px] uppercase tracking-wider text-[#6B1724] block font-semibold mb-0.5">
-                    System Guarantee
+                    Proof
                   </span>
                   <p className="text-[#1C1416] text-[11px] font-medium leading-snug">
                     {selectedMobileService.proof[0] || "Deterministic execution with automated error recovery"}
@@ -158,13 +158,13 @@ export function ServicesSection({ onOpenHireModal, inModal = false }: ServicesSe
                   <div className="flex items-center justify-between mb-2">
                     <span className="font-mono text-[11px] text-[#827577]">{num}</span>
                     <span className="px-1.5 py-0.5 rounded text-[9px] font-mono tracking-wider bg-[#FAF0F0] text-[#6B1724] border border-[#F0D5D8] uppercase">
-                      Practice
+                      Service
                     </span>
                   </div>
 
                   <h3 className="font-serif text-base sm:text-lg text-[#1C1416] mb-1.5">
                     <a
-                      href={`/${svc.slug}/`}
+                      href={svc.href}
                       className="hover:text-[#6B1724] transition-colors inline-block"
                     >
                       {svc.title}
@@ -175,10 +175,10 @@ export function ServicesSection({ onOpenHireModal, inModal = false }: ServicesSe
                     {svc.description}
                   </p>
 
-                  {/* Highlighted Guarantee */}
+                  {/* Highlighted Proof */}
                   <div className="text-xs py-2 px-2.5 bg-[#FAF8F5] border-l-2 border-[#6B1724] rounded-r mb-3">
                     <span className="font-mono text-[9px] uppercase tracking-wider text-[#6B1724] block font-semibold mb-0.5">
-                      System Guarantee
+                      Proof
                     </span>
                     <p className="text-[#1C1416] text-[11px] font-medium leading-snug line-clamp-2">
                       {svc.proof[0] || "Deterministic execution with automated error recovery"}

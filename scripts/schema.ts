@@ -96,13 +96,13 @@ export function getServicesHubSchema(serviceList: Service[]) {
         "@type": "CollectionPage",
         "@id": `${SITE_URL}/services/#webpage`,
         "url": `${SITE_URL}/services/`,
-        "name": "AI Engineering & SaaS QA Services",
+        "name": "AI Engineering & QA Services",
         "description":
-          "Production-grade AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review practice areas or hire.",
+          "Production AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review services or start an engagement.",
         "publisher": MINIMAL_PERSON,
         "mainEntity": {
           "@type": "ItemList",
-          "name": "AI Engineering & SaaS QA Practice Areas",
+          "name": "AI Engineering & QA Services",
           "itemListElement": serviceList.map((svc, idx) => ({
             "@type": "ListItem",
             "position": idx + 1,

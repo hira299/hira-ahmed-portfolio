@@ -11,12 +11,9 @@ Hira Ahmed builds production LLM pipelines, AI agents, and n8n automations, and 
 ## Services
 
 - [Services Overview](https://hiraahmed.me/services/)
-- [AI Automation](https://hiraahmed.me/ai-automation/)
-- [n8n Automation](https://hiraahmed.me/n8n-automation/)
-- [AI Agent Development](https://hiraahmed.me/ai-agents/)
-- [B2B SaaS QA](https://hiraahmed.me/qa-testing/)
-- [API Testing](https://hiraahmed.me/api-testing/)
-- [Multi-Tenant Testing](https://hiraahmed.me/multitenant-qa/)
+- [Software Testing & QA](https://hiraahmed.me/qa-testing/)
+- [Workflow & AI Automation](https://hiraahmed.me/ai-automation/)
+- [AI Agents & Assistants](https://hiraahmed.me/ai-agents/)
 
 ## Case studies
 

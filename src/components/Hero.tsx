@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { profile } from "@/data/profile";
 import { email, socialLinks } from "@/data/social-links";
+import { CountUp } from "@/components/motion/CountUp";
 
 interface HeroProps {
   onOpenHireModal: () => void;
@@ -81,7 +82,24 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
               className="font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-[1.25] sm:leading-tight max-w-3xl"
             >
               Autonomous LLM pipelines and{" "}
-              <span className="italic text-[#6B1724]">mission-critical software verification</span>.
+              <span className="relative inline-block italic text-[#6B1724]">
+                <span>mission-critical software verification</span>
+                <svg
+                  className="absolute left-0 -bottom-1 w-full h-2.5 pointer-events-none overflow-visible hero-ink-underline"
+                  viewBox="0 0 320 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 8.5 C 50 4, 120 10.5, 180 7 C 240 3.5, 290 8, 317 6.5"
+                    stroke="#6B1724"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>.
             </h1>
 
             {/* Bio Description: immediate paint */}
@@ -206,8 +224,43 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
           </div>
 
           {/* Right Column: Production Invariants & Impact (airy museum plate with subtle arch framing) */}
-          <div className="lg:col-span-4 lg:col-start-9 space-y-3 sm:space-y-4 pt-5 sm:pt-2">
-            <div className="plate-frame rounded-2xl p-3.5 sm:p-4 bg-white/70 shadow-xs">
+          <div className="lg:col-span-4 lg:col-start-9 space-y-3 sm:space-y-4 pt-5 sm:pt-2 relative">
+            {/* Celestial ring: thin radiating hairlines and four-point stars (aria-hidden, < 4KB) */}
+            <div className="absolute -inset-4 sm:-inset-6 pointer-events-none overflow-hidden celestial-ring-wrapper" aria-hidden="true">
+              <svg
+                className="w-full h-full celestial-ring-rotate opacity-40 text-[#6B1724]"
+                viewBox="0 0 340 340"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Concentric hairline circles */}
+                <circle cx="170" cy="170" r="145" stroke="#E8E1D7" strokeWidth="0.8" strokeDasharray="3 5" />
+                <circle cx="170" cy="170" r="120" stroke="#F0EAE1" strokeWidth="0.6" />
+                <circle cx="170" cy="170" r="95" stroke="#E8E1D7" strokeWidth="0.5" strokeDasharray="1 7" />
+
+                {/* Radiating thin hairlines (12 axis ticks) */}
+                {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
+                  <line
+                    key={deg}
+                    x1="170"
+                    y1="25"
+                    x2="170"
+                    y2="35"
+                    stroke="#D8CEC1"
+                    strokeWidth="0.7"
+                    transform={`rotate(${deg} 170 170)`}
+                  />
+                ))}
+
+                {/* Four-point antique stars */}
+                <path d="M170 18 L172 26 L180 28 L172 30 L170 38 L168 30 L160 28 L168 26 Z" fill="#6B1724" className="celestial-star-twinkle" />
+                <path d="M322 170 L314 172 L312 180 L310 172 L302 170 L310 168 L312 160 L314 168 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "1.2s" }} />
+                <path d="M170 322 L168 314 L160 312 L168 310 L170 302 L172 310 L180 312 L172 314 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "2.4s" }} />
+                <path d="M18 170 L26 168 L28 160 L30 168 L38 170 L30 172 L28 180 L26 172 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "3.6s" }} />
+              </svg>
+            </div>
+
+            <div className="relative z-10 plate-frame rounded-2xl p-3.5 sm:p-4 bg-white/85 shadow-xs backdrop-blur-[1px]">
               <div
                 className="text-[10px] sm:text-[11px] font-mono text-[#827577] uppercase tracking-wider sm:tracking-widest font-medium pb-2 border-b border-[#E8E1D7] flex items-center justify-between"
               >
@@ -233,7 +286,7 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                   <div className="min-w-0 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="font-serif text-[13px] sm:text-[15px] font-medium text-[#1C1416] group-hover:text-[#6B1724] transition-colors leading-snug">
-                        {item.value} {item.label}
+                        <CountUp value={item.value} /> {item.label}
                       </span>
                       <span className="text-[10px] font-mono text-[#827577] group-hover:text-[#6B1724] transition-colors">
                         ↗

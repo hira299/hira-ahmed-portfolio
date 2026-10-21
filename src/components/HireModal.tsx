@@ -118,12 +118,9 @@ export function HireModal({ isOpen, onClose, defaultService }: HireModalProps) {
                 onChange={(e) => setSelectedService(e.target.value)}
                 className="w-full bg-white border border-[#E8E1D7] focus:border-[#6B1724] rounded px-3 py-2 text-xs sm:text-sm text-[#1C1416] outline-none transition-colors"
               >
-                <option>AI Tool Pipelines &amp; Automation</option>
-                <option>n8n Complex Workflow Engineering</option>
-                <option>AI Agents &amp; RAG Architecture</option>
-                <option>B2B SaaS QA &amp; Regression Testing</option>
-                <option>API Testing &amp; Postman / Newman Suites</option>
-                <option>Multi-Tenant Security &amp; RBAC Validation</option>
+                <option>Software Testing &amp; QA</option>
+                <option>Workflow &amp; AI Automation</option>
+                <option>AI Agents &amp; Assistants</option>
               </select>
             </div>
 

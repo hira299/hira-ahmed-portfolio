@@ -160,6 +160,15 @@
 /* Wax seal styling */
 .wax-seal {
   filter: drop-shadow(0 2px 3px rgba(107, 23, 36, 0.3));
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+}
+
+/* Wax seal stamp compression on button press */
+button:active .wax-seal,
+a:active .wax-seal,
+.btn-wax-stamp:active .wax-seal {
+  transform: scale(0.82) rotate(-4deg);
+  filter: drop-shadow(0 1px 1.5px rgba(84, 17, 27, 0.5));
 }
 
 /* Hand-drawn pen / crayon loop animation for Start an Engagement button */
@@ -171,6 +180,219 @@
 
 .group\/engage:hover .sketch-circle-path {
   stroke-dashoffset: 0;
+}
+
+/* Hand-drawn ink underline animation for hero emphasis */
+.hero-ink-underline path {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  animation: inkDraw 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.35s forwards;
+}
+
+@keyframes inkDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ink-underline path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Ribbon Marquee Ticker: pauses on hover and focus */
+.ribbon-ticker-track {
+  display: flex;
+  animation: ribbonMarquee 38s linear infinite;
+  will-change: transform;
+}
+
+.ribbon-ticker-track:hover,
+.ribbon-ticker-track:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes ribbonMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-ticker-track {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Paper-settle below-the-fold reveal (added strictly post-hydration) */
+.paper-settle-init {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0) rotate(0.4deg);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.paper-settled {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) rotate(0deg) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .paper-settle-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* Tarot-style double line frames and pointer tilt (<=5deg) */
+.tarot-card {
+  position: relative;
+  background-color: #FFFFFF;
+  border: 1.3px solid #E8E1D7;
+  border-radius: 4px;
+  box-shadow: 0 3px 12px rgba(28, 20, 22, 0.04), 0 1px 3px rgba(28, 20, 22, 0.02);
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Inset inner frame (0.5px) */
+.tarot-card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 0.5px solid #F0EAE1;
+  border-radius: 2px;
+  pointer-events: none;
+  transition: border-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tarot-tilt-1:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-3deg) translate3d(0, -4px, 0);
+    box-shadow: 0 10px 24px rgba(28, 20, 22, 0.07), 0 3px 8px rgba(28, 20, 22, 0.04);
+    border-color: #6B1724;
+  }
+  .tarot-tilt-1:hover::after {
+    border-color: #F0D5D8;
+  }
+  .tarot-tilt-2:hover {
+    transform: perspective(1000px) rotateX(2.5deg) rotateY(0deg) translate3d(0, -4px, 0);
+    box-shadow: 0 10px 24px rgba(28, 20, 22, 0.07), 0 3px 8px rgba(28, 20, 22, 0.04);
+    border-color: #6B1724;
+  }
+  .tarot-tilt-2:hover::after {
+    border-color: #F0D5D8;
+  }
+  .tarot-tilt-3:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(3deg) translate3d(0, -4px, 0);
+    box-shadow: 0 10px 24px rgba(28, 20, 22, 0.07), 0 3px 8px rgba(28, 20, 22, 0.04);
+    border-color: #6B1724;
+  }
+  .tarot-tilt-3:hover::after {
+    border-color: #F0D5D8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarot-card,
+  .tarot-tilt-1:hover,
+  .tarot-tilt-2:hover,
+  .tarot-tilt-3:hover {
+    transform: none !important;
+  }
+}
+
+/* Mirror Glint sweep across flagship image frames (transform only) */
+.mirror-glint-frame {
+  position: relative;
+  overflow: hidden;
+}
+
+.mirror-glint-sweep {
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(250, 248, 245, 0.03) 30%,
+    rgba(250, 248, 245, 0.22) 50%,
+    rgba(250, 248, 245, 0.03) 70%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .mirror-glint-sweep,
+  .group:focus-within .mirror-glint-sweep {
+    opacity: 1;
+    animation: mirrorGlintSweep 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  }
+}
+
+@keyframes mirrorGlintSweep {
+  0% {
+    transform: translate3d(0, 0, 0) skewX(-25deg);
+  }
+  100% {
+    transform: translate3d(400%, 0, 0) skewX(-25deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mirror-glint-sweep {
+    display: none !important;
+  }
+}
+
+/* Celestial ring slow rotation (60s) and soft star twinkle */
+.celestial-ring-rotate {
+  animation: celestialRotate 60s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.celestial-star-twinkle {
+  animation: starTwinkle 3.2s ease-in-out infinite;
+}
+
+@keyframes celestialRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celestial-ring-rotate,
+  .celestial-star-twinkle {
+    animation: none !important;
+  }
 }
 
 /* SVG Blueprint & Diagram Styles */

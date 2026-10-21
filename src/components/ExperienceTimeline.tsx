@@ -86,7 +86,7 @@ export function ExperienceTimeline({ onSelectCaseStudy }: ExperienceTimelineProp
   ];
 
   return (
-    <section id="experience" className="scroll-mt-24 pt-10 pb-14 sm:pt-16 sm:pb-20 bg-[#FAF8F5]">
+    <section id="experience" data-paper-settle className="scroll-mt-24 pt-10 pb-14 sm:pt-16 sm:pb-20 bg-[#FAF8F5]">
       <div className="max-w-6xl mx-auto px-6">
         {/* Minimal Shahmeer Irfan Header: Title + Quiet Resume Link */}
         <div className="flex items-center justify-between pb-5 sm:pb-6 border-b border-[#E8E1D7] gap-3">

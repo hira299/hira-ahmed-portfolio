@@ -90,23 +90,23 @@ export const navMenus: NavMenu[] = [
     label: "Expertise",
     sectionLabel: "Services I Offer",
     sectionHref: "/#services",
-    match: ["/ai-automation/", "/ai-agents/", "/n8n-automation/", "/qa-testing/", "/api-testing/", "/multitenant-qa/"],
+    match: ["/ai-automation/", "/ai-agents/", "/qa-testing/"],
     groups: [
       {
         title: "AI Engineering",
         href: "/ai-agents/",
         links: [
-          { label: "AI Automation", href: "/ai-automation/" },
-          { label: "AI Agents", href: "/ai-agents/" },
+          { label: "AI Agents & Assistants", href: "/ai-agents/" },
+          { label: "Workflow & AI Automation", href: "/ai-automation/" },
           { label: "AI Pipelines", href: "/case-studies/28k-record-pipeline/" },
         ],
         topics: ["LLM Systems", "RAG"],
       },
       {
         title: "Automation",
-        href: "/n8n-automation/",
+        href: "/ai-automation/",
         links: [
-          { label: "n8n Automation", href: "/n8n-automation/" },
+          { label: "Workflow & AI Automation", href: "/ai-automation/" },
           { label: "Make.com", href: "/projects/#omnichannel-hub" },
         ],
         topics: ["Workflow Reliability", "State Machines", "DLQs"],
@@ -115,7 +115,7 @@ export const navMenus: NavMenu[] = [
         title: "Backend & Cloud",
         href: "/case-studies/aws-cost-optimization/",
         links: [
-          { label: "AWS", href: "/case-studies/aws-cost-optimization/" },
+          { label: "AWS Cost Optimization", href: "/case-studies/aws-cost-optimization/" },
           { label: "API Integrations", href: "/ai-automation/" },
         ],
         topics: ["Python", "FastAPI", "PostgreSQL", "Docker"],
@@ -124,9 +124,7 @@ export const navMenus: NavMenu[] = [
         title: "QA & Reliability",
         href: "/qa-testing/",
         links: [
-          { label: "B2B SaaS QA", href: "/qa-testing/" },
-          { label: "API Testing", href: "/api-testing/" },
-          { label: "Multi-Tenant Testing", href: "/multitenant-qa/" },
+          { label: "Software Testing & QA", href: "/qa-testing/" },
         ],
         topics: ["RBAC", "Business Logic", "AI Workflow Testing"],
       },

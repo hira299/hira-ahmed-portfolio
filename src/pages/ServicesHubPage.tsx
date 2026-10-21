@@ -25,7 +25,7 @@ export function ServicesHubPage() {
             Engineering Services & Capabilities
           </div>
           <h1 className="font-serif text-3xl sm:text-5xl text-[#1C1416] font-normal leading-tight mb-4">
-            AI Engineering &amp; SaaS QA Services
+            AI Engineering &amp; QA Services
           </h1>
           <p className="text-base sm:text-lg text-[#5C5254] leading-relaxed max-w-3xl">
             Production-grade engineering across autonomous AI pipelines, resilient n8n automation, deterministic API integrations, and multi-tenant B2B SaaS QA governance.
@@ -77,28 +77,9 @@ export function ServicesHubPage() {
           ))}
         </div>
 
-        {/* Additional Specialized Areas */}
-        <div className="p-6 bg-white border border-[#E8E1D7] rounded-xl">
-          <h2 className="font-serif text-lg text-[#1C1416] font-normal mb-2">
-            Specialized Cross-Domain Engagements
-          </h2>
-          <p className="text-xs sm:text-sm text-[#5C5254] leading-relaxed mb-4">
-            Additional capabilities include custom webhook architecture, dead-letter queue recovery, cross-tenant penetration audits, and automated CAIQ/SOC-2 evidence generation.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs font-mono">
-            {services
-              .filter((s) => !s.hasPage)
-              .map((s) => (
-                <a
-                  key={s.slug}
-                  href={s.href}
-                  className="p-3 bg-[#FAF8F5] border border-[#E8E1D7] hover:border-[#6B1724] rounded-lg text-[#1C1416] hover:text-[#6B1724] flex items-center justify-between transition-colors"
-                >
-                  <span>{s.title}</span>
-                  <span className="text-[#827577] text-[10px]">&rarr; {s.href}</span>
-                </a>
-              ))}
-          </div>
+        {/* Also Available Plain Line */}
+        <div className="py-4 px-5 bg-white border border-[#E8E1D7] rounded-xl text-xs sm:text-sm font-mono text-[#5C5254] leading-relaxed">
+          Also available: Backend &amp; Cloud (AWS) · Product builds · Website with SEO setup · RAG and knowledge-graph RAG · Local LLM hosting · Small-scale fine-tuning · Docker and CI/CD · Monthly support
         </div>
       </main>
 

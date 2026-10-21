@@ -123,8 +123,8 @@ async function prerenderAll() {
     `<div id="root">${hubHtml}</div>`
   );
   hubFull = applyMetadata(hubFull, {
-    title: "AI Engineering & SaaS QA Services | Hira Ahmed",
-    description: "Production-grade AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review practice areas or hire.",
+    title: "AI Engineering & QA Services | Hira Ahmed",
+    description: "Production AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review services or start an engagement.",
     canonical: `${SITE_URL}/services/`,
     schema: getServicesHubSchema(services.filter((s) => s.hasPage))
   });
@@ -134,7 +134,7 @@ async function prerenderAll() {
   const hubWords = hubHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
   console.log(`    Done: dist/services/index.html (${hubWords} words)`);
 
-  // 3. Service pages (the 6 pages with hasPage: true)
+  // 3. Service pages (the 3 pages with hasPage: true)
   const servicePages = services.filter((s) => s.hasPage);
   for (const svc of servicePages) {
     const routeFolder = svc.href.replace(/^\//, "").replace(/\/$/, "");
@@ -156,6 +156,36 @@ async function prerenderAll() {
     fs.writeFileSync(path.join(targetDir, "index.html"), svcFull, "utf8");
     const svcWords = svcHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().split(" ").filter(Boolean).length;
     console.log(`    Done: dist/${routeFolder}/index.html (${svcWords} words)`);
+  }
+
+  // 3b. Static Redirect Pages (no noindex, canonical to destination, meta refresh 0, JS location.replace, visible fallback)
+  const redirects = [
+    { from: "api-testing", to: `${SITE_URL}/qa-testing/`, title: "Software Testing & QA" },
+    { from: "multitenant-qa", to: `${SITE_URL}/qa-testing/`, title: "Software Testing & QA" },
+    { from: "n8n-automation", to: `${SITE_URL}/ai-automation/`, title: "Workflow & AI Automation" },
+  ];
+
+  for (const redir of redirects) {
+    console.log(`--> Generating Redirect Page: /${redir.from}/ -> ${redir.to}`);
+    const redirHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="${redir.to}">
+  <meta http-equiv="refresh" content="0; url=${redir.to}">
+  <title>Redirecting to ${redir.title} | Hira Ahmed</title>
+  <script>window.location.replace("${redir.to}");</script>
+</head>
+<body style="font-family: monospace; background: #FAF8F5; color: #1C1416; padding: 2rem;">
+  <p>This page has moved to <a href="${redir.to}" style="color: #6B1724;">${redir.title}</a>.</p>
+  <p>If you are not redirected automatically, <a href="${redir.to}" style="color: #6B1724;">click here</a>.</p>
+</body>
+</html>
+`;
+    const targetDir = path.join(distDir, redir.from);
+    fs.mkdirSync(targetDir, { recursive: true });
+    fs.writeFileSync(path.join(targetDir, "index.html"), redirHtml, "utf8");
+    console.log(`    Done: dist/${redir.from}/index.html (redirect page)`);
   }
 
   // 4. Case Studies Hub (/case-studies/)
@@ -198,7 +228,7 @@ async function prerenderAll() {
     console.log(`    Done: dist/case-studies/${cs.slug}/index.html (${csWords} words)`);
   }
 
-  // 6. Generate sitemap.xml for all 18 routes
+  // 6. Generate sitemap.xml for all 15 real routes (excluding redirect pages)
   const today = new Date().toISOString().split("T")[0];
   const sitemapRoutes = [
     "/",

@@ -1,18 +1,12 @@
 export type ServiceSlug =
-  | "ai-automation"
-  | "n8n-automation"
-  | "ai-agents"
-  | "api-integrations"
   | "qa-testing"
-  | "api-testing"
-  | "multitenant-qa"
-  | "business-logic-testing";
+  | "ai-automation"
+  | "ai-agents";
 
 export type Service = {
   slug: ServiceSlug;
   title: string;
   href: string;
-  /** Services without their own route point to the closest page. */
   hasPage: boolean;
   h1Title?: string;
   seoTitle?: string;
@@ -31,14 +25,50 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: "qa-testing",
+    title: "Software Testing & QA",
+    href: "/qa-testing/",
+    hasPage: true,
+    h1Title: "Software Testing & QA",
+    seoTitle: "Software Testing & QA Services | Hira Ahmed",
+    description:
+      "Web and SaaS app testing, API testing, user roles and permissions, and billing checks, with 1,500+ documented defects across four contracts.",
+    summary:
+      "Pre-launch and production QA that goes past the UI: journeys, network/API evidence, controlled reproduction, and root cause.",
+    problems: [
+      "Launching without knowing which user journeys actually work",
+      "Bug reports developers can't reproduce",
+      "Security and permission issues found by customers instead of QA",
+      "The same defect reported ten times from different screens",
+      "The UI hides an action, but the API still allows it",
+      "Wrong status codes that leak information across tenants",
+      "One customer able to see or guess another customer's records",
+      "Expired promotions still honored at checkout",
+    ],
+    technologies: ["Browser DevTools", "curl", "REST", "Flutter testing"],
+    proof: [
+      "20 user flows tested on PharmaConnect, 110+ bugs documented",
+      "1,500+ defects identified and documented across four client contracts",
+      "15 critical P1 findings on PharmaConnect, including authorization bypasses, authentication gaps, and payment reconciliation issues",
+      "60+ defects documented on Tekruiter, 1,300+ on ToolPotion, and 80+ on AI Cloud Academy",
+    ],
+    caseStudies: ["multitenant-saas-qa", "tekruiter-qa", "toolpotion-qa", "ai-cloud-academy-qa"],
+    resource: {
+      href: "https://github.com/hira299/enterprise-multitenant-qa-matrix",
+      label: "QA Matrix →",
+      summary:
+        "Reusable QA matrices, checklists, templates, and examples for multi-tenant SaaS, RBAC, API testing, business logic, regression, payments, and AI workflows.",
+    },
+  },
+  {
     slug: "ai-automation",
-    title: "AI Automation",
+    title: "Workflow & AI Automation",
     href: "/ai-automation/",
     hasPage: true,
-    h1Title: "AI Automation Engineer",
-    seoTitle: "AI Automation Consultant | Hira Ahmed",
+    h1Title: "Workflow & AI Automation",
+    seoTitle: "Workflow & AI Automation Services | Hira Ahmed",
     description:
-      "Production AI pipelines with status-gated validation, multi-stage LLM processing, and fault tolerance in Python and AWS. Schedule a call.",
+      "Production workflows, n8n automations, and status-gated AI pipelines with dead-letter queues and PostgreSQL state machines built by Hira Ahmed.",
     summary:
       "Workflows that connect your tools, APIs, databases, and LLMs, and keep working when inputs are messy or services fail.",
     problems: [
@@ -46,39 +76,16 @@ export const services: Service[] = [
       "AI steps that return unparseable or inconsistent output",
       "Pipelines that silently drop records when an API times out",
       "No visibility into where a run failed or what state it left behind",
-    ],
-    technologies: ["Python", "n8n", "Make.com", "PostgreSQL", "AWS", "OpenRouter", "OpenAI", "Gemini", "Groq"],
-    proof: [
-      "28,000+ production records processed through a status-gated LLM enrichment pipeline",
-      "5.6x processing speedup after reworking ETL for concurrency",
-      "12+ Make.com AI automation flows built in production",
-    ],
-    caseStudies: ["28k-record-pipeline", "n8n-email-agent", "cloud-compliance"],
-  },
-  {
-    slug: "n8n-automation",
-    title: "n8n Automation",
-    href: "/n8n-automation/",
-    hasPage: true,
-    h1Title: "n8n Automation Engineer | AI Workflows",
-    seoTitle: "n8n Automation Consultant | Hira Ahmed",
-    description:
-      "Production n8n workflows with dead-letter queues, PostgreSQL state, retry logic and self-hosted deployment. Schedule a call to discuss your automation.",
-    summary:
-      "Self-hosted or cloud n8n workflows with explicit state, error routing, and dead-letter queues, so failures are caught instead of lost.",
-    problems: [
       "Workflows that crash silently and lose the payload",
       "Rate limits (HTTP 429/403) breaking multi-step runs",
-      "Duplicate alerts and notification noise",
-      "Execution limits and cost on hosted automation plans",
     ],
-    technologies: ["n8n", "PostgreSQL", "Docker", "ClickUp", "Slack", "Gmail API", "Google Sheets", "Groq", "Gemini"],
+    technologies: ["n8n", "Make.com", "Python", "PostgreSQL", "Docker", "AWS"],
     proof: [
+      "28,000+ live records processed through an AI pipeline",
+      "5.6x processing speedup after reworking ETL for concurrency",
       "Profitability guardrail with a PostgreSQL state machine and DLQ, reported 95% reduction in notification noise",
-      "Stateful AI email agent with persistent thread memory",
-      "Cloud compliance and cost-anomaly workflows orchestrated in n8n",
     ],
-    caseStudies: ["n8n-email-agent", "cloud-compliance"],
+    caseStudies: ["28k-record-pipeline", "aws-cost-optimization", "n8n-email-agent", "cloud-compliance"],
     resource: {
       href: "https://github.com/hira299/n8n-production-resilience-patterns",
       label: "Production Resilience Patterns →",
@@ -88,10 +95,10 @@ export const services: Service[] = [
   },
   {
     slug: "ai-agents",
-    title: "AI Agent Development",
+    title: "AI Agents & Assistants",
     href: "/ai-agents/",
     hasPage: true,
-    h1Title: "AI Agent Development",
+    h1Title: "AI Agents & Assistants",
     seoTitle: "AI Agent Development Consultant | Hira Ahmed",
     description:
       "Stateful AI agents and Corrective RAG pipelines with verifiable citation checks, Critic agents, and structured outputs in LangGraph. Book a call.",
@@ -103,137 +110,13 @@ export const services: Service[] = [
       "Free-form LLM output breaking downstream steps",
       "No clear escalation path to a human",
     ],
-    technologies: ["LangGraph", "CRAG", "LlamaIndex", "pgvector", "FastEmbed", "n8n", "Langflow", "Groq", "Gemini", "OpenAI", "Tavily"],
+    technologies: ["LangGraph", "LlamaIndex", "pgvector"],
     proof: [
+      "Assistants that answer from your own documents and show their sources.",
       "6-node LangGraph Corrective RAG engine that answers 250+ question security reviews, with every answer required to cite a verified source",
       "Autonomous AI email agent with thread-state memory and Groq inference",
-      "Planner-synthesizer research agent grounded in live web sources with citations",
-      "JSON-mode enforcement for schema-valid LLM output in production",
     ],
-    caseStudies: ["n8n-email-agent", "cloud-compliance"],
-  },
-  {
-    slug: "api-integrations",
-    title: "API Integrations",
-    href: "/ai-automation/",
-    hasPage: false,
-    description:
-      "Connecting SaaS tools, internal APIs, databases, and LLM providers with webhooks, authentication, pagination, and failure handling.",
-    summary:
-      "Reliable connections between SaaS tools, databases, and AI providers, with authentication, retries, and logging built in.",
-    problems: [
-      "Tools with APIs but no working integration between them",
-      "Webhooks that fire once and are never retried",
-      "Integrations that break when a provider throttles requests",
-    ],
-    technologies: ["REST APIs", "Webhooks", "OAuth", "n8n", "Make.com", "Python", "FastAPI", "AWS API Gateway"],
-    proof: [
-      "Make.com flows integrating multiple external APIs in production",
-      "Gmail, ClickUp, Slack, WordPress, and AWS integrations across portfolio projects",
-    ],
-    caseStudies: ["n8n-email-agent", "28k-record-pipeline"],
-  },
-  {
-    slug: "qa-testing",
-    title: "B2B SaaS QA",
-    href: "/qa-testing/",
-    hasPage: true,
-    h1Title: "B2B SaaS QA & Exploratory Testing",
-    seoTitle: "B2B SaaS QA Lead & Testing | Hira Ahmed",
-    description:
-      "End-to-end user journeys, exploratory verification, and API-level defect reproduction for high-assurance B2B SaaS. Schedule a call.",
-    summary:
-      "Pre-launch and production QA that goes past the UI: journeys, network/API evidence, controlled reproduction, and root cause.",
-    problems: [
-      "Launching without knowing which user journeys actually work",
-      "Bug reports developers can't reproduce",
-      "Security and permission issues found by customers instead of QA",
-      "The same defect reported ten times from different screens",
-    ],
-    technologies: ["Browser DevTools", "Network/API inspection", "curl", "Flutter testing", "Defect matrices"],
-    proof: [
-      "20 end-to-end journeys completed on PharmaConnect (17 passed, 3 failed)",
-      "1,500+ defects identified and documented across four client contracts",
-      "110+ defects documented with API-level reproduction on PharmaConnect (15 critical findings)",
-      "60+ defects documented on Tekruiter, 1,300+ on ToolPotion, and 80+ on AI Cloud Academy",
-    ],
-    caseStudies: ["multitenant-saas-qa"],
-  },
-  {
-    slug: "api-testing",
-    title: "API Testing",
-    href: "/api-testing/",
-    hasPage: true,
-    h1Title: "API Testing & Backend QA",
-    seoTitle: "API Testing & Backend QA Lead | Hira Ahmed",
-    description:
-      "Backend API verification covering RBAC boundaries, payload validation, token lifecycles, and cross-tenant isolation. Schedule a technical call.",
-    summary:
-      "Testing the API behind the interface: auth, permissions, payloads, status codes, and what happens to state when things fail.",
-    problems: [
-      "The UI hides an action, but the API still allows it",
-      "Wrong status codes that leak information across tenants",
-      "Payloads accepted without server-side validation",
-      "State left inconsistent after timeouts or retries",
-    ],
-    technologies: ["HTTP", "REST", "curl", "Browser network inspection", "JSON schema checks", "PostgreSQL"],
-    proof: [
-      "API-level reproduction evidence for 80+ defects on an enterprise B2B platform",
-      "Cross-tenant status-code and authorization findings on a multi-tenant platform",
-    ],
-    caseStudies: ["multitenant-saas-qa"],
-  },
-  {
-    slug: "multitenant-qa",
-    title: "Multi-Tenant Testing",
-    href: "/multitenant-qa/",
-    hasPage: true,
-    h1Title: "Multi-Tenant SaaS QA",
-    seoTitle: "Multi-Tenant SaaS QA Specialist | Hira Ahmed",
-    description:
-      "Verification of tenant isolation, RBAC boundaries, and financial calculation integrity across complex B2B platforms. Schedule a consultation.",
-    summary:
-      "Checking that each tenant, role, and session only sees and changes what it should.",
-    problems: [
-      "One customer able to see or guess another customer's records",
-      "Roles with more permissions than intended",
-      "Deactivated users keeping access",
-      "Credentials or session tokens exposed in audit logs",
-      "Invoice and ledger totals drifting across partial payments and returns",
-    ],
-    technologies: ["RBAC matrices", "API testing", "Session/token checks", "Data-integrity checks"],
-    proof: [
-      "20 journeys across 6 user roles on PharmaConnect, a multi-tenant B2B platform",
-      "11 critical P1 findings on PharmaConnect, including authorization bypasses, authentication gaps, and payment reconciliation issues",
-    ],
-    caseStudies: ["multitenant-saas-qa"],
-    resource: {
-      href: "https://github.com/hira299/enterprise-multitenant-qa-matrix",
-      label: "QA Matrix →",
-      summary:
-        "Reusable QA matrices, checklists, templates, and examples for multi-tenant SaaS, RBAC, API testing, business logic, regression, payments, and AI workflows.",
-    },
-  },
-  {
-    slug: "business-logic-testing",
-    title: "Business Logic Testing",
-    href: "/multitenant-qa/",
-    hasPage: false,
-    description:
-      "Testing pricing, checkout, invoicing, reconciliation, progress tracking, and state rules against how the business actually works.",
-    summary:
-      "Finding the defects that pass every form validation but still cost money: pricing, invoicing, reconciliation, and state rules.",
-    problems: [
-      "Expired promotions still honored at checkout",
-      "Overpayments accepted and invoice lines doubled across re-created batches",
-      "Progress or reward systems that can be gamed",
-    ],
-    technologies: ["Exploratory testing", "Controlled reproduction", "Fault injection", "API testing"],
-    proof: [
-      "Pricing, reconciliation, and invoice findings on a B2B distribution platform",
-      "XP/progress exploit identified on an AI education platform",
-    ],
-    caseStudies: ["multitenant-saas-qa"],
+    caseStudies: ["n8n-email-agent", "cloud-compliance", "sentinel-mesh"],
   },
 ];
 
