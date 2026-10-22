@@ -101,17 +101,11 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                   e.preventDefault();
                   onSelectCaseStudy(project.slug);
                 }}
-                className={`group relative flex flex-col justify-between p-3.5 sm:p-4 rounded-[4px] cursor-pointer tarot-card tarot-tilt-${idx + 1} no-underline text-inherit block`}
+                className="group relative flex flex-col justify-between p-4 sm:p-5 rounded-lg bg-white plate-frame cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 no-underline text-inherit block"
               >
-                {/* Four-point corner star ornaments */}
-                <svg className="absolute top-1.5 left-1.5 w-2.5 h-2.5 text-[#827577]/60 group-hover:text-[#6B1724] transition-colors pointer-events-none" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0L9.5 6.5L16 8L9.5 9.5L8 16L6.5 9.5L0 8L6.5 6.5Z"/></svg>
-                <svg className="absolute top-1.5 right-1.5 w-2.5 h-2.5 text-[#827577]/60 group-hover:text-[#6B1724] transition-colors pointer-events-none" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0L9.5 6.5L16 8L9.5 9.5L8 16L6.5 9.5L0 8L6.5 6.5Z"/></svg>
-                <svg className="absolute bottom-1.5 left-1.5 w-2.5 h-2.5 text-[#827577]/60 group-hover:text-[#6B1724] transition-colors pointer-events-none" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0L9.5 6.5L16 8L9.5 9.5L8 16L6.5 9.5L0 8L6.5 6.5Z"/></svg>
-                <svg className="absolute bottom-1.5 right-1.5 w-2.5 h-2.5 text-[#827577]/60 group-hover:text-[#6B1724] transition-colors pointer-events-none" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0L9.5 6.5L16 8L9.5 9.5L8 16L6.5 9.5L0 8L6.5 6.5Z"/></svg>
-
                 {/* Ticket Notch Semicircles (Left & Right) */}
-                <span className="ticket-notch-left" aria-hidden="true" />
-                <span className="ticket-notch-right" aria-hidden="true" />
+                <span className="ticket-notch-sm-left" aria-hidden="true" />
+                <span className="ticket-notch-sm-right" aria-hidden="true" />
 
                 <div>
                   {/* Top Bar: Number + Client & Tag */}

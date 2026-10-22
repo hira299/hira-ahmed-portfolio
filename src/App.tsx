@@ -9,8 +9,6 @@ import { HireModal } from "./components/HireModal";
 import { SectionModal } from "./components/SectionModal";
 import { CustomCursor } from "./components/CustomCursor";
 import { usePaperSettle } from "./components/motion/usePaperSettle";
-import { ServiceDial } from "./components/motion/ServiceDial";
-import { ReadingRoomTerminal } from "./components/motion/ReadingRoomTerminal";
 
 export default function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -134,12 +132,6 @@ export default function App() {
           onSelectCaseStudy={(slug) => handleSelectCaseStudy(slug)}
           onOpenArchive={() => handleOpenSection("archive")}
         />
-
-        {/* Astrolabe Service Dial */}
-        <ServiceDial />
-
-        {/* Reading-Room Leather Ledger Terminal */}
-        <ReadingRoomTerminal />
 
         {/* Compact Production Experience Timeline */}
         <ExperienceTimeline
