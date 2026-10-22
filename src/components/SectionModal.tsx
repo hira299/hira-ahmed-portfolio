@@ -65,7 +65,7 @@ export function SectionModal({
         </div>
 
         {/* Modal Content */}
-        <div className="p-1.5 sm:p-6">
+        <div className="p-3 sm:p-6 pb-4 sm:pb-6">
           {section === "services" && (
             <ServicesSection
               inModal={true}
