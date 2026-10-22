@@ -39,15 +39,15 @@ export function SectionModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-5xl max-h-[92vh] sm:max-h-[90vh] bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl shadow-2xl overflow-y-auto flex flex-col [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        className="relative w-full max-w-5xl max-h-[95vh] sm:max-h-[90vh] bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl shadow-2xl overflow-y-auto flex flex-col [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
         role="dialog"
         aria-modal="true"
       >
         {/* Sticky Modal Top Bar */}
-        <div className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8E1D7]">
+        <div className="sticky top-0 z-20 flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#E8E1D7]">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#6B1724]" />
-            <span className="font-mono text-xs uppercase tracking-wider text-[#6B1724] font-medium">
+            <span className="font-mono text-[11px] sm:text-xs uppercase tracking-wider text-[#6B1724] font-medium">
               {section === "services" && "Practice Areas & Engagements"}
               {section === "research" && "Formal Methods & Preprint Publications"}
               {section === "archive" && "Complete Technical Repositories (10+)"}
@@ -55,17 +55,17 @@ export function SectionModal({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-[#5C5254] hover:text-[#1C1416] hover:bg-black/5 transition-colors cursor-pointer"
+            className="p-1 rounded-lg text-[#5C5254] hover:text-[#1C1416] hover:bg-black/5 transition-colors cursor-pointer"
             aria-label="Close modal"
           >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
         {/* Modal Content */}
-        <div className="p-1 sm:p-6">
+        <div className="p-1.5 sm:p-6">
           {section === "services" && (
             <ServicesSection
               inModal={true}

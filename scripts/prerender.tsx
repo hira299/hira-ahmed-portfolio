@@ -124,7 +124,7 @@ async function prerenderAll() {
   );
   hubFull = applyMetadata(hubFull, {
     title: "AI Engineering & QA Services | Hira Ahmed",
-    description: "Production AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review services or start an engagement.",
+    description: "Software testing and QA, workflow and AI automation, and AI agents and assistants by Hira Ahmed. Review the services or start an engagement.",
     canonical: `${SITE_URL}/services/`,
     schema: getServicesHubSchema(services.filter((s) => s.hasPage))
   });

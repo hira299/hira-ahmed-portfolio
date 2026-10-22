@@ -77,6 +77,70 @@ export function ServicesHubPage() {
           ))}
         </div>
 
+        {/* Ways to work with me */}
+        <div className="mb-10">
+          <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-3 font-medium">
+            Ways to work with me
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <a
+              href="/ai-automation/"
+              className="group p-4 bg-white plate-frame rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 block relative"
+            >
+              <span className="ticket-notch-sm-left" aria-hidden="true" />
+              <span className="ticket-notch-sm-right" aria-hidden="true" />
+              <p className="text-xs sm:text-sm text-[#1C1416] mb-2 font-serif leading-snug">
+                You want less repetitive work.
+              </p>
+              <span className="text-[11px] font-mono text-[#6B1724] font-medium group-hover:underline">
+                Workflow &amp; AI Automation &rarr;
+              </span>
+            </a>
+
+            <a
+              href="/ai-agents/"
+              className="group p-4 bg-white plate-frame rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 block relative"
+            >
+              <span className="ticket-notch-sm-left" aria-hidden="true" />
+              <span className="ticket-notch-sm-right" aria-hidden="true" />
+              <p className="text-xs sm:text-sm text-[#1C1416] mb-2 font-serif leading-snug">
+                You have a product and want AI added to it.
+              </p>
+              <span className="text-[11px] font-mono text-[#6B1724] font-medium group-hover:underline">
+                AI Agents &amp; Assistants &rarr;
+              </span>
+            </a>
+
+            <a
+              href="/qa-testing/"
+              className="group p-4 bg-white plate-frame rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 block relative"
+            >
+              <span className="ticket-notch-sm-left" aria-hidden="true" />
+              <span className="ticket-notch-sm-right" aria-hidden="true" />
+              <p className="text-xs sm:text-sm text-[#1C1416] mb-2 font-serif leading-snug">
+                You are launching soon and want it tested.
+              </p>
+              <span className="text-[11px] font-mono text-[#6B1724] font-medium group-hover:underline">
+                Software Testing &amp; QA &rarr;
+              </span>
+            </a>
+
+            <a
+              href="mailto:hira229922@gmail.com?subject=Monthly%20support"
+              className="group p-4 bg-white plate-frame rounded-lg transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 block relative"
+            >
+              <span className="ticket-notch-sm-left" aria-hidden="true" />
+              <span className="ticket-notch-sm-right" aria-hidden="true" />
+              <p className="text-xs sm:text-sm text-[#1C1416] mb-2 font-serif leading-snug">
+                You have launched and want it kept running and tested.
+              </p>
+              <span className="text-[11px] font-mono text-[#6B1724] font-medium group-hover:underline">
+                Ask about monthly support &rarr;
+              </span>
+            </a>
+          </div>
+        </div>
+
         {/* Also Available Plain Line */}
         <div className="py-4 px-5 bg-white border border-[#E8E1D7] rounded-xl text-xs sm:text-sm font-mono text-[#5C5254] leading-relaxed">
           Also available: Backend &amp; Cloud (AWS) · Product builds · Website with SEO setup · RAG and knowledge-graph RAG · Local LLM hosting · Small-scale fine-tuning · Docker and CI/CD · Monthly support

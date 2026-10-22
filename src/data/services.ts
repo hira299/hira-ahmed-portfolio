@@ -47,7 +47,7 @@ export const services: Service[] = [
     ],
     technologies: ["Browser DevTools", "curl", "REST", "Flutter testing"],
     proof: [
-      "20 user flows tested on PharmaConnect, 110+ bugs documented",
+      "20 end-to-end journeys completed on PharmaConnect (17 passed, 3 failed)",
       "1,500+ defects identified and documented across four client contracts",
       "15 critical P1 findings on PharmaConnect, including authorization bypasses, authentication gaps, and payment reconciliation issues",
       "60+ defects documented on Tekruiter, 1,300+ on ToolPotion, and 80+ on AI Cloud Academy",
@@ -81,7 +81,7 @@ export const services: Service[] = [
     ],
     technologies: ["n8n", "Make.com", "Python", "PostgreSQL", "Docker", "AWS"],
     proof: [
-      "28,000+ live records processed through an AI pipeline",
+      "28,000+ production records processed through a status-gated LLM enrichment pipeline",
       "5.6x processing speedup after reworking ETL for concurrency",
       "Profitability guardrail with a PostgreSQL state machine and DLQ, reported 95% reduction in notification noise",
     ],
@@ -112,9 +112,9 @@ export const services: Service[] = [
     ],
     technologies: ["LangGraph", "LlamaIndex", "pgvector"],
     proof: [
-      "Assistants that answer from your own documents and show their sources.",
       "6-node LangGraph Corrective RAG engine that answers 250+ question security reviews, with every answer required to cite a verified source",
       "Autonomous AI email agent with thread-state memory and Groq inference",
+      "Planner-synthesizer research agent grounded in live web sources with citations",
     ],
     caseStudies: ["n8n-email-agent", "cloud-compliance", "sentinel-mesh"],
   },

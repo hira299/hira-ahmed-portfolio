@@ -225,41 +225,6 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
 
           {/* Right Column: Production Invariants & Impact (airy museum plate with subtle arch framing) */}
           <div className="lg:col-span-4 lg:col-start-9 space-y-3 sm:space-y-4 pt-5 sm:pt-2 relative">
-            {/* Celestial ring: thin radiating hairlines and four-point stars (aria-hidden, < 4KB) */}
-            <div className="absolute -inset-4 sm:-inset-6 pointer-events-none overflow-hidden celestial-ring-wrapper" aria-hidden="true">
-              <svg
-                className="w-full h-full celestial-ring-rotate opacity-40 text-[#6B1724]"
-                viewBox="0 0 340 340"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Concentric hairline circles */}
-                <circle cx="170" cy="170" r="145" stroke="#E8E1D7" strokeWidth="0.8" strokeDasharray="3 5" />
-                <circle cx="170" cy="170" r="120" stroke="#F0EAE1" strokeWidth="0.6" />
-                <circle cx="170" cy="170" r="95" stroke="#E8E1D7" strokeWidth="0.5" strokeDasharray="1 7" />
-
-                {/* Radiating thin hairlines (12 axis ticks) */}
-                {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((deg) => (
-                  <line
-                    key={deg}
-                    x1="170"
-                    y1="25"
-                    x2="170"
-                    y2="35"
-                    stroke="#D8CEC1"
-                    strokeWidth="0.7"
-                    transform={`rotate(${deg} 170 170)`}
-                  />
-                ))}
-
-                {/* Four-point antique stars */}
-                <path d="M170 18 L172 26 L180 28 L172 30 L170 38 L168 30 L160 28 L168 26 Z" fill="#6B1724" className="celestial-star-twinkle" />
-                <path d="M322 170 L314 172 L312 180 L310 172 L302 170 L310 168 L312 160 L314 168 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "1.2s" }} />
-                <path d="M170 322 L168 314 L160 312 L168 310 L170 302 L172 310 L180 312 L172 314 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "2.4s" }} />
-                <path d="M18 170 L26 168 L28 160 L30 168 L38 170 L30 172 L28 180 L26 172 Z" fill="#6B1724" className="celestial-star-twinkle" style={{ animationDelay: "3.6s" }} />
-              </svg>
-            </div>
-
             <div className="relative z-10 plate-frame rounded-2xl p-3.5 sm:p-4 bg-white/85 shadow-xs backdrop-blur-[1px]">
               <div
                 className="text-[10px] sm:text-[11px] font-mono text-[#827577] uppercase tracking-wider sm:tracking-widest font-medium pb-2 border-b border-[#E8E1D7] flex items-center justify-between"

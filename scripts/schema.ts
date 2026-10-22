@@ -98,7 +98,7 @@ export function getServicesHubSchema(serviceList: Service[]) {
         "url": `${SITE_URL}/services/`,
         "name": "AI Engineering & QA Services",
         "description":
-          "Production AI pipelines, n8n automations, and multi-tenant SaaS QA governance for high-assurance systems. Review services or start an engagement.",
+          "Software testing and QA, workflow and AI automation, and AI agents and assistants by Hira Ahmed. Review the services or start an engagement.",
         "publisher": MINIMAL_PERSON,
         "mainEntity": {
           "@type": "ItemList",
