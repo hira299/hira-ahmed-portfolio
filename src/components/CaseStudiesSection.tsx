@@ -101,7 +101,7 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                   e.preventDefault();
                   onSelectCaseStudy(project.slug);
                 }}
-                className="group relative flex flex-col justify-between p-4 sm:p-5 rounded-lg bg-white plate-frame cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 no-underline text-inherit block"
+                className={`group relative flex flex-col justify-between p-4 sm:p-5 rounded-lg bg-white plate-frame cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 ${rotClass} no-underline text-inherit block`}
               >
                 {/* Ticket Notch Semicircles (Left & Right) */}
                 <span className="ticket-notch-sm-left" aria-hidden="true" />
@@ -118,8 +118,8 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                     </span>
                   </div>
 
-                  {/* Stamp Frame Screenshot Preview with soft mirror glint on hover */}
-                  <div className="mb-3 stamp-frame rounded-lg overflow-hidden h-36 sm:h-40 md:h-42 w-full relative mirror-glint-frame">
+                  {/* Stamp Frame Screenshot Preview */}
+                  <div className="mb-3 stamp-frame rounded-lg overflow-hidden h-36 sm:h-40 md:h-42 w-full relative">
                     <img
                       src={project.image}
                       alt={project.alt}
@@ -128,7 +128,6 @@ export function CaseStudiesSection({ onSelectCaseStudy, onOpenArchive }: CaseStu
                       className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.02] rounded"
                       loading="lazy"
                     />
-                    <div className="mirror-glint-sweep" aria-hidden="true" />
                   </div>
 
                   {/* Title */}
