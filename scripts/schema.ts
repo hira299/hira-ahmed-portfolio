@@ -71,12 +71,13 @@ export function getHomepageSchema() {
         "publisher": MINIMAL_PERSON,
       },
       {
-        "@type": "ProfessionalService",
+        "@type": ["ProfessionalService", "Organization"],
         "@id": `${SITE_URL}/#service`,
         "name": "Hira Ahmed",
         "url": `${SITE_URL}/`,
         "image": `${SITE_URL}/og-image.png`,
-        "provider": MINIMAL_PERSON,
+        "sameAs": APPROVED_SAME_AS,
+        "founder": MINIMAL_PERSON,
         "areaServed": APPROVED_AREAS_SERVED,
       },
     ],
@@ -248,7 +249,9 @@ export function getCaseStudyPageSchema(cs: CaseStudy) {
   const isSentinelMesh = cs.slug === "sentinel-mesh";
 
   const articleNode: Record<string, any> = {
-    "@type": isSentinelMesh ? "ScholarlyArticle" : "TechArticle",
+    "@type": isSentinelMesh
+      ? ["Article", "ScholarlyArticle"]
+      : ["Article", "TechArticle"],
     "@id": `${pageCanonical}#article`,
     "headline": cs.title,
     "description": cs.description,
