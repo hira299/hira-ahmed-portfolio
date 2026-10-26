@@ -276,7 +276,7 @@ export function CaseStudyModal({ slug, onClose, onOpenContact }: CaseStudyModalP
             <div className="text-[10px] sm:text-xs font-mono uppercase tracking-wider text-[#827577] mb-2 sm:mb-3">
               Verified System Schematic
             </div>
-            <div className="bg-[#FAF8F5] border border-[#E8E1D7] rounded p-1.5 sm:p-4 overflow-x-auto [&_.diagram-svg]:min-w-[420px] sm:[&_.diagram-svg]:min-w-0 [&_.diagram-svg]:p-2.5 sm:[&_.diagram-svg]:p-4 [&_figcaption]:text-[10px] sm:[&_figcaption]:text-[12px] [&_figcaption]:leading-snug [&_figcaption]:mt-2.5 sm:[&_figcaption]:mt-3.5">
+            <div className="bg-[#FAF8F5] border border-[#E8E1D7] rounded p-1 sm:p-4 overflow-hidden [&_.diagram]:w-full [&_.diagram-svg]:w-full [&_.diagram-svg]:max-w-full [&_.diagram-svg]:h-auto [&_.diagram-svg]:min-w-0 [&_.diagram-svg]:p-1.5 sm:[&_.diagram-svg]:p-4 [&_figcaption]:text-[10px] sm:[&_figcaption]:text-[12px] [&_figcaption]:leading-snug [&_figcaption]:mt-2 sm:[&_figcaption]:mt-3.5">
               {renderEmbeddedDiagram()}
             </div>
           </div>
