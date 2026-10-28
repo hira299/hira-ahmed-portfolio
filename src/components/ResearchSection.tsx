@@ -8,19 +8,19 @@ interface ResearchSectionProps {
 export function ResearchSection({ onSelectCaseStudy }: ResearchSectionProps) {
 
   return (
-    <section id="research" className="pt-2 pb-12 border-b border-[#E8E1D7] bg-[#FAF8F5]">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6">
+    <section id="research" className="pt-1 pb-3 sm:pb-12 border-b-0 sm:border-b border-[#E8E1D7] bg-[#FAF8F5]">
+      <div className="max-w-6xl mx-auto px-1 sm:px-6">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-12 pb-4 sm:pb-6 border-b border-[#E8E1D7] gap-4 sm:gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-3.5 sm:mb-12 pb-2.5 sm:pb-6 border-b border-[#E8E1D7] gap-2 sm:gap-6">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1.5 sm:mb-2 font-medium">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1 sm:mb-2 font-medium">
               05 / Formal Research & Publications
             </div>
-            <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal">
+            <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] font-normal">
               Scientific Artifacts & Peer Review
             </h2>
           </div>
-          <p className="text-xs sm:text-sm text-[#5C5254] max-w-md">
+          <p className="hidden md:block text-xs sm:text-sm text-[#5C5254] max-w-md">
             Peer-reviewed and preprint contributions applying automated theorem proving (Z3 SMT) and constraint solvers to cloud reliability.
           </p>
         </div>

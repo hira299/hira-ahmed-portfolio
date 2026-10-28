@@ -92,15 +92,15 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
   }, [searchTerm]);
 
   return (
-    <section id="archive" className="pt-2 pb-12 bg-[#FAF8F5]">
-      <div className="max-w-6xl mx-auto px-3 sm:px-6">
+    <section id="archive" className="pt-1 pb-3 sm:pb-12 bg-[#FAF8F5]">
+      <div className="max-w-6xl mx-auto px-1 sm:px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-5 sm:mb-10 pb-4 sm:pb-6 border-b border-[#E8E1D7] gap-4 sm:gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-3.5 sm:mb-10 pb-2.5 sm:pb-6 border-b border-[#E8E1D7] gap-2.5 sm:gap-6">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1.5 sm:mb-2 font-medium">
+            <div className="text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-[#6B1724] mb-1 sm:mb-2 font-medium">
               04 / Complete Index
             </div>
-            <h2 className="font-serif text-2xl sm:text-4xl text-[#1C1416] font-normal">
+            <h2 className="font-serif text-xl sm:text-4xl text-[#1C1416] font-normal">
               {viewMode === "projects" ? "Project Archive & Open Repositories" : "Case Studies Archive"}
             </h2>
           </div>
@@ -143,7 +143,7 @@ export function ProjectExplorer({ onSelectCaseStudy }: ProjectExplorerProps) {
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-between items-center mb-5 sm:mb-8">
+        <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-4 justify-between items-center mb-3.5 sm:mb-8">
           {/* Tag Chips (shown when in projects view) */}
           {viewMode === "projects" ? (
             <div className="flex items-center gap-1.5 flex-wrap w-full sm:w-auto">
