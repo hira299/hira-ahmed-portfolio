@@ -45,15 +45,17 @@ export function SectionModal({
           onClose();
         }
       }}
-      className={`fixed inset-0 z-50 flex items-center justify-center ${
-        isService ? "p-2 sm:p-6" : "p-3 sm:p-6 py-4 sm:py-6"
+      className={`fixed inset-0 z-50 flex ${
+        isService ? "items-center" : "items-start sm:items-center"
+      } justify-center ${
+        isService ? "p-2 sm:p-6" : "p-2 sm:p-6"
       } bg-black/60 backdrop-blur-sm animate-in fade-in duration-200`}
     >
       <div
         className={`relative w-full max-w-5xl ${
           isService
             ? "max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
-            : "max-h-[85dvh] max-h-[85vh] sm:max-h-[90vh] overflow-hidden"
+            : "max-h-[calc(100vh-1rem)] max-h-[calc(100dvh-1rem)] sm:max-h-[90vh] overflow-y-auto sm:overflow-hidden overscroll-contain pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] sm:pb-0"
         } bg-[#FAF8F5] border border-[#E8E1D7] rounded-xl shadow-2xl flex flex-col [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`}
         role="dialog"
         aria-modal="true"
@@ -82,7 +84,7 @@ export function SectionModal({
         {/* Modal Content */}
         <div
           className={`${
-            isService ? "" : "flex-1 overflow-y-auto"
+            isService ? "" : "overflow-visible sm:flex-1 sm:overflow-y-auto"
           } p-3 sm:p-6 pb-4 sm:pb-6 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden`}
         >
           {section === "services" && (

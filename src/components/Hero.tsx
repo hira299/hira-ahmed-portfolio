@@ -81,12 +81,13 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
             <h1
               className="font-serif text-2xl sm:text-4xl lg:text-5xl text-[#1C1416] tracking-tight font-normal leading-[1.25] sm:leading-tight max-w-3xl"
             >
-              Autonomous LLM pipelines and{" "}
+              AI systems you can rely on,{" "}
               <span className="relative inline-block italic text-[#6B1724]">
-                <span>mission-critical software verification</span>
+                <span>and testing so customers never find bugs.</span>
                 <svg
                   className="absolute left-0 -bottom-1 w-full h-2.5 pointer-events-none overflow-visible hero-ink-underline"
                   viewBox="0 0 320 12"
+                  preserveAspectRatio="none"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                   aria-hidden="true"
@@ -99,14 +100,14 @@ export function Hero({ onOpenHireModal, onSelectCaseStudy }: HeroProps) {
                     strokeLinejoin="round"
                   />
                 </svg>
-              </span>.
+              </span>
             </h1>
 
             {/* Bio Description: immediate paint */}
             <p
               className="text-sm sm:text-base text-[#5C5254] leading-relaxed max-w-xl font-sans"
             >
-              QA Lead across four concurrent client contracts with 1,500+ defects documented. Designing status-gated data workflows and QA architectures that don't break in production.
+              QA Lead across four concurrent client contracts with 1,500+ defects documented. I build automations and AI agents that keep working in production.
             </p>
 
             {/* Action Buttons & Links */}
